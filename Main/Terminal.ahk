@@ -115,7 +115,7 @@ Fuzzy_Navigator(Input) {
     "wa",                   "https://web.whatsapp.com/",
     "maps",                 Google.Maps,
     ["pint","p"],           "https://www.pinterest.com/",
-    ; "discord",              "https://discord.com/channels/@me",
+    ; "discord",   s           "https://discord.com/channels/@me",
     ; "duo",                "https://www.duolingo.com/",
     ; "chess",              "www.chess.com/play",
 ;?=======================================================

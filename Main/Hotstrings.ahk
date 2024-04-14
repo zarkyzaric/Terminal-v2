@@ -3,14 +3,6 @@
 #SingleInstance Force
 #Include <Functions>
 
-/* HOTSTRINGS FOR YOUR EMAILS */
-
-:*:@mymail::{
-    Send("example@email.com")
-}
-:*b0:@gmail::{
-    Send(".com")
-}
 
 /* HOTSTRINGS FOR VARIABLES */
 
@@ -27,12 +19,12 @@ LeaveBrac(s) {
     ; Selected := Get.SelectedText()
     ;     MsgBox(Selected)
     ; if  Selected != "" {
-    ;     Send Selected
-    ; }
-    Send s "{Left}"
+        ;     Send Selected
+        ; }
+        Send s "{Left}"
     Hook := InputHook("L1 V1 *" , "{BS}") ;
     Hook.Start(), Hook.Wait(), userInput := Hook.Input
-     Reason := Hook.EndReason
+    Reason := Hook.EndReason
     if (Reason == "EndKey") {
         Send "{NumpadDel}"
     }
@@ -57,5 +49,13 @@ LeaveBrac(s) {
 }
 #HotIf
 
+/* HOTSTRINGS FOR YOUR EMAILS */
+
+:*:@mymail::{
+    Send("example@email.com")
+}
+:*b0:@gmail::{
+    Send(".com")
+}
 
 
