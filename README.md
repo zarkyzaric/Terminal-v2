@@ -16,7 +16,7 @@ This project provides a custom popup terminal using AutoHotkey to facilitate qui
 
 
 To set up your custom hotkey:
-1. **Edit Hotkey**: Open `Hotkey.ahk` in a text editor.
+1. **Edit Hotkeys**: Open `Hotkeys.ahk` in a text editor.
 2. **Set Keyboard Shortcut**: Define your desired keyboard shortcut. For guidance on writing hotkeys, visit the [AutoHotkey Hotkeys documentation](https://www.autohotkey.com/docs/Hotkeys.htm).
 
 ## Usage
@@ -38,7 +38,9 @@ Press `Ctrl+Alt+T` or your custom hotkey (*see down below how to customize it*) 
     > **theme** 11 (*Light Theme*)
     > **theme** 00 (*Dark Theme*)
 ---
-
+##On Startup
+To set script to autorun on startup, place `Hotkeys.ahk` shortcut in your Startup folder
+If you don't know how to access Startup folder, press Win+R and type "shell:startup" and then press Enter.
 
 ## Customizing
 
