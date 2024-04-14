@@ -2,11 +2,12 @@
 #Requires AutoHotkey v2.0
 
 A_User := "C:\Users\" A_UserName
-class C {
-    static Program_Files := "C:\Program Files"
-      class Windows {
-        static Fonts := "C:\Windows\Fonts"
-    }
+class Google {
+    static Calendar := "https://calendar.google.com/calendar/u/0/r"
+    static Maps := "https://www.google.com/maps"
+    static Translate := "https://translate.google.com/"
+    static Gmail := "https://mail.google.com/mail/u/0/#inbox"
+    static Mail(N := "0") => Run("https://mail.google.com/mail/u/" N "/#inbox")
 }
 class User {
     static Documents := A_MyDocuments
@@ -27,12 +28,11 @@ class User {
         ; }
     static AppData := A_User "\AppData"
 }
-class Google {
-    static Calendar := "https://calendar.google.com/calendar/u/0/r"
-    static Maps := "https://www.google.com/maps"
-    static Translate := "https://translate.google.com/"
-    static Gmail := "https://mail.google.com/mail/u/0/#inbox"
-        static Mail(N := "0") => Run("https://mail.google.com/mail/u/" N "/#inbox")
+class C {
+    static Program_Files := "C:\Program Files"
+      class Windows {
+        static Fonts := "C:\Windows\Fonts"
+    }
 }
 ; class My {
 ;     static Documents := A_MyDocuments
@@ -61,9 +61,6 @@ class Google {
 ;? _______________RANDOM___________________________________________________________________
 Help := "https://www.autohotkey.com/docs/v2/FAQ.htm"
 CMD := "C:\Windows\system32\cmd.exe"
-DownloadYoutube := "https://yt2k.com/en/youtube-mp3-v2"
-
-
 
 
 A_WindowsTools := "shell:::{D20EA4E1-3957-11D2-A40B-0C5020524153}"

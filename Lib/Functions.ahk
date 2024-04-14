@@ -6,13 +6,8 @@
 ;                  FUNCTIONS:
 
 /*          RUN:             */
-; Raw()
-Study(appsArray){ ;This is basically the same as MultiOpen but only for Daily.ahk
-    Loop appsArray.Length {
-        Run(appsArray[A_Index])
-    }
-    ExitApp()
-}
+
+
 MultiOpen(appsArray) {
     numOfApps := appsArray.Length  ; Count of apps in the array
     if (numOfApps = 0) {
@@ -249,8 +244,6 @@ class Tool {
 }
 class Open {
     static VSC(input) => Run(VSC " " input) ;() => (Send("{LWin}"),SendIn("vs",0.1),SendIn("{Enter}",0.1),SendIn("{LWin}{Up}"))
-
-    
 }
 class Search {
     
@@ -296,7 +289,6 @@ class Search {
     static Emoji(input) => Run("https://emojipedia.org/search?q=" StrReplace(input, A_Space, "+"))
     static Translate(input) => Run("https://translate.google.com/?sl=en&tl=sr&text=" input "&op=translate")
 }
-
 class Raw {
     /*
     */
@@ -357,7 +349,7 @@ class Raw {
 
     }
 
-    static Meat() {
+    static Terminal() {
         {
 
             ;?________________CUSTOMIZE______________________________________________________________
