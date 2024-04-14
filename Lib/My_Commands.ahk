@@ -1,4 +1,7 @@
 #Requires AutoHotkey v2.0
+#SingleInstance Force
+#Include <Functions>
+#Include <Paths>
 
 My_Commands := Map(
     ;?=======================================================
