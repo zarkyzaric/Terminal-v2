@@ -1,6 +1,5 @@
 #Requires AutoHotkey v2.0
 #SingleInstance Force
-#Include <Classes>
 #Include <Functions>
 
 if not A_IsAdmin
