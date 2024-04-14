@@ -23,20 +23,22 @@ To set up your custom hotkey:
 Press `Ctrl+Alt+T` or your custom hotkey (*see down below how to customize it*) to open the popup terminal. Type a command and hit Enter to execute:
 
 ## Some Default Commands:
-- **Search**: 
-    type **s** *@search_text*
+- **Search**: [ **s** *@search_text* ]
+    >
     > **s** How to draw better
-- **Youtube Search** 
-    - type **y** *@search_text*
+    >
+- **Youtube Search**: [ **y** *@search_text* ]
+    >
     > **y** MrBeast latest video
-- **Translate**: **t** *@translate_text*
+    >
+- **Translate**: [ **t** *@translate_text* ]
+    >
     > **t** beetroot
-- **Search Command** [ **s** *@search_text* ]
-
-    - Ex: s How to draw better
-- **Shutdown/Log off/Restart in Specific Time**: 
-    - type shutdown/logoff/restart @seconds
-    - Ex: restart 120 (*this will restart the computer in 120 seconds*)
+    >
+- **Shutdown/Log off/Restart in Specific Time**: [**shutdown/logoff/restart** *@seconds*]
+    > 
+    > restart 120 (*this will restart the computer in 120 seconds*)
+    >
 
 
 
