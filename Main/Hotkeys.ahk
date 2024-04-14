@@ -1,39 +1,39 @@
-;{
+
 #Requires AutoHotkey v2.0 
 #SingleInstance Force
 #Include <Functions>
 #Include <Paths>
 
 /* GUIDE AND REMINDER
-
 ;? HOTSTRINGS
-b
 :*:hotstring:: ; Activates without {Space} (Right away when it's typed)
 
 ::hotstring:: ; Activates with {Space}:
 
-
 ;? HOTKEYS
-Karakteri koji se pišu umesto dugmića:
+Characters that you write instead of keys:
 # - Win
 ! - Alt
 + - Shift
-Primeri:
+
+Examples: ;!
 
 */
+
+; Ctrl + Alt + T or Ctrl + \ or RCtrl => Runs the Terminal
+RControl::
+^vkE2:: 
+^!t::Run(A_ScriptDir "\Terminal.ahk") 
+
 ; Ctrl + Backspace => Deletes last word
 ^Backspace::SendInput("^+{Left}{Backspace}") ; Fixes Ctrl+Backspace to delete previous word
-
 
 ; Ctrl + Alt + D => Time and Date popup Window
 ^!d::Tool.Clock()
 
-;Alt + G => Searches Selected Text
-!g::Search.SelectedText()
+; Alt + G => Searches Selected Text
+!g::Search.SelectedText("HELP")
 
-; Ctrl + \ pr RCtrl => Runs the Terminal
-^vkE2:: 
-RControl::Run(AHK.Main "\Terminal.ahk") 
 
 
 
@@ -90,7 +90,7 @@ HotIfWinExist("ahk_id " WinID)
     Hotkey("Enter",Destruction.Bind(,true),"On") ; adds {Enter} hotkey if user wants to send value into execution
     Hotkey("^+/",Destruction,"On")
     Hotkey("RControl",Destruction,"On")
- 
+    
 Hotkey("^!g",Destruction,"On")
 
 SetTimer () => myGui.Destroy(), -(DurationOfAppearance * 1000)
