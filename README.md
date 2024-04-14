@@ -25,11 +25,11 @@ Press `Ctrl+Alt+T` or your custom hotkey (*see down below how to customize it*) 
 ## Some Default Commands:
 - **Search**: 
     - type **s @search_text**
-    - Ex: s How to draw better
+    > **s** How to draw better
 - **Youtube Search** 
-* type **y @search_text**
-* Ex: y MrBeast latest video
-- **Translate**: type t @translate_text
+* type **y** @search_text**
+*   > **y** MrBeast latest video
+- **Translate**: **t** @translate_text
     > **t** beetroot
 - **Search Command** [ <p style="color: red;">**s @search_text**</p> ]
 
