@@ -4,6 +4,12 @@
 #Include <Functions>
 #Include <Paths>
 
+; Ctrl + Alt + T or Ctrl + \ or RCtrl => Runs the Terminal
+RControl::
+^vkE2:: 
+^!t::Run(A_ScriptDir "\Terminal.ahk") 
+
+
 /* GUIDE AND REMINDER
 ;? HOTSTRINGS
 :*:hotstring:: ; Activates without {Space} (Right away when it's typed)
@@ -20,11 +26,6 @@ Examples: ;!
 
 */
 
-; Ctrl + Alt + T or Ctrl + \ or RCtrl => Runs the Terminal
-RControl::
-^vkE2:: 
-^!t::Run(A_ScriptDir "\Terminal.ahk") 
-
 ; Ctrl + Backspace => Deletes last word
 ^Backspace::SendInput("^+{Left}{Backspace}") ; Fixes Ctrl+Backspace to delete previous word
 
@@ -32,10 +33,7 @@ RControl::
 ^!d::Tool.Clock()
 
 ; Alt + G => Searches Selected Text
-!g::Search.SelectedText("HELP")
-
-
-
+!g::Search.SelectedText()
 
 #HotIf WinActive("ahk_class WorkerW")
 F7:: ; Show/Hide Desktop Icons when desktop is active
@@ -56,9 +54,6 @@ F7:: ; Show/Hide Desktop Icons when desktop is active
 ^!z::
 ^!y:: ; Youtube Search
 {
-
-;?_______________________________Gui_Design_________________________________________________
-;*__________________CUSTOMIZE______________________________________________________________
 DurationOfAppearance := 20
 GuiOptions := "AlwaysOnTop -caption Border"
 Font := "Consolas"
@@ -67,8 +62,6 @@ FontColor := "ffffff"
 BGColor := "3a0000"
 Width := 800
 Height := 50
-
-;*________________Gui_Object(Appearance)______________________________________________________________________
 
 EditBoxOptions := "-E0x200 -VScroll Center " "W" Width " h" (Height - 5)
 PositionAndSize := "W" Width "H" Height "y20"
