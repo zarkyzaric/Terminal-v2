@@ -1,0 +1,34 @@
+# Custom Search Functions and Commands Popup Terminal
+
+This project provides a custom popup terminal using AutoHotkey to facilitate quick access to specific websites, apps, and search functions through custom commands.
+
+## Features
+
+- **Quick Access**: Open websites and apps directly from the terminal.
+- **Custom Search**: Execute predefined searches with just a few keystrokes.
+- **Extensibility**: Easily add or modify commands as needed.
+
+## Installation
+
+1. **Install AutoHotkey**: Download and install from [AutoHotkey](https://www.autohotkey.com/).
+2. **Download Scripts**: Download the script files as zip to your local machineor clone this repository.
+3. **Run**: Double-click the `Terminal.ahk` file to run the script.
+
+## Usage
+
+Press `Ctrl+Alt+T` (or your custom hotkey (*see down below*)) to open the popup terminal. Type a command and hit Enter to execute:
+
+To set up your custom hotkey:
+1. **Edit Hotkey**: Open `Hotkey.ahk` in a text editor.
+2. **Set Keyboard Shortcut**: Define your desired keyboard shortcut. For guidance on writing hotkeys, visit the [AutoHotkey Hotkeys documentation](https://www.autohotkey.com/docs/Hotkeys.htm).
+
+## Customizing
+
+To add or modify variables that hold paths and URLs, edit the `Paths.ahk` file:
+```ahk
+; Example hotkeys:
+
+^!t::Run(A_ScriptDir "\Terminal.ahk")
+
+!n::Run("notepad.exe")
+
