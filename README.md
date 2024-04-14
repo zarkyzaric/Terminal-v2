@@ -25,16 +25,17 @@ Press `Ctrl+Alt+T` or your custom hotkey (*see down below how to customize it*) 
 ## Some Default Commands:
 - **Search**: 
     - type **s @search_text**
-    - Ex: `s How to draw better
+    - Ex: s How to draw better
 - **Youtube Search** 
 * type **y @search_text**
-* Ex: `y MrBeast latest video`
-- **Translate**: type `t @translate_text
-    - Ex: `t beetroot`
-- **Search Command** type **s @search_text**
-    - Ex: `s How to draw better`
-- **Shutdown/Log off/Restart in Specific Time**: type `shutdown/logoff/restart @seconds`
-    - Ex: `restart 120` (*this will restart the computer in 120 seconds*)
+* Ex: [y]() MrBeast latest video
+- **Translate**: type t @translate_text
+    - Ex: t beetroot
+- **Search Command** [ **s @search_text** ]
+    - Ex: s How to draw better
+- **Shutdown/Log off/Restart in Specific Time**: 
+    - type shutdown/logoff/restart @seconds
+    - Ex: restart 120 (*this will restart the computer in 120 seconds*)
 
 
 
