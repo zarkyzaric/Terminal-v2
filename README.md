@@ -31,7 +31,8 @@ Press `Ctrl+Alt+T` or your custom hotkey (*see down below how to customize it*) 
 * Ex: [y]() MrBeast latest video
 - **Translate**: type t @translate_text
     - Ex: t beetroot
-- **Search Command** [ **s @search_text** ]
+- **Search Command** [ <p style="color: red;">**s @search_text**</p> ]
+
     - Ex: s How to draw better
 - **Shutdown/Log off/Restart in Specific Time**: 
     - type shutdown/logoff/restart @seconds
