@@ -397,12 +397,11 @@ class Raw {
             }
     }
 }
-class Type {
-    static Enter() => Send("{Enter}")    
-    static Backspace() => Send("{BS}")
-    static Space() => Send(A_Space)
-    static Cao() => Send("Caos")
-}
+; class Type {
+;     static Enter() => Send("{Enter}")    
+;     static Backspace() => Send("{BS}")
+;     static Space() => Send(A_Space)
+; }
 class Song {
     static Similar(input) => Run("https://www.chosic.com/playlist-generator/")
 }
@@ -426,7 +425,6 @@ class Settings {
     ;     static Dark(N := 00) => (PowerShell.SystemUsesLightTheme(N // 10),PowerShell.AppsUseLightTheme(N - ((N//10)*10)))
     ; }
     static Brightness(P) => (PowerShell.SetBrightness(P))
-    
 }
 class OS {
     static ShutdownIn(X,T) => (Sleep(T*1000),Shutdown(X),ExitApp())
@@ -446,8 +444,8 @@ class PowerShell {
     static SetBrightness(P) => PowerShell.Run('"(Get-WmiObject -Namespace root/WMI -Class WmiMonitorBrightnessMethods).WmiSetBrightness(1,"' P '")"')
 }   
 
-class Get {
-    static SelectedText(){ ;!!!
+class Get { ;!
+    static SelectedText(){ ;!
         OG_Clipboard := ClipboardAll()
         A_Clipboard := ""
         Send "^c"
@@ -528,27 +526,6 @@ HideFromTaskbar(T){
     ; some other value (or if its a local variable, just return):
     tbl := ""
     }
-
-    Test1() {
-        MyGui := Gui()
-        MyGui.Opt("+AlwaysOnTop -Caption +ToolWindow")  ; +ToolWindow avoids a taskbar button and an alt-tab menu item.
-        MyGui.BackColor := "EEAA99"  ; Can be any RGB color (it will be made transparent below).
-        MyGui.SetFont("s32")  ; Set a large font size (32-point).
-        CoordText := MyGui.Add("Text", "cLime", "XXXXX YYYYY")  ; XX & YY serve to auto-size the window.
-        ; Make all pixels of this color transparent and make the text itself translucent (150):
-        WinSetTransColor(MyGui.BackColor " 150", MyGui)
-        SetTimer(UpdateOSD, 200)
-        SetTimer () => myGui.Destroy(), -3000
-        UpdateOSD()  ; Make the first update immediate rather than waiting for the timer.
-        MyGui.Show("x750 y800 NoActivate")  ; NoActivate avoids deactivating the currently active window.
-        HotIfWinExist "A"
-        UpdateOSD(*)
-        {
-            MouseGetPos &MouseX, &MouseY
-            CoordText.Value := "X" MouseX ", Y" MouseY
-            A_Clipboard := " " MouseX ", " MouseY
-        }
-}
 
     
     
