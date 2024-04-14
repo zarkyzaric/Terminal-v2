@@ -28,9 +28,9 @@ Press `Ctrl+Alt+T` or your custom hotkey (*see down below how to customize it*) 
     - Ex: s How to draw better
 - **Youtube Search** 
 * type **y @search_text**
-* Ex: [y]() MrBeast latest video
+* Ex: y MrBeast latest video
 - **Translate**: type t @translate_text
-    - Ex: t beetroot
+    > t beetroot
 - **Search Command** [ <p style="color: red;">**s @search_text**</p> ]
 
     - Ex: s How to draw better
