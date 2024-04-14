@@ -130,19 +130,19 @@ Fuzzy_Navigator(Input) {
 ;?=======================================================
 ;?                 HOTKEY REPLACEMENTS                
 ;?=======================================================
-    ; ["task manager","tman","task","tsk","mngr"
-    ; ,"manager","tskmngr"],   () => Send("^+{Escape}"),
-    ; "settings",              () => Send("#i"),
-    ; "display",               () => Send("#u"),
-    ; ["emo","emoji"],         () => Send("#."),
-    ; ["tbar","taskbar"],      () => Send("#b{Enter}"),
-    ; "display",               () => Send("#u"),
-    ; ; ; Windows Window Switching:
-    ; "1",                     () => Send("#1"),
-    ; "2",                     () => Send("#2"),
-    ; "3",                     () => Send("#3"),
-    ; "4",                     () => Send("#4"),
-    ; "5",                     () => Send("#5"),
+    ["task manager","tman","task","tsk","mngr"
+    ,"manager","tskmngr"],   () => Send("^+{Escape}"),
+    "settings",              () => Send("#i"),
+    "display",               () => Send("#u"),
+    ["emo","emoji"],         () => Send("#."),
+    ["tbar","taskbar"],      () => Send("#b{Enter}"),
+    "display",               () => Send("#u"),
+    ; ; Windows Window Switching:
+    "1",                     () => Send("#1"),
+    "2",                     () => Send("#2"),
+    "3",                     () => Send("#3"),
+    "4",                     () => Send("#4"),
+    "5",                     () => Send("#5"),
     ; ; Browser Window Switching:
     ; "w1",                    () => Send("^1"),
     ; "w2",                    () => Send("^2"),

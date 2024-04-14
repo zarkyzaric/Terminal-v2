@@ -28,9 +28,8 @@ Primeri:
 ; Ctrl + Alt + D => Time and Date popup Window
 ^!d::Tool.Clock()
 
-; Ctrl + Shift + X or Alt + G => Searches Selected Text
-^+x:: 
-!g::Search.SelectedText("HELP")
+;Alt + G => Searches Selected Text
+!g::Search.SelectedText()
 
 ; Ctrl + \ pr RCtrl => Runs the Terminal
 ^vkE2:: 
