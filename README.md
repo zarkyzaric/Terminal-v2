@@ -31,7 +31,7 @@ Press `Ctrl+Alt+T` or your custom hotkey (*see down below how to customize it*) 
 - **Translate**: [ **t** *@translate_text* ]
     > **t** beetroot
 - **Shutdown/Log off/Restart in Specific Time**: [**shutdown/logoff/restart** *@seconds*]
-    > restart 120 (*this will restart the computer in 120 seconds*)
+    > **restart** 120 (*this will restart the computer in 120 seconds*)
 
 ---
 
