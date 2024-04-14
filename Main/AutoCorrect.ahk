@@ -1,6 +1,5 @@
 #Requires AutoHotkey v2.0
 #SingleInstance Force
-#Include <My_AutoCorrect>
 ;------------------------------------------------------------------------------
 ; CONTENTS
 ;	Discussion
