@@ -6,10 +6,7 @@
 ;library for file locations,paths,urls,classes:
 #Include <Paths> 
 #Include <My_Commands>
-; RControl::
-; {
 ;F0FFFF;FFF8DC
-;! ADD MODS:
 
 ;todo----------------------------------------------------------
 ;todo       CUSTOMIZE POPUP WINDOW'S APPEARANCE             
@@ -92,11 +89,8 @@ Fuzzy_Navigator(Input) {
     ; catch Error as err
     ;     OnError Raw.Run(input)
     GoTh := GoThrough.Bind(,input)
-    if GoTh(My_Solo_Commands)
+    if GoTh(My_Commands)
         return 1
-    else if GoTh(Solos)
-        return 1
-
     spacePos := InStr(Input," ")
     if !(spacePos)
         return
