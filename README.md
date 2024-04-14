@@ -23,8 +23,8 @@ To set up your custom hotkey:
 Press `Ctrl+Alt+T` or your custom hotkey (*see down below how to customize it*) to open the popup terminal. Type a command and hit Enter to execute:
 
 ## Some Default Commands:
-- **Search**: 
-    type **s @search_text**
+- **Search**: `n
+type **s @search_text**
     Ex: `s How to draw better
 - **Youtube Search** 
     type **y @search_text**
