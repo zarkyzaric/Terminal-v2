@@ -5,7 +5,7 @@
 #Include <Functions>
 ;library for file locations,paths,urls,classes:
 #Include <Paths> 
-#Include <My_Commands>
+#Include My_Commands.ahk
 ;F0FFFF;FFF8DC
 
 ;todo----------------------------------------------------------
@@ -76,7 +76,7 @@ SetTimer () => ExitApp(), -(DurationOfAppearance * 1000)
 
 ;?_______________________________________________________________________________________________
 Fuzzy_Navigator(Input) {
-    global My_Commands 
+    global Commands 
     
     if Input==""
         return
@@ -89,7 +89,7 @@ Fuzzy_Navigator(Input) {
     ; catch Error as err
     ;     OnError Raw.Run(input)
     GoTh := GoThrough.Bind(,input)
-    if GoTh(My_Commands)
+    if GoTh(Commands)
         return 1
     spacePos := InStr(Input," ")
     if !(spacePos)
