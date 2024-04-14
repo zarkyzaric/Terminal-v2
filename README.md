@@ -38,7 +38,7 @@ Press `Ctrl+Alt+T` or your custom hotkey (*see down below how to customize it*) 
     > **theme** 11 (*Light Theme*)
     > **theme** 00 (*Dark Theme*)
 ---
-##On Startup
+## On Startup
 To set script to autorun on startup, place `Hotkeys.ahk` shortcut in your Startup folder
 If you don't know how to access Startup folder, press Win+R and type "shell:startup" and then press Enter.
 
