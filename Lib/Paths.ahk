@@ -52,8 +52,11 @@ class C {
 ;         static AppData := A_User "\AppData"
 ; }
 
-
-
+Class Instagram {
+    static COM := "https://www.instagram.com"
+    static URL := "https://www.instagram.com"
+    static DM := instagram.url "/direct"
+}
 
 ; Class Default {
 ;     ; static Browser := 

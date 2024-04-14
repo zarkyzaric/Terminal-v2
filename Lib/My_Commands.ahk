@@ -3,8 +3,8 @@
 #Include <Functions>
 #Include <Paths>
 
-My_Commands := Map(
-    ;?=======================================================
+Commands := Map(
+;?=======================================================
 ;?                OFTEN DIRECTORIES                      ;@1
 ;?=======================================================
     ["downs","downloads"],    User.Downloads
