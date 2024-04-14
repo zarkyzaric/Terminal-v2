@@ -5,7 +5,7 @@
 #Include <Functions>
 ;library for file locations,paths,urls,classes:
 #Include <Paths> 
-#Include <My_Paths>
+#Include <My_Commands>
 ; RControl::
 ; {
 ;F0FFFF;FFF8DC
@@ -79,7 +79,7 @@ SetTimer () => ExitApp(), -(DurationOfAppearance * 1000)
 
 ;?_______________________________________________________________________________________________
 Fuzzy_Navigator(Input) {
-    global My_Solo_Commands 
+    global My_Commands 
     
     if Input==""
         return
@@ -87,71 +87,6 @@ Fuzzy_Navigator(Input) {
         Raw.Run(input)
         return
     }
-
-    static Solos := Map(    
-;?=======================================================
-;?                OFTEN DIRECTORIES                      ;@1
-;?=======================================================
-    ["downs","downloads"],    User.Downloads
-    "appdata",                User.AppData
-    "pictures"                User.Pictures
-    "music",                  User.Music,
-    "videos",                 User.Videos,
-    ["docs","documents"],     A_MyDocuments,
-    "desktop",                A_Desktop,
-    ["startup","sup"],        A_Startup,
-    ; "startmenu", A_StartMenu,
-    ; "programs", A_Programs,
-    ; "myprograms", User.AppData "\Local\Programs",
-;?=======================================================
-;?                 OFTEN WEBSITES                
-;?=======================================================
-    ["g","gpt","chatgpt"],  "https://chat.openai.com",
-    ["gm","gmail"],         Google.Gmail,
-    ["cal","calendar"],     Google.Calendar,
-    "dm",                   Instagram.DM,
-    ["ins","insta"],        Instagram.com,
-    "trans",                Google.Translate,
-    "wa",                   "https://web.whatsapp.com/",
-    "maps",                 Google.Maps,
-    ["pint","p"],           "https://www.pinterest.com/",
-    ; "discord",   s           "https://discord.com/channels/@me",
-    ; "duo",                "https://www.duolingo.com/",
-    ; "chess",              "www.chess.com/play",
-;?=======================================================
-;?                 OFTEN APPS                
-;?=======================================================
-    ["note","notepad"],      "notepad.exe",
-    ; "cmd",                   "cmd.exe",
-;?=======================================================
-;?                 OFTEN FUNCTIONS                
-;?=======================================================
-    "raw",                   () => Raw.Terminal(),
-;?=======================================================
-;?                 HOTKEY REPLACEMENTS                
-;?=======================================================
-    ["task manager","tman","task","tsk","mngr"
-    ,"manager","tskmngr"],   () => Send("^+{Escape}"),
-    "settings",              () => Send("#i"),
-    "display",               () => Send("#u"),
-    ["emo","emoji"],         () => Send("#."),
-    ["tbar","taskbar"],      () => Send("#b{Enter}"),
-    "display",               () => Send("#u"),
-    ; ; Windows Window Switching:
-    "1",                     () => Send("#1"),
-    "2",                     () => Send("#2"),
-    "3",                     () => Send("#3"),
-    "4",                     () => Send("#4"),
-    "5",                     () => Send("#5"),
-    ; ; Browser Window Switching:
-    ; "w1",                    () => Send("^1"),
-    ; "w2",                    () => Send("^2"),
-    ; "w3",                    () => Send("^3"),
-    ; "w4",                    () => Send("^4"),
-    ; "w5",                    () => Send("^5"),
-;?=======================================================
-    )
-
     ; try 
     ;     GoThrough(Solos,Input)
     ; catch Error as err
@@ -186,7 +121,6 @@ Fuzzy_Navigator(Input) {
         "p",        () => Search.Pinterest(input), ; p @search_text
         "em",       () => Search.Emoji(input), ; em @search_text
         "def",      () => Search.Meaning(input), ; def @define_text
-        "art",      () => AI.Art(input), ; art @prompt
 
         ["pastebin","pb","bin"], () => Search.PasteBin(input), ; pb @unique_code
 
@@ -206,37 +140,6 @@ Fuzzy_Navigator(Input) {
     )
     if GoThrough(FuncCalls,prefix)
         ExitApp()
-
-    ; static Prefixes := Map(
-    ;     "im", Image.Dict,
-    ;     "ai", AI.Dict,
-    ;     ; "find",     
-    ;     ; "mod", Mods,
-
-    ; )
-
-    ; if !(Prefixes.Has(prefix)) ; if prefix is not contained in Map, it exists program
-    ;     return
-    ; for key in Prefixes { ; for loop for searching in for key matching with prefix
-    ;     if (key == prefix) { 
-    ;         Commands := Prefixes[key]
-    ;         if input == "opt" { 
-    ;             allOptions := ""    
-    ;             for opt in Commands{
-    ;                 allOptions := allOptions . opt "`n"
-    ;             }
-    ;             ; Hotkey("Enter",Run.Bind(A_ScriptFullPath),"On")
-    ;             SetTimer () => (ToolTip(allOptions,960,60),Sleep(10000),Run(A_ScriptFullPath)), -1
-    ;             return
-    ;         }
-    ;         for com in Commands { ; for loop for searching a input that should be executed
-    ;             if (com == input){
-    ;                 Run(Commands[com])
-    ;                 return
-    ;             }
-    ;         }
-    ;     }  
-    ; }
     ExitApp()
     return
 }

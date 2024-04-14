@@ -32,7 +32,11 @@ Press `Ctrl+Alt+T` or your custom hotkey (*see down below how to customize it*) 
     > **t** beetroot
 - **Shutdown/Log off/Restart in Specific Time**: [**shutdown/logoff/restart** *@seconds*]
     > **restart** 120 (*this will restart the computer in 120 seconds*)
-
+- **Brightness**: [ **brightness** *@%* ]
+    > **brightness** 70
+- **Theme**: [ **theme** *@NN* ]
+    > **theme** 11 (*Light Theme*)
+    > **theme** 00 (*Dark Theme*)
 ---
 
 
