@@ -67,7 +67,7 @@ Default_Commands := Map(
 ;?=======================================================
     ["task manager","tman","task","tsk","mngr"
     ,"manager","tskmngr"],   () => Send("^+{Escape}"),
-    "settings",              () => Send("#i"),
+    ["settings","sett"],     () => Send("#i"),
     "display",               () => Send("#u"),
     ["emo","emoji"],         () => Send("#."),
     ["tbar","taskbar"],      () => Send("#b{Enter}"),
