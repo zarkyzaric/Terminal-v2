@@ -3,7 +3,7 @@
 #SingleInstance Force
 #Include %A_ScriptDir%\Lib\Functions.ahk
 #Include %A_ScriptDir%\Lib\Paths.ahk
-#Include My_Commands.ahk
+#Include %A_ScriptDir%\My_Commands.ahk
 ; Ctrl + Alt + T or Ctrl + \ or RCtrl => Runs the Terminal
 RControl::
 ^vkE2:: 
