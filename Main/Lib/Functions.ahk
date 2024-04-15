@@ -1,5 +1,5 @@
 #Requires AutoHotkey v2.0 
-#Include Data_Types
+#Include %A_ScriptDir%\Data_Types
 #Include %A_ScriptDir%\Paths.ahk
 
 ;                  FUNCTIONS:
