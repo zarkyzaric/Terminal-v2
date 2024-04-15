@@ -3,9 +3,9 @@
 ;------------------------------------------------------------------------------
 ; CONTENTS
 ;	Discussion
-;   AUto-COrrect TWo COnsecutive CApitals
-;   Hotstring Helper -- Multi Line
-;   Fix for -ign instead of -ing
+;   AUto-COrrect TWo COnsecutive CApitals @1
+;   Hotstring Helper -- Multi Line @2
+;   Fix for -ign instead of -ing 
 ;   Word endings
 ;   Word beginnings
 ;   Accented English words
@@ -28,33 +28,33 @@
 ; https://www.autohotkey.com/boards/viewtopic.php?p=533067#p533067
 ;------------------------------------------------------------------------------
 
-fix_consecutive_caps()
-fix_consecutive_caps() {
-    ; Hotstring only works if CapsLock is off.
-    HotIf (*) => !GetKeyState("CapsLock", "T")
-    loop 26 {
-        char1 := Chr(A_Index + 64)
-        loop 26 {
-            char2 := Chr(A_Index + 64)
-            ; Create hotstring for every possible combination of two letter capital letters.
-            Hotstring(":*?CXB0:" char1 char2, fix.Bind(char1, char2))
-        }
-    }
-    HotIf
+; fix_consecutive_caps()
+; fix_consecutive_caps() {
+;     ; Hotstring only works if CapsLock is off.
+;     HotIf (*) => !GetKeyState("CapsLock", "T")
+;     loop 26 {
+;         char1 := Chr(A_Index + 64)
+;         loop 26 {
+;             char2 := Chr(A_Index + 64)
+;             ; Create hotstring for every possible combination of two letter capital letters.
+;             Hotstring(":*?CXB0:" char1 char2, fix.Bind(char1, char2))
+;         }
+;     }
+;     HotIf
 
-    ; Third letter is checked using InputHook.
-    fix(char1, char2, *) {
-        ih := InputHook("V I101 L1 T.4")
-        ih.OnEnd := OnEnd
-        ih.Start()
-        OnEnd(ih) {
-            char3 := ih.Input
-            if (char3 ~= "[a-z]") ; If char is lowercase alpha.
-            || (char3 = A_Space && char1 char2 ~= "OF|TO|IN|IT|IS|AS|AT|WE|HE|BY|ON|BE|NO") ; Fix two letter words.
-                Send("{BS 2}" StrLower(char2) char3)
-        }
-    }
-}
+;     ; Third letter is checked using InputHook.
+;     fix(char1, char2, *) {
+;         ih := InputHook("V I101 L1 T.4")
+;         ih.OnEnd := OnEnd
+;         ih.Start()
+;         OnEnd(ih) {
+;             char3 := ih.Input
+;             if (char3 ~= "[a-z]") ; If char is lowercase alpha.
+;             || (char3 = A_Space && char1 char2 ~= "OF|TO|IN|IT|IS|AS|AT|WE|HE|BY|ON|BE|NO") ; Fix two letter words.
+;                 Send("{BS 2}" StrLower(char2) char3)
+;         }
+;     }
+; }
 
 ;------------------------------------------------------------------------------
 ;       Hotstring Helper - Multi line
