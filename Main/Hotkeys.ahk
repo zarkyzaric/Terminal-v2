@@ -23,9 +23,9 @@ Characters that you write instead of keys:
 + - Shift
 
 Examples: ;!
+; #d::Send("#m")
 
 */
-
 ; Ctrl + Backspace => Deletes last word
 ^Backspace::SendInput("^+{Left}{Backspace}") ; Fixes Ctrl+Backspace to delete previous word
 
@@ -35,20 +35,20 @@ Examples: ;!
 ; Alt + G => Searches Selected Text
 !g::Search.SelectedText()
 
-#HotIf WinActive("ahk_class WorkerW")
-F7:: ; Show/Hide Desktop Icons when desktop is active
-{
-    MouseMove(982 , 1023)
-    Sleep(1)
-    SendIn("{RButton}",0.002)
-    SendIn("{Down}",0.002)
-    SendIn("{Right}",0.002)
-    Loop 5 {
-        SendIn("{Down}",0.002)
-    }
-    SendIn("{Enter}",0.001)
-}
-#HotIf
+; #HotIf WinActive("ahk_class WorkerW")
+; F7:: ; Show/Hide Desktop Icons when desktop is active
+; {
+;     MouseMove(982 , 1023)
+;     Sleep(1)
+;     SendIn("{RButton}",0.002)
+;     SendIn("{Down}",0.002)
+;     SendIn("{Right}",0.002)
+;     Loop 5 {
+;         SendIn("{Down}",0.002)
+;     }
+;     SendIn("{Enter}",0.001)
+; }
+; #HotIf
 
 ; Ctrl + Alt + Z or Ctrl + Alt + Y => Searchbar for Youtube
 ^!z::

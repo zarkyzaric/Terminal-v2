@@ -3,5 +3,4 @@
 #Include %A_ScriptDir%\Lib\Functions.ahk
 #Include %A_ScriptDir%\Lib\Paths.ahk
 #Include My_Commands.ahk
-
-A_Clipboard := sqrt(3)
+Run(user.programs)
