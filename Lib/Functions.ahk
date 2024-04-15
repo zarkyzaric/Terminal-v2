@@ -243,7 +243,10 @@ class Tool {
 }
 class Open {
     static VSC(input := "") {
-        (input == "") ? Run(VSC) : Run(VSC " " input) ;() => (Send("{LWin}"),SendIn("vs",0.1),SendIn("{Enter}",0.1),SendIn("{LWin}{Up}"))
+        if (input == "") 
+            Run(VSC) 
+        else
+            Run(VSC " " input) ;() => (Send("{LWin}"),SendIn("vs",0.1),SendIn("{Enter}",0.1),SendIn("{LWin}{Up}"))
     }
 }
 class Search {
