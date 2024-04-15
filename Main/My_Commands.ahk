@@ -6,7 +6,7 @@
 #Include <Paths>
 
 My_Commands := Map(
-    "v",                     () => Open.VSC(),
+    "v",                     () => Open.VSC(""),
 )
 Default_Commands := Map(
 ;?=======================================================
