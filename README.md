@@ -51,3 +51,7 @@ To add or modify variables that hold paths and URLs, edit the `Paths.ahk` file:
 
 !n::Run("notepad.exe")
 
+
+## RECOMMENDED VSC EXTENSIONS
+    - bobmagicii.autofoldyeah
+    - aaron-bond.better-comments
