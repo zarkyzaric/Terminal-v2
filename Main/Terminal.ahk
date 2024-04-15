@@ -2,10 +2,9 @@
 #SingleInstance Force ; If script is running in the background, and you want to start it again, this input makes sure that is executed without a questioning you do you want to shutdown the previous one, but rather exits by default
 ; #NoTrayIcon
 ; library for personalized functions:
-#Include <Functions>
+#Include %A_ScriptDir%\Lib\Functions.ahk
+#Include %A_ScriptDir%\Lib\Paths.ahk
 ;library for file locations,paths,urls,classes:
-#Include <Paths> 
-#Include My_Commands.ahk
 ;F0FFFF;FFF8DC
 
 ;todo----------------------------------------------------------
@@ -37,9 +36,9 @@ myGui.SetFont("s" FontSize " " FontOptions " c" FontColor, Font)
 global Input := myGui.Add("Edit", "Background" BGColor " " InputBoxOptions) ; Adds an Input(Edit) Box in GUI
 global WinID := "ahk_id " myGui.Hwnd ; Saving Window handle for destroying GUI
 
-iconsize := 32  ; Ideal size for alt-tab varies between systems and OS versions.
-hIcon := LoadPicture(AHK.Lib "\duck.ico", "Icon1 w" iconsize " h" iconsize, &imgtype)
-SendMessage(0x0080, 1, hIcon, MyGui) 
+;! iconsize := 32  ; Ideal size for alt-tab varies between systems and OS versions.
+;! hIcon := LoadPicture(AHK.Lib "\duck.ico", "Icon1 w" iconsize " h" iconsize, &imgtype)
+;! SendMessage(0x0080, 1, hIcon, MyGui) 
 
 myGui.Show(PositionAndSize)
 
