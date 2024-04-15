@@ -298,8 +298,10 @@ class Search {
 class Raw {
     /*
     */
-    static ahk := "Raw.ahk"
-    static Run(input) {
+   static ahk := "Raw.ahk"
+   static Run(input) {
+        if input == ""
+            return
         try FileDelete(Raw.ahk)
         FileAppend
         (
@@ -310,14 +312,12 @@ class Raw {
         #Include My_Commands.ahk`n"
         ),Raw.ahk
 
-        if input == ""
-            return 0
-        else if InStr(input, "c="){ ; A_Clipboard := %Variable or a String%
+        if InStr(input, "c="){ ; A_Clipboard := %Variable or a String%
             FileAppend
             (
             "
-            A_Clipboard := " input.Delete(1,2) 
-            ),Raw.ahk ; SubStr(input, 3, StrLen(input) - 2)
+            A_Clipboard := " SubStr(input, 3, StrLen(input) - 2) 
+            ),Raw.ahk ; SubStr(input, 3, StrLen(input) - 2) ; input.Delete(1,2) 
         }
         else if !InStr(input, " ") || (InStr(input,"\") && !InStr(input, "`n"))  ; PATHS
         { 
