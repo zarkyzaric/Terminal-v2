@@ -2,9 +2,9 @@
 #SingleInstance Force ; If script is running in the background, and you want to start it again, this input makes sure that is executed without a questioning you do you want to shutdown the previous one, but rather exits by default
 ; #NoTrayIcon
 ; library for personalized functions:
-#Include <Lib\Functions>
+#Include <Functions>
 ;library for file locations,paths,urls,classes:
-#Include <Lib\Paths> 
+#Include <Paths> 
 #Include My_Commands.ahk
 ;F0FFFF;FFF8DC
 
