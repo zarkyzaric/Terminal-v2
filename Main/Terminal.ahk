@@ -3,8 +3,9 @@
 ; #NoTrayIcon
 ; library for personalized functions:
 #Include %A_ScriptDir%\Lib\Functions.ahk
-#Include %A_ScriptDir%\Lib\Paths.ahk
 ;library for file locations,paths,urls,classes:
+#Include %A_ScriptDir%\Lib\Paths.ahk
+#Include My_Commands.ahk
 ;F0FFFF;FFF8DC
 
 ;todo----------------------------------------------------------
