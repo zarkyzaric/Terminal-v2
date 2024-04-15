@@ -37,7 +37,7 @@ class C {
     }
 }
 
-VSC := User.AppData "\Programs\Microsoft VS Code\Code.exe"
+VSC := User.AppData "\Local\Programs\Microsoft VS Code\Code.exe"
 
 ; class My {
 ;     static Documents := A_MyDocuments
