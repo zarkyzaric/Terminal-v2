@@ -1,6 +1,6 @@
 #Requires AutoHotkey v2.0 
 #Include Data_Types
-#Include <Paths>
+#Include Paths.ahk
 
 ;                  FUNCTIONS:
 
