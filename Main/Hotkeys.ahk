@@ -1,3 +1,8 @@
+#Requires AutoHotkey v2.0 
+#SingleInstance Force
+#Include %A_ScriptDir%\Lib\Functions.ahk
+#Include %A_ScriptDir%\Lib\Paths.ahk
+#Include %A_ScriptDir%\My_Commands.ahk
 ;?========================================================================
 ;?========================================================================
 ;?
@@ -6,43 +11,28 @@
 ;?
 ;?========================================================================
 ;?========================================================================
-#Requires AutoHotkey v2.0 
-#SingleInstance Force
-#Include %A_ScriptDir%\Lib\Functions.ahk
-#Include %A_ScriptDir%\Lib\Paths.ahk
-#Include %A_ScriptDir%\My_Commands.ahk
 
-
+;-----------------------------------------------------------------------------------------
 ; Ctrl + Alt + T or Ctrl + \ or RCtrl => Runs the Terminal
 ^vkE2:: 
 RControl::
 ^!t::Run(A_ScriptDir "\Terminal.ahk") 
+;-----------------------------------------------------------------------------------------
 
-
-/* GUIDE AND REMINDER
-;? HOTSTRINGS
-:*:hotstring:: ; Activates without {Space} (Right away when it's typed)
-
-::hotstring:: ; Activates with {Space}:
-
-;? HOTKEYS
-Characters that you write instead of keys:
-# - Win
-! - Alt
-+ - Shift
-
-Examples: ;!
-; #d::Send("#m")
-
-*/
+;-----------------------------------------------------------------------------------------
 ; Ctrl + Backspace => Deletes last word
 ^Backspace::SendInput("^+{Left}{Backspace}") ; Fixes Ctrl+Backspace to delete previous word
+;-----------------------------------------------------------------------------------------
 
+;-----------------------------------------------------------------------------------------
 ; Ctrl + Alt + D => Time and Date popup Window
 ^!d::Tool.Clock()
+;-----------------------------------------------------------------------------------------
 
+;-----------------------------------------------------------------------------------------
 ; Alt + G => Searches Selected Text
 !g::Search.SelectedText()
+;-----------------------------------------------------------------------------------------
 
 ; #HotIf WinActive("ahk_class WorkerW")
 ; F7:: ; Show/Hide Desktop Icons when desktop is active
@@ -58,7 +48,25 @@ Examples: ;!
 ;     SendIn("{Enter}",0.001)
 ; }
 ; #HotIf
+;-----------------------------------------------------------------------------------------
+/* GUIDE AND REMINDER
+;-----------------------------------------------------------------------------------------
+;? HOTSTRINGS
+:*:hotstring:: ; Activates without {Space} (Right away when it's typed)
 
+::hotstring:: ; Activates with {Space}:
+
+;? HOTKEYS
+Characters that you write instead of keys:
+# - Win
+! - Alt
++ - Shift
+
+Examples: ;!
+; #d::Send("#m")
+
+*/
+;-----------------------------------------------------------------------------------------
 ; Ctrl + Alt + Z or Ctrl + Alt + Y => Searchbar for Youtube
 ^!z::
 ^!y:: ; Youtube Search
