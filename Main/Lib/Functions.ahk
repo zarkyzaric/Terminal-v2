@@ -1,6 +1,6 @@
 #Requires AutoHotkey v2.0 
 #Include Data_Types
-#Include %A_ScriptDir%\Lib\Paths.ahk
+#Include %A_ScriptDir%\Paths.ahk
 
 ;                  FUNCTIONS:
 
@@ -240,6 +240,7 @@ class Tool {
     
     }
 }
+
 class Open {
     static VSC(input?) {
         if IsSet(input)
@@ -273,7 +274,7 @@ class Search {
         ; if ErrorLevel
         ;     return
         if RegExMatch(A_Clipboard, "^[^ ]*\.[^ ]*$")
-            Run("C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" A_Clipboard)
+            Run("C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" " " A_Clipboard)
         else if MODE == "HELP"
             Run(Help), SendIn(A_Clipboard,2), SendIn("{Enter}",0.5) 
         else {
@@ -293,7 +294,6 @@ class Search {
     static Emoji(input) => Run("https://emojipedia.org/search?q=" StrReplace(input, A_Space, "+"))
     static Translate(input) => Run("https://translate.google.com/?sl=en&tl=sr&text=" input "&op=translate")
 }
-
 class Raw {
     /*
     */
