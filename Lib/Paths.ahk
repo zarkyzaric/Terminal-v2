@@ -1,6 +1,9 @@
 
 #Requires AutoHotkey v2.0
 
+
+
+VSCode := User.AppData "\Programs\Microsoft VS Code\Code.exe"
 A_User := "C:\Users\" A_UserName
 class Google {
     static Calendar := "https://calendar.google.com/calendar/u/0/r"
