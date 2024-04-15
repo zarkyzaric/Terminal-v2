@@ -50,7 +50,7 @@ To add or modify variables that hold paths and URLs, edit the `Paths.ahk` file:
 ^!t::Run(A_ScriptDir "\Terminal.ahk")
 
 !n::Run("notepad.exe")
-
+```
 
 ## RECOMMENDED VSC EXTENSIONS
     - bobmagicii.autofoldyeah
