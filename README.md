@@ -53,5 +53,6 @@ To add or modify variables that hold paths and URLs, edit the `Paths.ahk` file:
 ```
 
 ## RECOMMENDED VSC EXTENSIONS
+> Simply paste this in VSC extensions search (Press Ctrl + Shift + X)
 - AUTOFOLDING => *bobmagicii.autofoldyeah*
 - BETTER COMMENTS => *aaron-bond.better-comments*
