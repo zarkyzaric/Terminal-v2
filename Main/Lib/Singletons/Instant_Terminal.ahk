@@ -2,10 +2,6 @@
 #Requires Autohotkey v2.0
 ; If script is running in the background, and you want to start it again, this command makes sure that is executed without a questioning you do you want to shutdown the previous one, but rather exits by default
 #SingleInstance Force 
-; library for personalized functions:
-#Include <Functions> 
-;library for file locations and urls:
-#Include <Paths> 
 
 ; Fonts:
 ; "Bahnschrift"
@@ -113,58 +109,29 @@ Terminal_2(Input) { ; Handles function calls and Maps in Maps
     ; GoThrough(FuncCalls,prefix) 
 
 
-    static GPTs := Map(
-        "ahk", AHK_gpt,
-        "random", "https://chat.openai.com/c/2d6ba617-40be-496c-ad7d-05a851a44caf",
-        "train", "https://chat.openai.com/c/db135fa0-c150-4954-ab67-470ad279e961",
-        "toi", "https://chat.openai.com/c/49fd9714-1c6f-4a40-976f-d283a9f35cf7",
-        "rs", "https://chat.openai.com/g/g-9YeZz6m6k-math-solver/c/8a5bbb86-25f0-40de-b8e4-0cc6a05c5ba1",
-        "op", "https://chat.openai.com/c/83256ad1-f8ed-489f-94b2-205338da05a0",
-        "gimp", "https://chat.openai.com/c/b95f1ec5-1e58-4d56-ad16-94271c9c7d19",
-    )
-    static AITools := Map(
-        "leonardo", "https://app.leonardo.ai",
-        "leonardo realtime", "https://app.leonardo.ai/realtime-gen",
-        "pixverse", "https://app.pixverse.ai/create/video",
-        "pixverse my", "https://app.pixverse.ai/create/history",
-        "restore","https://replicate.com/tencentarc/gfpgan",
-        "object remover","https://objectremover.com/",
-        "sharpener","https://imglarger.com/Sharpener",
-        "upscale","https://imglarger.com/ImageUpscaler",
-
-    )
-    ; static Mods := Map(
-
-    ; )
-    static Prefixes := Map(
-        "g", GPTs,
-        "im", Clrs,
-        "ai", AITools,
-        ; "mod", Mods,
-    )
-
     
-    if !(Prefixes.Has(prefix)) ; if prefix is not contained in Map, it exists program
-        return
-    for key in Prefixes { ; for loop for searching in for key matching with prefix
-        if (key == prefix) { 
-            Commands := Prefixes[key]
-            if command == "opt" {
-                AllOpt := ""
-                for opt in Commands{
-                    AllOpt := AllOpt . opt "`n"
-                }
-                SetTimer () => (ToolTip(AllOpt,960,60),Sleep(5000),Run(A_ScriptFullPath)), -1
-                return
-            }
-            for com in Commands { ; for loop for searching a command that should be executed
-                if (com == command){
-                    Run(Commands[com])
-                    return
-                }
-            } 
-        }  
-    }
+    ; if !(Prefixes.Has(prefix)) ; if prefix is not contained in Map, it exists program
+    ;     return
+    ; for key in Prefixes { ; for loop for searching in for key matching with prefix
+    ;     if (key == prefix) { 
+    ;         Commands := Prefixes[key]
+    ;         if command == "opt" {
+    ;             AllOpt := ""
+    ;             for opt in Commands{
+    ;                 AllOpt := AllOpt . opt "`n"
+    ;             }
+    ;             SetTimer () => (ToolTip(AllOpt,960,60),Sleep(5000),Run(A_ScriptFullPath)), -1
+    ;             return
+    ;         }
+    ;         for com in Commands { ; for loop for searching a command that should be executed
+    ;             if (com == command){
+    ;                 Run(Commands[com])
+    ;                 return
+    ;             }
+    ;         } 
+    ;     }  
+    ; }
+    ExitApp()
     return
 }
 

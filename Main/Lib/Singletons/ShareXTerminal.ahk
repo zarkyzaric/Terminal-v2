@@ -1,8 +1,6 @@
 ;{Header
 #Requires Autohotkey v2.0
 #SingleInstance Force
-#Include <Functions>
-#Include <Paths>
 
 ;Gui Design
 
