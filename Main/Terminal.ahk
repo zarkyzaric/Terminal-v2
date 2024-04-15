@@ -117,6 +117,7 @@ Fuzzy_Navigator(Input) {
         "p",        () => Search.Pinterest(input), ; p @search_text
         "em",       () => Search.Emoji(input), ; em @search_text
         "def",      () => Search.Meaning(input), ; def @define_text
+        "gm",      () => Google.Mail(input), ; def @define_text
 
         ["pastebin","pb","bin"], () => Search.PasteBin(input), ; pb @unique_code
 
