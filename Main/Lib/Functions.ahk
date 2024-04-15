@@ -274,7 +274,7 @@ class Search {
         ; if ErrorLevel
         ;     return
         if RegExMatch(A_Clipboard, "^[^ ]*\.[^ ]*$")
-            Run("C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" " " A_Clipboard)
+            Run("C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe" A_Clipboard)
         else if MODE == "HELP"
             Run(Help), SendIn(A_Clipboard,2), SendIn("{Enter}",0.5) 
         else {
