@@ -4,9 +4,11 @@
 #Include %A_ScriptDir%\Lib\Functions.ahk
 #Include %A_ScriptDir%\Lib\Paths.ahk
 #Include %A_ScriptDir%\My_Commands.ahk
+
+
 ; Ctrl + Alt + T or Ctrl + \ or RCtrl => Runs the Terminal
-RControl::
 ^vkE2:: 
+RControl::
 ^!t::Run(A_ScriptDir "\Terminal.ahk") 
 
 
