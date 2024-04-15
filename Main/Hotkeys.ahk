@@ -1,9 +1,9 @@
 
 #Requires AutoHotkey v2.0 
 #SingleInstance Force
-#Include <Functions>
-#Include <Paths>
-
+#Include %A_ScriptDir%\Lib\Functions.ahk
+#Include %A_ScriptDir%\Lib\Paths.ahk
+#Include My_Commands.ahk
 ; Ctrl + Alt + T or Ctrl + \ or RCtrl => Runs the Terminal
 RControl::
 ^vkE2:: 
