@@ -1,10 +1,10 @@
 #Requires AutoHotkey v2.0
-
-#Requires AutoHotkey v2.0
 #SingleInstance Force
+#Include %A_ScriptDir%\Lib\Functions.ahk
+#Include %A_ScriptDir%\Lib\Paths.ahk
 
 My_Commands := Map(
-    "v",                     () => Open.VSC(""),
+    "v",                     () => Open.VSC(),
 )
 Default_Commands := Map(
 ;?=======================================================

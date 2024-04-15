@@ -1,6 +1,6 @@
 #Requires Autohotkey v2.0
 #SingleInstance Force
-#Include <Functions>
-#Include <Paths>
-#Include <My_Paths>
-Run(user.docs)
+#Include %A_ScriptDir%\Lib\Functions.ahk
+#Include %A_ScriptDir%\Lib\Paths.ahk
+#Include My_Commands.ahk
+Run(user.appdata)

@@ -1,9 +1,6 @@
 
 #Requires AutoHotkey v2.0
 
-
-
-A_User := "C:\Users\" A_UserName
 class Google {
     static Calendar := "https://calendar.google.com/calendar/u/0/r"
     static Maps := "https://www.google.com/maps"
@@ -11,6 +8,7 @@ class Google {
     static Gmail := "https://mail.google.com/mail/u/0/#inbox"
     static Mail(N := "0") => Run("https://mail.google.com/mail/u/" N "/#inbox")
 }
+A_User := "C:\Users\" A_UserName
 class User {
     static Documents := A_MyDocuments
     static Docs := A_MyDocuments
