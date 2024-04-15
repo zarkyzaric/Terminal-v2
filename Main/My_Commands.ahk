@@ -33,9 +33,9 @@ Default_Commands := Map(
 ;?=======================================================
     ["downs","downloads"],    User.Downloads
     "appdata",                User.AppData
-    "pictures"                User.Pictures
+    ["pictures","images","pics"], User.Pictures    
     "music",                  User.Music,
-    "videos",                 User.Videos,
+    ["videos","vids"],                 User.Videos,
     ["docs","documents"],     A_MyDocuments,
     "desktop",                A_Desktop,
     ["startup","sup"],        A_Startup,
