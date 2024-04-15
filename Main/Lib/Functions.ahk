@@ -4,9 +4,6 @@
 
 ;                  FUNCTIONS:
 
-/*          RUN:             */
-; Raw()
-
 MultiOpen(appsArray) {
     numOfApps := appsArray.Length  ; Count of apps in the array
     if (numOfApps = 0) {
@@ -22,6 +19,8 @@ MultiOpen(appsArray) {
         ; MsgBox("Error", "An error occurred!", 16)
     }
 }
+
+
 /*          TIME:            */
 Wait(sec := 1){ ;, min := 0, h := 0){
     Sleep(sec * 1000) ; + min*60*1000 + h*3600*1000)
