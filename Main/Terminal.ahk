@@ -76,7 +76,7 @@ SetTimer () => ExitApp(), -(DurationOfAppearance * 1000)
 
 ;?_______________________________________________________________________________________________
 Fuzzy_Navigator(Input) {
-    global Commands 
+    global Default_Commands,My_Commands
     
     if Input==""
         return
@@ -89,7 +89,9 @@ Fuzzy_Navigator(Input) {
     ; catch Error as err
     ;     OnError Raw.Run(input)
     GoTh := GoThrough.Bind(,input)
-    if GoTh(Commands)
+    if GoTh(Default_Commands)
+        return 1
+    if GoTh(My_Commands)
         return 1
     spacePos := InStr(Input," ")
     if !(spacePos)

@@ -5,7 +5,10 @@
 #Include <Functions>
 #Include <Paths>
 
-Commands := Map(
+My_Commands := Map(
+    "v",                     () => Open.VSC(),
+)
+Default_Commands := Map(
 ;?=======================================================
 ;?                OFTEN DIRECTORIES                      ;@1
 ;?=======================================================

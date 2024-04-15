@@ -3,7 +3,6 @@
 
 
 
-VSCode := User.AppData "\Programs\Microsoft VS Code\Code.exe"
 A_User := "C:\Users\" A_UserName
 class Google {
     static Calendar := "https://calendar.google.com/calendar/u/0/r"
@@ -37,6 +36,9 @@ class C {
         static Fonts := "C:\Windows\Fonts"
     }
 }
+
+VSC := User.AppData "\Programs\Microsoft VS Code\Code.exe"
+
 ; class My {
 ;     static Documents := A_MyDocuments
 ;     static Docs := A_MyDocuments
