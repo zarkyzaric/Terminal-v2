@@ -4,8 +4,25 @@
 #Include %A_ScriptDir%\Lib\Paths.ahk
 
 My_Commands := Map(
-    "v",                     () => Open.VSC(),
+
+    "v",               () => Open.VSC(), ;you can add your main working directory as a parameter
+    ;?=======================================================
+    ;?                       IMI                
+    ;?=======================================================
+    "h",                Help,
+    "skr",              KURS.SKRIPTE,
+    "arh",              KURS.ARH,
+    ["spa","spa1"],     KURS.SPA1,
+    ["mat","mat2"],     KURS.MAT2,
+    ["pip","pip3"],     KURS.PIP3,
+    "rs",               KURS.RS,
+    "sa",               KURS.SA,
+    "isp",              KURS.RASP_ISP,
+    "klk",              KURS.RASP_KLK,
+    ["oglasna","og"],   KURS.OGLASNA,
+
 )
+
 Default_Commands := Map(
 ;?=======================================================
 ;?                OFTEN DIRECTORIES                      ;@1
@@ -67,19 +84,5 @@ Default_Commands := Map(
     ; "w3",                    () => Send("^3"),
     ; "w4",                    () => Send("^4"),
     ; "w5",                    () => Send("^5"),
-;?=======================================================
-;?                       IMI                
-;?=======================================================
-    "h",                Help,
-    "skr",              KURS.SKRIPTE,
-    "arh",              KURS.ARH,
-    ["spa","spa1"],     KURS.SPA1,
-    ["mat","mat2"],     KURS.MAT2,
-    ["pip","pip3"],     KURS.PIP3,
-    "rs",               KURS.RS,
-    "sa",               KURS.SA,
-    "isp",              KURS.RASP_ISP,
-    "klk",              KURS.RASP_KLK,
-    ["oglasna","og"],   KURS.OGLASNA,
 
 )
