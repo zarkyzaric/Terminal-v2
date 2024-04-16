@@ -2,32 +2,30 @@
 #SingleInstance Force
 #Include %A_ScriptDir%\Lib\Functions.ahk
 #Include %A_ScriptDir%\Lib\Paths.ahk
-
+; Before we start dont forget to add ',' after
+; each pair of COMMAND-PATH or COMMAND-URL
+; syntax is: 
+; My_Commands := Map(
+;     COMMAND1, PATH1,
+;     COMMAND2, URL1,
+; )
 ;?========================================================================
-;?========================================================================
-;?
 ;?     ADD YOUR DESIRED COMMANDS AND SHORTCUTS HERE
-;?
-;?========================================================================
 ;?========================================================================
 My_Commands := Map(
-    "v",               () => Open.VSC(), ;you can add your main working directory as a parameter
-;?=======================================================
-;?                       IMI                
-;?=======================================================
-    "h",                Help,
-    "skr",              KURS.SKRIPTE,
-    "arh",              KURS.ARH,
-    ["spa","spa1"],     KURS.SPA1,
-    ["mat","mat2"],     KURS.MAT2,
-    ["pip","pip3"],     KURS.PIP3,
-    "rs",               KURS.RS,
-    "sa",               KURS.SA,
-    "isp",              KURS.RASP_ISP,
-    "klk",              KURS.RASP_KLK,
-    ["oglasna","og"],   KURS.OGLASNA,
+; Here are some examples: 
+;(A_User is variable that holds this path: "C:\Users\%Your Username%")
+
+; Folder Example (Will give an error if you dont have Playlists folder in Music one)
+    "playlists",     A_User "\Music\Playlists",
+    "viber",         A_User "\AppData\Roaming\Microsoft\Windows\Start Menu",
+; You can also use full paths like this:
+    "image",         "c:\Users\User\Pictures\example.jpg"
+    
+
 
 )
+
 Default_Commands := Map(
 ;?=======================================================
 ;?                OFTEN DIRECTORIES                      ;@1

@@ -1,18 +1,11 @@
 
 #Requires AutoHotkey v2.0
-class KURS {
-    static URL := "https://imi.pmf.kg.ac.rs"
-    static OGLASNA := KURS.URL "/oglasna=tabla"
-    static ID := KURS.URL "/moodle/course/view.php?id="
-    static RASP_KLK := "https://imi.pmf.kg.ac.rs/pub/2cb8552c12d0b06588bf738c975988a0_03272024_010554/inf_raspored_kolokvijuma_2023-24_letnji_v2.pdf"
-    static RASP_ISP := "https://imi.pmf.kg.ac.rs/pub/af3b4da1bb95aacba0a68ae081aad307_01292024_111643/inf_raspored_ispita_2023-24_jun-sep.pdf"
-    static SKRIPTE := KURS.ID "96"
-    static PIP3 := KURS.ID "467"
-    static SPA1 := KURS.ID "12"
-    static MAT2 := KURS.ID "490"
-    static ARH := KURS.ID "395"
-    static RS := KURS.ID "35"
-    static SA := KURS.ID "396"
+Help := "https://www.autohotkey.com/docs/v2/FAQ.htm"
+CMD := "C:\Windows\system32\cmd.exe"
+Class Instagram {
+    static COM := "https://www.instagram.com"
+    static URL := "https://www.instagram.com"
+    static DM := instagram.url "/direct"
 }
 class Google {
     static Calendar := "https://calendar.google.com/calendar/u/0/r"
@@ -76,18 +69,13 @@ VSC := User.AppData "\Local\Programs\Microsoft VS Code\Code.exe"
 ;         static AppData := A_User "\AppData"
 ; }
 
-Class Instagram {
-    static COM := "https://www.instagram.com"
-    static URL := "https://www.instagram.com"
-    static DM := instagram.url "/direct"
-}
+
 
 ; Class Default {
 ;     ; static Browser := 
 ; }
 ;? _______________RANDOM___________________________________________________________________
-Help := "https://www.autohotkey.com/docs/v2/FAQ.htm"
-CMD := "C:\Windows\system32\cmd.exe"
+
 
 
 A_WindowsTools := "shell:::{D20EA4E1-3957-11D2-A40B-0C5020524153}"
@@ -116,5 +104,18 @@ A_FolderOptions := "shell:::{6DFD7C5C-2451-11D3-A299-00C04F8EF6AF}"
 
 
 
-
+class KURS {
+    static URL := "https://imi.pmf.kg.ac.rs"
+    static OGLASNA := KURS.URL "/oglasna=tabla"
+    static ID := KURS.URL "/moodle/course/view.php?id="
+    static RASP_KLK := "https://imi.pmf.kg.ac.rs/pub/2cb8552c12d0b06588bf738c975988a0_03272024_010554/inf_raspored_kolokvijuma_2023-24_letnji_v2.pdf"
+    static RASP_ISP := "https://imi.pmf.kg.ac.rs/pub/af3b4da1bb95aacba0a68ae081aad307_01292024_111643/inf_raspored_ispita_2023-24_jun-sep.pdf"
+    static SKRIPTE := KURS.ID "96"
+    static PIP3 := KURS.ID "467"
+    static SPA1 := KURS.ID "12"
+    static MAT2 := KURS.ID "490"
+    static ARH := KURS.ID "395"
+    static RS := KURS.ID "35"
+    static SA := KURS.ID "396"
+}
 

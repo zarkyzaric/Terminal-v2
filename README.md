@@ -41,9 +41,26 @@ Press `Ctrl+Alt+T` or your custom hotkey (*see down below how to customize it*) 
 ## On Startup
 To set script to autorun on startup, place `Hotkeys.ahk` shortcut in your Startup folder. If you don't know how to access Startup folder, press Win+R and type "shell:startup" and then press Enter.
 
-## Customizing
+## Adding My Own Commands And Customizings
+To add your own commands follow these steps:
+1. Open `My Commands.ahk` in VSCode or as a text file
+2. To add or modify variables that hold paths and URLs, edit the `Paths.ahk` file. You will there see something like this:
+```ahk
 
-To add or modify variables that hold paths and URLs, edit the `Paths.ahk` file:
+#Requires AutoHotkey v2.0
+Help := "https://www.autohotkey.com/docs/v2/FAQ.htm"
+CMD := "C:\Windows\system32\cmd.exe"
+Class Instagram {
+    static COM := "https://www.instagram.com"
+    static URL := "https://www.instagram.com"
+    static DM := instagram.url "/direct"
+}
+class Google {
+    static Calendar := "https://calendar.google.com/calendar/u/0/r"
+    static Maps := "https://www.google.com/maps"
+```
+
+## CREATING HOTKEYS
 ```ahk
 ; Example hotkeys:
 
