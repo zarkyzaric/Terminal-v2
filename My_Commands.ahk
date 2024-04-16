@@ -2,6 +2,7 @@
 #SingleInstance Force
 #Include %A_ScriptDir%\Lib\Functions.ahk
 #Include %A_ScriptDir%\Lib\Paths.ahk
+#Include %A_ScriptDir%\Lib\Batch
 ;?========================================================================
 ;?========================================================================
 ;?
@@ -35,7 +36,7 @@ Default_Commands := Map(
     "appdata",                User.AppData
     ["pictures","images","pics"], User.Pictures    
     "music",                  User.Music,
-    ["videos","vids"],                 User.Videos,
+    ["videos","vids"],        User.Videos,
     ["docs","documents"],     A_MyDocuments,
     "desktop",                A_Desktop,
     ["startup","sup"],        A_Startup,
@@ -88,5 +89,5 @@ Default_Commands := Map(
     ; "w3",                    () => Send("^3"),
     ; "w4",                    () => Send("^4"),
     ; "w5",                    () => Send("^5"),
-
+    "tt",                    () => Run("Toggle_AutoHide_Taskbar.exe")
 )

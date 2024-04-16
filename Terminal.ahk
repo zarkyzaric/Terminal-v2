@@ -11,7 +11,7 @@
 ;todo----------------------------------------------------------
 ;todo       CUSTOMIZE POPUP WINDOW'S APPEARANCE             
 ;todo----------------------------------------------------------
-
+#Include Lib\Batch\Toggle_AutoHide_Taskbar.exe
 DurationOfAppearance := 1000
 
 Font := "Consolas", FontColor := "ffe6e6", FontSize := 17, 
