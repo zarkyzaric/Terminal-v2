@@ -75,8 +75,9 @@ Default_Commands := Map(
     ["settings","sett"],     () => Send("#i"),
     "display",               () => Send("#u"),
     ["emo","emoji"],         () => Send("#."),
-    ["tbar","taskbar"],      () => Send("#b{Enter}"),
+    ["tbar","wifi"],      () => Send("#b{Enter}"),
     "display",               () => Send("#u"),
+    "taskbar",               Batch "\Toggle_Hide_Taskbar.exe",
     ; ; Windows Window Switching:
     "1",                     () => Send("#1"),
     "2",                     () => Send("#2"),
@@ -89,5 +90,6 @@ Default_Commands := Map(
     ; "w3",                    () => Send("^3"),
     ; "w4",                    () => Send("^4"),
     ; "w5",                    () => Send("^5"),
-    "tt",                    () => Run("")
+
+
 )

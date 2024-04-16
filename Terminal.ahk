@@ -124,6 +124,7 @@ Fuzzy_Navigator(Input) {
         "t",        () => Search.Translate(input), ; t @translate_text
         "conv",     () => Image.Convert(input), ; conv @from_format-to_format ; Example: conv webp-png 
 
+        "toggle",   () => Toggle(input),
         "shutdown", () => OS.Shutdown(input), ;shutdown @seconds
         "logoff",   () => OS.Logoff(input), ; logoff @seconds
         "restart",  () => OS.Restart(input), ; restart @seconds

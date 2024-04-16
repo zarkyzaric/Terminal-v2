@@ -48,6 +48,14 @@ class C {
     }
 }
 
+; Main Directories
+Lib := A_ScriptDir "\Lib"
+Batch := A_ScriptDir "\Lib\Batch"
+Singletons := A_ScriptDir "\Lib\Singletons"
+Data_Types := A_ScriptDir "\Lib\Data_Types"
+
+
+
 VSC := User.AppData "\Local\Programs\Microsoft VS Code\Code.exe"
 
 ; class My {

@@ -33,7 +33,6 @@ RunSend(App,Key, sec := 2) {
     Sleep(sec*1000)
     Send(Key)
 }
-; "tat",                    A_ScriptDir "Lib\Batch\Toggle_AutoHide_Taskbar.exe",
 
 /*       HOTKEY FUNC:        */
 F11(sec := 1){
@@ -47,19 +46,19 @@ Minimize(winTitle) {
 
 ; GO THROUGH
 GoThrough(Commands,command,input := ""){
-    if input != "" {
-        properRun2(Commands,command,input){
-            Commands[command].Call(input)
-            return 1
-        }
-        thisRun := properRun2.Bind(Commands,command,input)
-        for key in Commands{
-            if (StrCompare(key,command) == 0) {
-                thisRun()
-            }
-        }
-    }
-    else {
+    ; if input != "" {
+    ;     properRun2(Commands,command,input){
+    ;         Commands[command].Call(input)
+    ;         return 1
+    ;     }
+    ;     thisRun := properRun2.Bind(Commands,command,input)
+    ;     for key in Commands{
+    ;         if (StrCompare(key,command) == 0) {
+    ;             thisRun()
+    ;         }
+    ;     }
+    ; }
+    ; else {
         properRun(Commands,key){
             IsObject(Commands[key]) ? Commands[key].Call() : Run(Commands[key])
             return 1
@@ -78,7 +77,7 @@ GoThrough(Commands,command,input := ""){
             }
         }
         
-    }
+    ; }
     
     return 0
 }
@@ -350,6 +349,9 @@ class Raw {
             return 0
         }
         Run(Raw.ahk)
+        Wait(3)
+        FileDelete(Raw.ahk)
+
         return 1
 
     }
@@ -402,6 +404,16 @@ class Raw {
             }
     }
 }
+
+Toggle(this){
+    static Toggles := Map(
+    "taskbar",  Batch '\Toggle_Hide_Taskbar.exe',
+    )
+    GoThrough(Toggles,this)
+}
+
+
+
 class Type {
     static Enter() => Send("{Enter}")    
     static Backspace() => Send("{BS}")
