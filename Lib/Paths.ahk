@@ -51,21 +51,6 @@ Data_Types := A_ScriptDir "\Lib\Data_Types"
 
 VSC := User.AppData "\Local\Programs\Microsoft VS Code\Code.exe"
 
-; "v",               () => Open.VSC(), ;you can add your main working directory as a parameter
-; ;?=======================================================
-; ;?                       IMI                
-; ;?=======================================================
-;     "h",                Help,
-;     "skr",              KURS.SKRIPTE,
-;     "arh",              KURS.ARH,
-;     ["spa","spa1"],     KURS.SPA1,
-;     ["mat","mat2"],     KURS.MAT2,
-;     ["pip","pip3"],     KURS.PIP3,
-;     "rs",               KURS.RS,
-;     "sa",               KURS.SA,
-;     "isp",              KURS.RASP_ISP,
-;     "klk",              KURS.RASP_KLK,
-;     ["oglasna","og"],   KURS.OGLASNA,
 
 
 ; class My {
