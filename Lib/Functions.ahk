@@ -33,6 +33,7 @@ RunSend(App,Key, sec := 2) {
     Sleep(sec*1000)
     Send(Key)
 }
+; "tat",                    A_ScriptDir "Lib\Batch\Toggle_AutoHide_Taskbar.exe",
 
 /*       HOTKEY FUNC:        */
 F11(sec := 1){

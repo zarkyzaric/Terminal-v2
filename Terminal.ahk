@@ -11,7 +11,7 @@
 ;todo----------------------------------------------------------
 ;todo       CUSTOMIZE POPUP WINDOW'S APPEARANCE             
 ;todo----------------------------------------------------------
-#Include Lib\Batch\Toggle_AutoHide_Taskbar.exe
+
 DurationOfAppearance := 1000
 
 Font := "Consolas", FontColor := "ffe6e6", FontSize := 17, 
@@ -38,7 +38,7 @@ global Input := myGui.Add("Edit", "Background" BGColor " " InputBoxOptions) ; Ad
 global WinID := "ahk_id " myGui.Hwnd ; Saving Window handle for destroying GUI
 
 ;! iconsize := 32  ; Ideal size for alt-tab varies between systems and OS versions.
-;! hIcon := LoadPicture(AHK.Lib "\duck.ico", "Icon1 w" iconsize " h" iconsize, &imgtype)
+;! hIcon := LoadPicture(A_ScriptDir "\Lib\duck.ico", "Icon1 w" iconsize " h" iconsize, &imgtype)
 ;! SendMessage(0x0080, 1, hIcon, MyGui) 
 
 myGui.Show(PositionAndSize)
