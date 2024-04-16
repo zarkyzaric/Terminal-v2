@@ -408,6 +408,7 @@ class Raw {
 Toggle(this){
     static Toggles := Map(
     "taskbar",  Batch '\Toggle_Hide_Taskbar.exe',
+    
     )
     GoThrough(Toggles,this)
 }
