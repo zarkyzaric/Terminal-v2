@@ -58,19 +58,22 @@ To add your own commands follow these steps:
 ;     COMMAND1, PATH1,
 ;     COMMAND2, URL1,
 ; )
+; Here are some examples: 
+; My_Commands := Map(
+;(A_User is variable that holds this path: "C:\Users\%Your Username%")
+
+; Folder Example (Will give an error if you dont have Playlists folder in Music one)
+"playlists",     A_User "\Music\Playlists",
+"viber",         A_User "\AppData\Roaming\Microsoft\Windows\Start Menu",
+; You can also use full paths like this:
+"image",         "c:\Users\User\Pictures\example.jpg"
+; )
+
+
 ;?========================================================================
 ;?     ADD YOUR DESIRED COMMANDS AND SHORTCUTS HERE
 ;?========================================================================
 My_Commands := Map(
-; Here are some examples: 
-;(A_User is variable that holds this path: "C:\Users\%Your Username%")
-
-; Folder Example (Will give an error if you dont have Playlists folder in Music one)
-    "playlists",     A_User "\Music\Playlists",
-    "viber",         A_User "\AppData\Roaming\Microsoft\Windows\Start Menu",
-; You can also use full paths like this:
-    "image",         "c:\Users\User\Pictures\example.jpg"
-    
 
 
 )
