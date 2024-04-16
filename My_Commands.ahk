@@ -15,10 +15,13 @@
 ;(A_User is variable that holds this path: "C:\Users\%Your Username%")
 
 ; Folder Example (Will give an error if you dont have Playlists folder in Music one)
-"playlists",     A_User "\Music\Playlists",
-"viber",         A_User "\AppData\Roaming\Microsoft\Windows\Start Menu",
+
+; "playlists",     A_User "\Music\Playlists",
+; "viber",         A_User "\AppData\Roaming\Microsoft\Windows\Start Menu",
+
 ; You can also use full paths like this:
-"image",         "c:\Users\User\Pictures\example.jpg"
+
+; "image",         "c:\Users\User\Pictures\example.jpg",
 ; )
 
 
