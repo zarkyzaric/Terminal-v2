@@ -69,6 +69,8 @@ Default_Commands := Map(
 ;?=======================================================
     ["note","notepad"],      "notepad.exe",
     ; "cmd",                   "cmd.exe",
+    ; ["python","py"]       "python.exe",
+
 ;?=======================================================
 ;?                 OFTEN FUNCTIONS                
 ;?=======================================================
@@ -81,7 +83,7 @@ Default_Commands := Map(
     ["settings","sett"],     () => Send("#i"),
     "display",               () => Send("#u"),
     ["emo","emoji"],         () => Send("#."),
-    ["tbar","wifi"],      () => Send("#b{Enter}"),
+    "tbar",      () => Send("#b{Enter}"),
     "display",               () => Send("#u"),
     "taskbar",               Batch "\Toggle_Hide_Taskbar.exe",
     ; ; Windows Window Switching:
