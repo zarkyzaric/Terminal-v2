@@ -1,5 +1,5 @@
-## In development for version 2.1:
-Progress of the project, you can find [here](https://github.com/users/zarkyzaric/projects/1/views/1)
+## Version 2.1 in development:
+Planned new features & progress of the project can be found [here](https://github.com/users/zarkyzaric/projects/1/views/1)
 
 ---
 # Custom Search Functions and Commands Popup Terminal
