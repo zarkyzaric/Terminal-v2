@@ -292,6 +292,7 @@ class Search {
     static Pinterest(input) => Run("https://www.pinterest.com/search/pins/?q=" StrReplace(input, A_Space, "%20") "&rs=typed")
     static Emoji(input) => Run("https://emojipedia.org/search?q=" StrReplace(input, A_Space, "+"))
     static Translate(input) => Run("https://translate.google.com/?sl=en&tl=sr&text=" input "&op=translate")
+    static Wikipedia(input) => Run("https://en.wikipedia.org/wiki/Special:Search?search=" StrReplace(input,A_Space, "+"))
 }
 class Raw {
     /*
