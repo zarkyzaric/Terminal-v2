@@ -1,3 +1,7 @@
+## In development for version 2.1:
+Progress of the project, you can find [here](https://github.com/users/zarkyzaric/projects/1/views/1)
+
+---
 # Custom Search Functions and Commands Popup Terminal
 
 This project provides a custom popup terminal using AutoHotkey to facilitate quick access to specific websites, apps, and search functions through custom commands.
