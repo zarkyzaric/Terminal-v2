@@ -12,6 +12,7 @@ class Google {
     static Maps := "https://www.google.com/maps"
     static Translate := "https://translate.google.com/"
     static Gmail := "https://mail.google.com/mail/u/0/#inbox"
+    static YouTube := "www.youtube.com"
     static Mail(N := "0") => Run("https://mail.google.com/mail/u/" N "/#inbox")
 }
 A_User := "C:\Users\" A_UserName

@@ -59,6 +59,7 @@ Default_Commands := Map(
     "trans",                Google.Translate,
     "wa",                   "https://web.whatsapp.com/",
     "maps",                 Google.Maps,
+    ["y","yt","youtube"],   Google.Youtube,
     ["pint","p"],           "https://www.pinterest.com/",
     ; "discord",   s           "https://discord.com/channels/@me",
     ; "duo",                "https://www.duolingo.com/",
