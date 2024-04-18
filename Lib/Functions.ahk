@@ -293,6 +293,7 @@ class Search {
     static Emoji(input) => Run("https://emojipedia.org/search?q=" StrReplace(input, A_Space, "+"))
     static Translate(input) => Run("https://translate.google.com/?sl=en&tl=sr&text=" input "&op=translate")
     static Wikipedia(input) => Run("https://en.wikipedia.org/wiki/Special:Search?search=" StrReplace(input,A_Space, "+"))
+    static Maps(input) => Run("https://www.google.com/maps?q=" StrReplace(input,A_Space,"+"))
 }
 class Raw {
     /*
