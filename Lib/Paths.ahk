@@ -108,7 +108,7 @@ A_FolderOptions := "shell:::{6DFD7C5C-2451-11D3-A299-00C04F8EF6AF}"
 
 class KURS {
     static URL := "https://imi.pmf.kg.ac.rs"
-    static OGLASNA := KURS.URL "/oglasna=tabla"
+    static OGLASNA := KURS.URL "/oglasna-tabla"
     static ID := KURS.URL "/moodle/course/view.php?id="
     static RASP_KLK := "https://imi.pmf.kg.ac.rs/pub/2cb8552c12d0b06588bf738c975988a0_03272024_010554/inf_raspored_kolokvijuma_2023-24_letnji_v2.pdf"
     static RASP_ISP := "https://imi.pmf.kg.ac.rs/pub/af3b4da1bb95aacba0a68ae081aad307_01292024_111643/inf_raspored_ispita_2023-24_jun-sep.pdf"
