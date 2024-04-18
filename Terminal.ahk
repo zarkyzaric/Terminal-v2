@@ -14,7 +14,7 @@
 
 DurationOfAppearance := 1000
 
-Font := "Consolas", FontColor := "96ff98", FontSize := 17, 
+Font := "Consolas", FontColor := "F0FFFF", FontSize := 17, 
 BGColor := "1e1e1e" 
             
 Width := 400, Height := 50
