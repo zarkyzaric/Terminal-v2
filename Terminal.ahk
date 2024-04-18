@@ -113,15 +113,17 @@ Fuzzy_Navigator(Input) {
         "s",        () => Search.Smart(input), ; s @search_text
         ["y","z"],  () => Search.YT(input), ; y @search_text
         "git",      () => Search.GitHub(input), ; git @search_text
+        "github",   ()=> Run("www.github.com/" input),
         "g",        () => Search.GPT(input), ; g @prompt
         "p",        () => Search.Pinterest(input), ; p @search_text
         "em",       () => Search.Emoji(input), ; em @search_text
         "def",      () => Search.Meaning(input), ; def @define_text
         "gm",       () => Google.Mail(input), ; gm  @N
         "wiki",     () =>  Search.Wikipedia(input), ; wiki @search_text
+        ["sof","so"], () => Search.StackOverflow(input),
         "maps",     () => Search.Maps(input), ; maps @search_text
         ["pastebin","pb","bin"], () => Search.PasteBin(input), ; pb @unique_code
-
+        
         "t",        () => Search.Translate(input), ; t @translate_text
         "conv",     () => Image.Convert(input), ; conv @from_format-to_format ; Example: conv webp-png 
 
