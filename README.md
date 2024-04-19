@@ -17,7 +17,7 @@ This project provides a custom popup terminal using AutoHotkey to facilitate qui
 
 1. **Install AutoHotkey**: Download and install from [AutoHotkey](https://www.autohotkey.com/).
 2. **Download Scripts**: Download the script files as [ZIP](https://github.com/zarkyzaric/Terminal-v2/archive/refs/heads/main.zip) to your local machine or clone this repository.
-3. **Run**: Double-click the `Terminal.ahk` file to run the script.
+3. **Run**: Double-click the `SETUP.ahk` file to run the script.
 
 
 To set up your custom hotkey:
