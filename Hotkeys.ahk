@@ -18,7 +18,7 @@
 ; ^vkE2:: 
 ; RControl::
 ^!t:: 
-^!q::Run('pythonw.exe "C:\Users\LEPALALA\Documents\GitHub\Terminal-v2\GUI.py"')
+^!q::Run('pythonw.exe `"' A_ScriptDir '`"\GUI.py"')
 
 ;-----------------------------------------------------------------------------------------
 
