@@ -1,6 +1,7 @@
 ## Version 2.1 in development:
 Planned new features & progress of the project can be found [here](https://github.com/users/zarkyzaric/projects/1/views/1)
-
+Requirements for having version 2.1 that is incoming soon:
++ python
 ---
 # Custom Search Functions and Commands Popup Terminal
 
