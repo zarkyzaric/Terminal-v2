@@ -49,7 +49,7 @@ Singletons := A_ScriptDir "\Lib\Singletons"
 Data_Types := A_ScriptDir "\Lib\Data_Types"
 
 
-
+VSCodium := "C:\Program Files\VSCodium\VSCodium.exe"
 VSC := User.AppData "\Local\Programs\Microsoft VS Code\Code.exe"
 
 
