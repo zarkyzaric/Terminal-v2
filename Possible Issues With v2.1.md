@@ -1,0 +1,1 @@
+1. Error with path of AutoHotkey64.exe from `GUI.py`
