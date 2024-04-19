@@ -12,11 +12,14 @@
 ;?========================================================================
 ;?========================================================================
 
+; Run(A_ScriptDir "\Terminal.ahk")
 ;-----------------------------------------------------------------------------------------
 ; Ctrl + Alt + T or Ctrl + \ or RCtrl => Runs the Terminal
 ; ^vkE2:: 
 ; RControl::
-^!t::Run(A_ScriptDir "\Terminal.ahk") 
+^!t:: 
+^!q::Run('pythonw.exe "C:\Users\LEPALALA\Documents\GitHub\Terminal-v2\GUI.py"')
+
 ;-----------------------------------------------------------------------------------------
 
 ;-----------------------------------------------------------------------------------------
@@ -113,8 +116,6 @@ HotIfWinExist(WinID)
 SetTimer () => myGui.Destroy(), -(DurationOfAppearance * 1000)
 }
 
-^!q::Run('pythonw.exe "C:\Users\LEPALALA\Documents\GitHub\Terminal-v2\GUI.py"')
 
-:*:64::subprocess.run(['c:/Program Files/AutoHotkey/v2/AutoHotkey64.exe', 'Terminal.ahk'], start_new_session=True)
 
 
