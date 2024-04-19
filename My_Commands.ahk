@@ -70,6 +70,7 @@ Default_Commands := Map(
     ["note","notepad"],      "notepad.exe",
     ; "cmd",                   () => Run("cmd", "C:\Users\" A_UserName),
     ; ["python","py"]       "python.exe",
+    ["calc", "calculator"], "calc.exe", 
     
 ;?=======================================================
 ;?                 OFTEN FUNCTIONS                
