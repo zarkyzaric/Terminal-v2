@@ -1,0 +1,30 @@
+{
+    "window": {
+        "bgcolor": "#f0f0f0",
+        "width": 300,
+        "height": 50
+    },
+    "entry": {
+        "font_size": 12,
+        "font_family": "Arial",
+        "font_style": "normal",
+        "font_color": "#000000",
+        "justify": "center"
+    }
+}
+// subprocess.run(['c:/Program Files/AutoHotkey/v2/AutoHotkey64.exe', 'Terminal.ahk'], start_new_session=True)
+
+
+
+// ['c:/Program Files/AutoHotkey/v2/AutoHotkey64.exe', 'Terminal.ahk']
+
+// DurationOfAppearance=1000
+
+// Font="Consolas"
+// FontColor="F0FFFF"
+// FontSize=17 
+
+// BGColor="1e1e1e"
+
+// Width=400
+// Height=50

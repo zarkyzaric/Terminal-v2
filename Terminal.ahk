@@ -73,14 +73,14 @@
 ; ;todo----------------------------------------------------------
 
 ; SetTimer () => ExitApp(), -(DurationOfAppearance * 1000)
-userInput := FileRead(A_ScriptDir "\input.txt")
-Fuzzy_Navigator(userInput)
 
-; MsgBox("'" userInput "'")
-Search.Smart(userInput)
-A_Clipboard := userInput
+;* PYTHON GUI
+userInput := FileRead(A_ScriptDir "\input.txt")
 if userInput == ""
     return
+else
+    Fuzzy_Navigator(userInput)
+
 ExitApp()
 ;?_______________________________________________________________________________________________
 Fuzzy_Navigator(Input) {
