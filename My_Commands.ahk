@@ -93,11 +93,14 @@ Default_Commands := Map(
     "3",                     () => Send("#3"),
     "4",                     () => Send("#4"),
     "5",                     () => Send("#5"),
+    "mouse",                A_MouseProperties,
+    "apps",                 A_Applications,
+    
 
 
 )
-; Class of Arrays that will work as your bundles for specific work
-; for example your Work, Project and so on...
-class Pack {
+; ; Class of Arrays that will work as your bundles for specific work
+; ; for example your Work, Project and so on...
+; class Pack {
 
-}
+; }

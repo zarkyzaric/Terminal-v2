@@ -1,24 +1,28 @@
 #Requires AutoHotkey v2.0 
 #Include %A_ScriptDir%\Lib\Paths.ahk
 
+
 ;                  FUNCTIONS:
 
-MultiOpen(appsArray) {
-    numOfApps := appsArray.Length  ; Count of apps in the array
-    if (numOfApps = 0) {
-        return
-    }
-    Loop numOfApps {  ; Corrected Loop syntax
-        App := appsArray[A_Index]  ; Get the current app from the array
-        if (App == "") {
-            continue
+MultiRun(apps*) {
+    for index, app in apps {
+        if (IsObject(app)) {  ; Check if the argument is an array
+            for i, path in app {  ; Loop through the array
+                if (path == "")
+                    continue
+                Run(path)
+                ; Uncomment to debug errors
+                ; MsgBox("Error", "An error occurred while running " . path, 16)
+            }
+        } else {  ; It's a single path string
+            if (app == "")
+                continue
+            Run(app)
+            ; Uncomment to debug errors
+            ; MsgBox("Error", "An error occurred while running " . app, 16)
         }
-        Run(App)
-        ; Uncomment the next line if you want to display an error message
-        ; MsgBox("Error", "An error occurred!", 16)
     }
 }
-
 
 /*          TIME:            */
 Wait(sec := 1){ ;, min := 0, h := 0){
@@ -305,72 +309,75 @@ class Raw {
     */
    static ahk := "Raw.ahk"
    static Run(input) {
-    try FileDelete(Raw.ahk)
-    FileAppend
-    (
-    "#Requires Autohotkey v2.0
-    #SingleInstance Force
-    #Include <Functions>
-    #Include <Paths> 
-    #Include <My_Paths>`n"
-    ),Raw.ahk
-
-    if input == ""
-        return 0
-    else if InStr(input, "c="){ ; A_Clipboard := %Variable or a String%
+        if input == ""
+            return
+        try FileDelete(Raw.ahk)
         FileAppend
         (
-        "
-        A_Clipboard := "  SubStr(input, 3, StrLen(input) - 2)
-        ),Raw.ahk ; input.Delete(1,2)
-    }
-
-    else if !InStr(input, " ") || (InStr(input,"\") && !InStr(input, "`n"))  ; PATHS
-    { 
-        FileAppend
-        (
-        "
-        OnError HideError
-        i := Integer(`"cause_error`")
-
-        HideError(exception, mode) {
-            MultiRun(" input ")
-            ; return true
-            ExitApp()
-        }
-        
-        Run(" input ")
-        "
+        "#Requires Autohotkey v2.0
+        #SingleInstance Force
+        #Include %A_ScriptDir%\Lib\Functions.ahk
+        #Include %A_ScriptDir%\Lib\Paths.ahk
+        #Include My_Commands.ahk`n"
         ),Raw.ahk
-    }
-    ; else if !InStr(input,"'") || !InStr(input,"'")] 
-    else if InStr(input, "`n") || InStr(input,'"') || InStr(input,"'"){
-        Lines := StrSplit(input,"`n")
-        Loop Lines.Length {
-            if Lines[A_Index] == "" || Lines[A_Index] == "`n" || Lines[A_Index] == "`t"  {
-                Lines.RemoveAt(A_Index)
-                continue
-            }
-            ; StrReplace(Lines[A_Index], " ", "(",,,1)
-            bracPos := InStr(Lines[A_Index], " ")
-            command := SubStr(Lines[A_Index], 1, bracPos - 1)
-            input := SubStr(Lines[A_Index], bracPos + 1)
-            Lines[A_Index] := command "(" StrReplace(input," ", ",") ")"
 
+        if InStr(input, "c="){ ; A_Clipboard := %Variable or a String%
             FileAppend
             (
-            "`n"
-            Lines[A_Index]
-            ),Raw.ahk
+            "
+            A_Clipboard := " SubStr(input, 3, StrLen(input) - 2) 
+            ),Raw.ahk ; SubStr(input, 3, StrLen(input) - 2) ; input.Delete(1,2) 
         }
-    }
-    else {
-        return 0
-    }
-    Run(Raw.ahk)
-    return 1
 
-}
+        else if !InStr(input, " ") || (InStr(input,"\") && !InStr(input, "`n"))  ; PATHS
+            { 
+                FileAppend
+                (
+                "
+                OnError HideError
+                ; i := Integer(`"cause_error`")
+    
+                Run(" input ")
+                
+                HideError(exception, mode) {
+                    MultiRun(" input ")
+                    ; return true
+                    ExitApp()
+                }
+                "
+                ),Raw.ahk
+            }
+        ; else if !InStr(input,"'") || !InStr(input,"'")] 
+        else if InStr(input, "`n") || InStr(input,'"') || InStr(input,"'"){
+            Lines := StrSplit(input,"`n")
+            Loop Lines.Length {
+                if Lines[A_Index] == "" || Lines[A_Index] == "`n" || Lines[A_Index] == "`t"  {
+                    Lines.RemoveAt(A_Index)
+                    continue
+                }
+                ; StrReplace(Lines[A_Index], " ", "(",,,1)
+                bracPos := InStr(Lines[A_Index], " ")
+                command := SubStr(Lines[A_Index], 1, bracPos - 1)
+                input := SubStr(Lines[A_Index], bracPos + 1)
+                Lines[A_Index] := command "(" StrReplace(input," ", ",") ")"
+
+                FileAppend
+                (
+                "`n"
+                Lines[A_Index]
+                ),Raw.ahk
+            }
+        }
+        else {
+            return 0
+        }
+        Run(Raw.ahk)
+        ; Wait(3)
+        ; FileDelete(Raw.ahk)
+
+        return 1
+
+    }
 
     static Terminal() {
         {
