@@ -305,63 +305,72 @@ class Raw {
     */
    static ahk := "Raw.ahk"
    static Run(input) {
-        if input == ""
-            return
-        try FileDelete(Raw.ahk)
+    try FileDelete(Raw.ahk)
+    FileAppend
+    (
+    "#Requires Autohotkey v2.0
+    #SingleInstance Force
+    #Include <Functions>
+    #Include <Paths> 
+    #Include <My_Paths>`n"
+    ),Raw.ahk
+
+    if input == ""
+        return 0
+    else if InStr(input, "c="){ ; A_Clipboard := %Variable or a String%
         FileAppend
         (
-        "#Requires Autohotkey v2.0
-        #SingleInstance Force
-        #Include %A_ScriptDir%\Lib\Functions.ahk
-        #Include %A_ScriptDir%\Lib\Paths.ahk
-        #Include My_Commands.ahk`n"
-        ),Raw.ahk
+        "
+        A_Clipboard := "  SubStr(input, 3, StrLen(input) - 2)
+        ),Raw.ahk ; input.Delete(1,2)
+    }
 
-        if InStr(input, "c="){ ; A_Clipboard := %Variable or a String%
-            FileAppend
-            (
-            "
-            A_Clipboard := " SubStr(input, 3, StrLen(input) - 2) 
-            ),Raw.ahk ; SubStr(input, 3, StrLen(input) - 2) ; input.Delete(1,2) 
+    else if !InStr(input, " ") || (InStr(input,"\") && !InStr(input, "`n"))  ; PATHS
+    { 
+        FileAppend
+        (
+        "
+        OnError HideError
+        i := Integer(`"cause_error`")
+
+        HideError(exception, mode) {
+            MultiRun(" input ")
+            ; return true
+            ExitApp()
         }
-        else if !InStr(input, " ") || (InStr(input,"\") && !InStr(input, "`n"))  ; PATHS
-        { 
+        
+        Run(" input ")
+        "
+        ),Raw.ahk
+    }
+    ; else if !InStr(input,"'") || !InStr(input,"'")] 
+    else if InStr(input, "`n") || InStr(input,'"') || InStr(input,"'"){
+        Lines := StrSplit(input,"`n")
+        Loop Lines.Length {
+            if Lines[A_Index] == "" || Lines[A_Index] == "`n" || Lines[A_Index] == "`t"  {
+                Lines.RemoveAt(A_Index)
+                continue
+            }
+            ; StrReplace(Lines[A_Index], " ", "(",,,1)
+            bracPos := InStr(Lines[A_Index], " ")
+            command := SubStr(Lines[A_Index], 1, bracPos - 1)
+            input := SubStr(Lines[A_Index], bracPos + 1)
+            Lines[A_Index] := command "(" StrReplace(input," ", ",") ")"
+
             FileAppend
             (
-            "Run(" input ")"
+            "`n"
+            Lines[A_Index]
             ),Raw.ahk
         }
-        ; else if !InStr(input,"'") || !InStr(input,"'")] 
-        else if InStr(input, "`n") || InStr(input,'"') || InStr(input,"'"){
-            Lines := StrSplit(input,"`n")
-            Loop Lines.Length {
-                if Lines[A_Index] == "" || Lines[A_Index] == "`n" || Lines[A_Index] == "`t"  {
-                    Lines.RemoveAt(A_Index)
-                    continue
-                }
-                ; StrReplace(Lines[A_Index], " ", "(",,,1)
-                bracPos := InStr(Lines[A_Index], " ")
-                command := SubStr(Lines[A_Index], 1, bracPos - 1)
-                input := SubStr(Lines[A_Index], bracPos + 1)
-                Lines[A_Index] := command "(" StrReplace(input," ", ",") ")"
-
-                FileAppend
-                (
-                "`n"
-                Lines[A_Index]
-                ),Raw.ahk
-            }
-        }
-        else {
-            return 0
-        }
-        Run(Raw.ahk)
-        Wait(3)
-        FileDelete(Raw.ahk)
-
-        return 1
-
     }
+    else {
+        return 0
+    }
+    Run(Raw.ahk)
+    return 1
+
+}
 
     static Terminal() {
         {

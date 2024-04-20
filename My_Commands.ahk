@@ -96,3 +96,8 @@ Default_Commands := Map(
 
 
 )
+; Class of Arrays that will work as your bundles for specific work
+; for example your Work, Project and so on...
+class Pack {
+
+}
