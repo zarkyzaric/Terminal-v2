@@ -24,17 +24,15 @@ MultiRun(apps*) {
         }
     }
 }
-CMD() {
+CMD(Dir := "C:\Windows\system32") {
     ; RunAs "Administrator"
-    ; Run('*RunAs cmd.exe ""C:\Users\LEPALALA\AppData\Local\GitHubDesktop\app-3.3.13\GitHubDesktop.exe" "--protocol-launcher" "x-github-client://openRepo/https://github.com/zarkyzaric/Terminal-v2""', Dir := "C:\Windows\system32" )
-    Run(A_ComSpec,"C:\Windows\system32")
-    WinWait("ahk_exe cmd.exe")
-    WinActivate
-    SendText('taskkill /im firefox.exe /f'),Send("{Enter}")
-    SendText('"C:\Users\LEPALALA\AppData\Local\GitHubDesktop\app-3.3.13\GitHubDesktop.exe" "--protocol-launcher" "x-github-client://openRepo/https://github.com/zarkyzaric/Terminal-v2"')
-    Send('{Enter}')
-
-    ; Run('*RunAs ' A_ComSpec ' taskkill /im "firefox.exe" /f')
+    ; '*RunAs ' 
+    Run(A_ComSpec, Dir)
+    ; WinWait("ahk_exe cmd.exe")
+    ; WinActivate
+    ; Send("{Enter}")
+    ; SendText(Command)
+    ; ; Run('*RunAs ' A_ComSpec ' taskkill /im "firefox.exe" /f')
 }
 /*          TIME:            */
 Wait(sec := 1){ ;, min := 0, h := 0){
