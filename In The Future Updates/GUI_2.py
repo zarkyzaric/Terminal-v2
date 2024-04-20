@@ -1,5 +1,6 @@
 import tkinter as tk
 from ctypes import windll
+import subprocess
 
 def write_to_file(input_text):
     with open('input.txt', 'w') as file:
