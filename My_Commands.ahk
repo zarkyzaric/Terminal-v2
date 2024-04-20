@@ -68,7 +68,7 @@ Default_Commands := Map(
 ;?                 OFTEN APPS                
 ;?=======================================================
     ["note","notepad"],      "notepad.exe",
-    "cmd",                   () => Run("cmd", "C:\Users\" A_UserName),
+    "cmd",                   () => CMD(),
     ; ["python","py"]       "python.exe",c
     ["calc", "calculator"], "calc.exe", 
     
@@ -99,8 +99,9 @@ Default_Commands := Map(
 
 
 )
+; Great for Workflows
 ; ; Class of Arrays that will work as your bundles for specific work
 ; ; for example your Work, Project and so on...
 ; class Pack {
-
+; :*    :startday::
 ; }

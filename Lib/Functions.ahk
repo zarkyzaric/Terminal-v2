@@ -4,6 +4,7 @@
 
 ;                  FUNCTIONS:
 
+; My I rename it to RunWorkflow()
 MultiRun(apps*) {
     for index, app in apps {
         if (IsObject(app)) {  ; Check if the argument is an array
@@ -23,7 +24,18 @@ MultiRun(apps*) {
         }
     }
 }
+CMD() {
+    ; RunAs "Administrator"
+    ; Run('*RunAs cmd.exe ""C:\Users\LEPALALA\AppData\Local\GitHubDesktop\app-3.3.13\GitHubDesktop.exe" "--protocol-launcher" "x-github-client://openRepo/https://github.com/zarkyzaric/Terminal-v2""', Dir := "C:\Windows\system32" )
+    Run(A_ComSpec,"C:\Windows\system32")
+    WinWait("ahk_exe cmd.exe")
+    WinActivate
+    SendText('taskkill /im firefox.exe /f'),Send("{Enter}")
+    SendText('"C:\Users\LEPALALA\AppData\Local\GitHubDesktop\app-3.3.13\GitHubDesktop.exe" "--protocol-launcher" "x-github-client://openRepo/https://github.com/zarkyzaric/Terminal-v2"')
+    Send('{Enter}')
 
+    ; Run('*RunAs ' A_ComSpec ' taskkill /im "firefox.exe" /f')
+}
 /*          TIME:            */
 Wait(sec := 1){ ;, min := 0, h := 0){
     Sleep(sec * 1000) ; + min*60*1000 + h*3600*1000)
@@ -349,32 +361,28 @@ class Raw {
             }
         ; else if !InStr(input,"'") || !InStr(input,"'")] 
         else if InStr(input, "`n") || InStr(input,'"') || InStr(input,"'"){
-            Lines := StrSplit(input,"`n")
-            Loop Lines.Length {
-                if Lines[A_Index] == "" || Lines[A_Index] == "`n" || Lines[A_Index] == "`t"  {
-                    Lines.RemoveAt(A_Index)
-                    continue
-                }
+            ; Lines := StrSplit(input,"`n")
+            ; for i, line in Lines{
+            ;     if line == "" || line== "`n"{
+            ;         Lines.RemoveAt(i)
+            ;         continue
+            ;     }
                 ; StrReplace(Lines[A_Index], " ", "(",,,1)
-                bracPos := InStr(Lines[A_Index], " ")
-                command := SubStr(Lines[A_Index], 1, bracPos - 1)
-                input := SubStr(Lines[A_Index], bracPos + 1)
-                Lines[A_Index] := command "(" StrReplace(input," ", ",") ")"
+                ; bracPos := InStr(line, " ")
+                ; command := SubStr(Lines[A_Index], 1, bracPos - 1)
+                ; input := SubStr(Lines[A_Index], bracPos + 1)
+                ; Lines[A_Index] := command "(" command ")"
 
                 FileAppend
                 (
                 "`n"
-                Lines[A_Index]
+                input
                 ),Raw.ahk
             }
-        }
-        else {
-            return 0
-        }
+        ; else {
+        ;     return 0
+        ; }
         Run(Raw.ahk)
-        ; Wait(3)
-        ; FileDelete(Raw.ahk)
-
         return 1
 
     }

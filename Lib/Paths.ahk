@@ -1,7 +1,7 @@
 
 #Requires AutoHotkey v2.0
 Help := "https://www.autohotkey.com/docs/v2/FAQ.htm"
-CMD := "C:\Windows\system32\cmd.exe"
+
 Class Instagram {
     static COM := "https://www.instagram.com"
     static URL := "https://www.instagram.com"
