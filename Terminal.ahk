@@ -12,76 +12,76 @@
 ;todo       CUSTOMIZE POPUP WINDOW'S APPEARANCE             
 ;todo----------------------------------------------------------
 
-; DurationOfAppearance := 1000
+DurationOfAppearance := 1000
 
-; Font := "Consolas", FontColor := "F0FFFF", FontSize := 17, 
-; BGColor := "1e1e1e" 
+Font := "Consolas", FontColor := "F0FFFF", FontSize := 17, 
+BGColor := "1e1e1e" 
             
-; Width := 400, Height := 50
+Width := 400, Height := 50
 
-; ;todo----------------------------------------------------------
+;todo----------------------------------------------------------
 
-; ;Gui_Object(Extra Settings)(Not Recommended to edit if you don't know Gui Object in AHK)______________________________________________________________________
-; ;_________________________________________________________________
-; GuiOptions := "+AlwaysOnTop -caption Border"
-; FontOptions := "q5"
-; InputBoxOptions := "-E0x200 -VScroll Center x0 " "W" Width " H" (Height - 5)
-; PositionAndSize := "W" Width "H" Height "y20"
-; ; ShowTaskbarIcon := "+Owner"
-; ;_________________________________________________________________
+;Gui_Object(Extra Settings)(Not Recommended to edit if you don't know Gui Object in AHK)______________________________________________________________________
+;_________________________________________________________________
+GuiOptions := "+AlwaysOnTop -caption Border"
+FontOptions := "q5"
+InputBoxOptions := "-E0x200 -VScroll Center x0 " "W" Width " H" (Height - 5)
+PositionAndSize := "W" Width "H" Height "y20"
+; ShowTaskbarIcon := "+Owner"
+;_________________________________________________________________
 
 
-; myGui := Gui(GuiOptions " -SysMenu ")
-; myGui.BackColor := BGColor   
-; myGui.SetFont("s" FontSize " " FontOptions " c" FontColor, Font) 
-; global Input := myGui.Add("Edit", "Background" BGColor " " InputBoxOptions) ; Adds an Input(Edit) Box in GUI
-; global WinID := "ahk_id " myGui.Hwnd ; Saving Window handle for destroying GUI
+myGui := Gui(GuiOptions " -SysMenu ")
+myGui.BackColor := BGColor   
+myGui.SetFont("s" FontSize " " FontOptions " c" FontColor, Font) 
+global Input := myGui.Add("Edit", "Background" BGColor " " InputBoxOptions) ; Adds an Input(Edit) Box in GUI
+global WinID := "ahk_id " myGui.Hwnd ; Saving Window handle for destroying GUI
 
-; ;! iconsize := 32  ; Ideal size for alt-tab varies between systems and OS versions.
-; ;! hIcon := LoadPicture(A_ScriptDir "\Lib\duck.ico", "Icon1 w" iconsize " h" iconsize, &imgtype)
-; ;! SendMessage(0x0080, 1, hIcon, MyGui) 
+;! iconsize := 32  ; Ideal size for alt-tab varies between systems and OS versions.
+;! hIcon := LoadPicture(A_ScriptDir "\Lib\duck.ico", "Icon1 w" iconsize " h" iconsize, &imgtype)
+;! SendMessage(0x0080, 1, hIcon, MyGui) 
 
-; myGui.Show(PositionAndSize)
+myGui.Show(PositionAndSize)
 
-; ;Input Handling  and Gui's Destruction_____________________________________
-; Destruction(t,shouldContinue := False) { ;for unknown reasons Destruction has to have 2 variables
-;     global Input
-;     userInput := Input.Value
-;     myGui.Destroy()
-;     if userInput == ""
-;         return
-;     else if shouldContinue = True {
-;         (Fuzzy_Navigator(userInput)) ;If not found in first terminal, then go into a second one
-;         ExitApp()
-;     }
-; }
+;Input Handling  and Gui's Destruction_____________________________________
+Destruction(t,shouldContinue := False) { ;for unknown reasons Destruction has to have 2 variables
+    global Input
+    userInput := Input.Value
+    myGui.Destroy()
+    if userInput == ""
+        return
+    else if shouldContinue = True {
+        (Fuzzy_Navigator(userInput)) ;If not found in first terminal, then go into a second one
+        ExitApp()
+    }
+}
 
-; ; If Input Bar exists or is active the following hotkeys will do certain actions
+; If Input Bar exists or is active the following hotkeys will do certain actions
 
-; ;todo----------------------------------------------------------
-; ;todo                POPUP WINDOW HOTKEYS             
-; ;todo----------------------------------------------------------
-; HotIfWinExist(WinID)
-;     Hotkey("Enter",Destruction.Bind(,True),"On")
-;     Hotkey("NumpadEnter",Destruction.Bind(,True),"On")
-;     Hotkey("^Space",Destruction.Bind(,True),"On")
-;     Hotkey("Escape",Destruction,"On")
-;     Hotkey("LButton",Destruction,"On")
-;     Hotkey("LWin",Destruction,"On")
-;     Hotkey("^w",Destruction,"On")
-;     Hotkey("/",Send_Stroke.Bind(,"_"),"On") ;!
-; ;todo----------------------------------------------------------
+;todo----------------------------------------------------------
+;todo                POPUP WINDOW HOTKEYS             
+;todo----------------------------------------------------------
+HotIfWinExist(WinID)
+    Hotkey("Enter",Destruction.Bind(,True),"On")
+    Hotkey("NumpadEnter",Destruction.Bind(,True),"On")
+    Hotkey("^Space",Destruction.Bind(,True),"On")
+    Hotkey("Escape",Destruction,"On")
+    Hotkey("LButton",Destruction,"On")
+    Hotkey("LWin",Destruction,"On")
+    Hotkey("^w",Destruction,"On")
+    Hotkey("/",Send_Stroke.Bind(,"_"),"On") ;!
+;todo----------------------------------------------------------
 
-; SetTimer () => ExitApp(), -(DurationOfAppearance * 1000)
+SetTimer () => ExitApp(), -(DurationOfAppearance * 1000)
 
-;* PYTHON GUI
-userInput := FileRead(A_ScriptDir "\input.txt")
-if userInput == ""
-    return
-else
-    Fuzzy_Navigator(userInput)
+; ;* PYTHON GUI
+; userInput := FileRead(A_ScriptDir "\input.txt")
+; if userInput == ""
+;     return
+; else
+;     Fuzzy_Navigator(userInput)
 
-ExitApp()
+; ExitApp()
 ;?_______________________________________________________________________________________________
 Fuzzy_Navigator(Input) {
     global Default_Commands,My_Commands
@@ -112,11 +112,13 @@ Fuzzy_Navigator(Input) {
 ;?             FUNCTIONS WITH PARAMETERS                 
 ;?=======================================================
     static FuncCalls := Map(  
-        ; "default",  () => SetDefault(input),
+        ;TODO "default",  () => SetDefault(input),
         "r",        () => Raw.Run(input), ; r @raw_ahk_code
         
-        "mp3",      () => Mp3.Download(input), ; mp3 @song_name
-        "mpy",      () => Mp3.Download(input,"LINK"), ; mpy @youtube_url
+
+        ; DON'T WORK ANYMORE
+        ;! "mp3",      () => Mp3.Download(input), ; mp3 @song_name
+        ;! "mpy",      () => Mp3.Download(input,"LINK"), ; mpy @youtube_url
 
         "s",        () => Search.Smart(input), ; s @search_text
         ["y","z"],  () => Search.YT(input), ; y @search_text
@@ -140,7 +142,7 @@ Fuzzy_Navigator(Input) {
         "logoff",   () => OS.Logoff(input), ; logoff @seconds
         "restart",  () => OS.Restart(input), ; restart @seconds
 
-        "h",        () => (Run(Help), Sleep(2000), SendText(input),Send("{Enter}")), ; h @search_text
+        "h",        () => (Run(Help), SendIn("!s",1.5), SendText(input),Send("{Enter}")), ; h @search_text
 
         "theme",    () => Settings.Theme(input), ; theme @NN | N is either 1 or 0, first N is for System's Theme, second is for Window's theme (1=light, 0=dark)
         "brightness",() => Settings.Brightness(input), ; brightness @% | Example: brightness 70
