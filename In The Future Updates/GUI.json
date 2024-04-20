@@ -4,7 +4,7 @@
         "width": 300,
         "height": 50
     },
-    "entry": {
+    "inputbox": {
         "font_size": 12,
         "font_family": "Arial",
         "font_style": "normal",

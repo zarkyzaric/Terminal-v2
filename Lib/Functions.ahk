@@ -242,11 +242,12 @@ class Tool {
 
 class Open {
     static VSC(input?, VSCode := VSC) {
-        if IsSet(input)
-            Run(VSC " " input) ;() => (Send("{LWin}"),SendIn("vs",0.1),SendIn("{Enter}",0.1),SendIn("{LWin}{Up}"))
-        else {
+        if IsSet(input){
             if VSCode != VSC
                 VSCode := VSCodium
+            Run(VSC " " input)   ;() => (Send("{LWin}"),SendIn("vs",0.1),SendIn("{Enter}",0.1),SendIn("{LWin}{Up}"))
+            }
+        else {
             Run(VSCode)
         } 
     }
