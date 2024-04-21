@@ -52,7 +52,6 @@ Destruction(t,shouldContinue := False) { ;for unknown reasons Destruction has to
         return
     else if shouldContinue = True {
         (Fuzzy_Navigator(userInput)) ;If not found in first terminal, then go into a second one
-        ExitApp()
     }
 }
 
@@ -149,8 +148,7 @@ Fuzzy_Navigator(Input) {
         ; "play",     () => Run("ahk_exe ApplicationFrameHost.exe " input),
 
     )
-    if GoThrough(FuncCalls,prefix)
-        ExitApp()
+    GoThrough(FuncCalls,prefix)
     ExitApp()
-    return
+
 }

@@ -24,7 +24,32 @@ MultiRun(apps*) {
         }
     }
 }
+Msg(Text,PositionAndSize := "Autosize xcenter y" (A_ScreenHeight // 3))
+{
+    
+    DurationOfAppearance := 15
 
+    Font := "Consolas"
+    FontColor := "ff0ffff"
+    FontSize := 15, 
+
+    BGColor := "1e1e1e"
+                
+    Width := 600, Height := 200
+    GuiOptions := "+AlwaysOnTop -caption Border -SysMenu "
+    FontOptions := "q5"
+    
+    ;_________________________________________________________________
+    ;_________________________________________________________________
+    myGui := Gui(GuiOptions)
+    myGui.BackColor := BGColor   
+    myGui.SetFont("s" FontSize " " FontOptions " c" FontColor, Font)
+    MyGui.Add("Text",, Text ) ; "'" 
+    myGui.Show(PositionAndSize)
+    Sleep(3000)
+    myGui.Destroy()
+    ; return "ahk_id " myGui.Hwnd
+}
 CMD(Command := "",Dir := "C:\Windows\system32") {
     ; RunAs "Administrator"
     ; '*RunAs ' 
@@ -333,8 +358,7 @@ class Search {
     static StackOverflow(input) => Run("https://stackoverflow.com/search?q=" StrReplace(input,A_Space,"+"))
 }
 class Raw {
-    /*
-    */
+
    static ahk := "Raw.ahk"
    static Run(input) {
         if input == ""
@@ -376,7 +400,7 @@ class Raw {
                 ),Raw.ahk
             }
         ; else if !InStr(input,"'") || !InStr(input,"'")] 
-        else if InStr(input, "`n") || InStr(input,'"') || InStr(input,"'"){
+        else { ; if InStr(input, "`n") || InStr(input,'"') || InStr(input,"'"){
             ; Lines := StrSplit(input,"`n")
             ; for i, line in Lines{
             ;     if line == "" || line== "`n"{
@@ -402,55 +426,53 @@ class Raw {
         return 1
 
     }
-
     static Terminal() {
-        {
 
-            ;?________________CUSTOMIZE______________________________________________________________
-            ; DurationOfAppearance := 500
-            Font := "Consolas", FontSize := "18", FontColor := "ffffff"
-            BGColor := "001000"
-            Width := 500, Height := 600
-            
-            ;*________________Gui_Object(Appearance)______________________________________________________________________
-            GuiOptions := "AlwaysOnTop -caption Border"
-            FontOptions := "q5"
-            EditBoxOptions := "-E0x200 -VScroll " "W" Width " h" (Height - 5)
-            PositionAndSize := "W" Width "H" Height "y20"
-            myGui := Gui(GuiOptions)
-            myGui.BackColor := BGColor   
-            myGui.SetFont("s" FontSize " " FontOptions " c" FontColor, Font) 
-            global Input := myGui.Add("Edit", "Background" BGColor " x10 " EditBoxOptions) ; Adds an Input(Edit) Box in GUI
-            global WinID := "ahk_id " myGui.Hwnd ; Saving Window handle for destroying GUI
-            myGui.Show(PositionAndSize)
-            
-            ;Input Handling  and Gui's Destruction
-            Destruction(t,shouldContinue := false) { ;for unknown reasons Destruction has to have 2 variables
-                global Input
-                input := Input.Value
-                myGui.Destroy()
-                if shouldContinue = true {
-                    if input == ""
-                        return
-                    else
-                        Raw.Run(input)
-                }
+        ;?________________CUSTOMIZE______________________________________________________________
+        DurationOfAppearance := 500
+        Font := "Consolas", FontSize := "18", FontColor := "ffffff"
+        BGColor := "001000"
+        Width := 500, Height := 600
+        
+        ;*________________Gui_Object(Appearance)______________________________________________________________________
+        GuiOptions := "AlwaysOnTop -caption Border"
+        FontOptions := "q5"
+        EditBoxOptions := "-E0x200 -VScroll " "W" Width " h" (Height - 5)
+        PositionAndSize := "W" Width "H" Height "y20"
+        myGui := Gui(GuiOptions)
+        myGui.BackColor := BGColor   
+        myGui.SetFont("s" FontSize " " FontOptions " c" FontColor, Font) 
+        global Input := myGui.Add("Edit", "Background" BGColor " x10 " EditBoxOptions) ; Adds an Input(Edit) Box in GUI
+        global WinID := "ahk_id " myGui.Hwnd ; Saving Window handle for destroying GUI
+        myGui.Show(PositionAndSize)
+        
+        ;Input Handling  and Gui's Destruction
+        Destruction(t,shouldContinue := false) { ;for unknown reasons Destruction has to have 2 variables
+            global Input
+            input := Input.Value
+            myGui.Destroy()
+            if shouldContinue = true {
+                if input == ""
+                    return
+                else
+                    Raw.Run(input)
             }
+        }
 
-            HotIfWinExist(WinID) 
-                Hotkey("Enter",Send_Stroke.Bind(,"{NumpadEnd}{Enter}"),"On")
-                Hotkey("+Enter",Destruction.Bind(,True),"On")
-                Hotkey("^vkE2",Destruction.Bind(,True),"On")
-                Hotkey("Escape",Destruction,"On")
-                Hotkey("^w",Destruction,"On")
-                
-                ; Hotkey("RControl",Destruction,"On")
-                ; Hotkey("LButton",Destruction,"On")
-                ; Hotkey("NumpadEnter",Destruction.Bind(,True),"On")
-            ; SetTimer () => myGui.Destroy(), -(DurationOfAppearance * 1000)
-            }
-    }
-}
+        HotIfWinExist(WinID) 
+            Hotkey("^Enter",Send_Stroke.Bind(,"{NumpadEnd}{Enter}"),"On")
+            Hotkey("+Enter",Destruction.Bind(,True),"On")
+            Hotkey("^+z",Destruction.Bind(,True),"On")
+            Hotkey("^vkE2",Destruction.Bind(,True),"On")
+            Hotkey("Escape",Destruction,"On")
+            Hotkey("^w",Destruction,"On")
+            
+            ; Hotkey("RControl",Destruction,"On")
+            ; Hotkey("LButton",Destruction,"On")
+            ; Hotkey("NumpadEnter",Destruction.Bind(,True),"On")
+        SetTimer () => myGui.Destroy(), -(DurationOfAppearance * 1000)
+
+    }}
 
 Toggle(this){
     static Toggles := Map(
