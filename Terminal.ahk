@@ -1,6 +1,6 @@
 #Requires Autohotkey v2.0
 #SingleInstance Force ; If script is running in the background, and you want to start it again, this input makes sure that is executed without a questioning you do you want to shutdown the previous one, but rather exits by default
-; #NoTrayIcon
+#NoTrayIcon
 ; library for personalized functions:
 #Include %A_ScriptDir%\Lib\Functions.ahk
 ;library for file locations,paths,urls,classes:
@@ -17,13 +17,14 @@ Font          := "Consolas",
 FontColor     := "F0FFFF" ; RGB
 FontSize      := 17 
 
-BGColor       := "101010" 
+BGColor       := "2e023e" 
 
 Width         := 400
 Height        := 50
 
-Image         := "c:\Users\LEPALALA\Pictures\WALLPAPERS\O\1331117.png"
-Transparancy  := 200     ; 0-255 
+Image         := A_ScriptDir "\Lib\Images\icon.png"
+GIF         := A_ScriptDir "\Lib\Images\bg.gif"
+; Transparancy  := 245    ; 0-255 
 ;todo----------------------------------------------------------
 
 ;_________________________________________________________________
@@ -38,23 +39,25 @@ InputBoxOptions := "-E0x200 -VScroll Center x0 " "W" Width " H" (Height - 10)
 
 myGui := Gui(GuiOptions )
 ImageGui := Gui(GuiOptions)
-imageGui.BackColor := BGColor  
+; imageGui.Add("ActiveX","w300 h100 x100 y-30", GIF)
+; imageGui.BackColor := BGColor  
 myGui.BackColor := BGColor  
-WinSetTransColor("000000", myGui)
-WinSetTransparent(Transparancy, myGui)
-WS_CLIPSIBLINGS := 0x4000000
-imageGui.AddPic(WS_CLIPSIBLINGS ' x0 y0', image)
-; myGui.Add("Picture","w" Width // 10 " h20", "C:\Users\LEPALALA\Documents\GitHub\Terminal-v2\Lib\text.png")
+; WinSetTransColor("0e0e0e 255", myGui)
+; WinSetTransparent(Transparancy, myGui)
+; WS_CLIPSIBLINGS := 0x4000000
+; imageGui.AddPic(' w50 h-1 x0 y0', image)
+; WinSetTransparent(Transparancy, imageGui)
+
 myGui.SetFont("s" FontSize " " FontOptions " c" FontColor, Font)
 global Input := myGui.Add("Edit", "Background" BGColor " " InputBoxOptions) ; Adds an Input(Edit) Box in GUI
 global WinID := "ahk_id " myGui.Hwnd ; Saving Window handle for destroying GUI
-global ImageID := "ahk_id " imageGui.Hwnd ; Saving Window handle for destroying GUI
+; global ImageID := "ahk_id " imageGui.Hwnd ; Saving Window handle for destroying GUI
 
 ;! iconsize := 32  ; Ideal size for alt-tab varies between systems and OS versions.
 ;! hIcon := LoadPicture(A_ScriptDir "\Lib\duck.ico", "Icon1 w" iconsize " h" iconsize, &imgtype)
 ;! SendMessage(0x0080, 1, hIcon, MyGui) 
 
-ImageGui.Show(PositionAndSize)
+; ImageGui.Show(PositionAndSize)
 myGui.Show(PositionAndSize)
 ; WinActivate WinID
 ; logoGui("C:\Users\LEPALALA\Documents\GitHub\Terminal-v2\Lib\text.png")
@@ -63,7 +66,8 @@ myGui.Show(PositionAndSize)
 Destruction(t,shouldContinue := False) { ;for unknown reasons Destruction has to have 2 variables
     global Input
     userInput := Input.Value
-    myGui.Destroy(),ImageGui.Destroy()
+    myGui.Destroy()
+    ; ImageGui.Destroy()
     if userInput == ""
         return
     else if shouldContinue = True {
@@ -85,6 +89,7 @@ HotIfWinExist(WinID)
     Hotkey("LWin",Destruction,"On")
     Hotkey("^w",Destruction,"On")
     Hotkey("/",Send_Stroke.Bind(,"_"),"On") ;!
+    ; Hotkey("!Tab",Send_Stroke.Bind(,"!{Tab}!{Tab}!{Tab}"),"On") ;!
 ;todo----------------------------------------------------------
 
 SetTimer () => ExitApp(), -(DurationOfAppearance * 1000)
