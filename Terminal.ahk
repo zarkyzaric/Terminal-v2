@@ -11,43 +11,53 @@
 ;todo----------------------------------------------------------
 ;todo       CUSTOMIZE POPUP WINDOW'S APPEARANCE             
 ;todo----------------------------------------------------------
-
 DurationOfAppearance := 1000
 
 Font := "Consolas", FontColor := "F0FFFF", FontSize := 17, 
-BGColor := "1e1e1e" 
-            
-Width := 400, Height := 50
+BGColor := "101010" 
 
+Width := 400, Height := 50
 ;todo----------------------------------------------------------
 
+;_________________________________________________________________
 ;Gui_Object(Extra Settings)(Not Recommended to edit if you don't know Gui Object in AHK)______________________________________________________________________
 ;_________________________________________________________________
-GuiOptions := "+AlwaysOnTop -caption Border"
+
+
+GuiOptions := "+AlwaysOnTop -caption Border -SysMenu "
 FontOptions := "q5"
-InputBoxOptions := "-E0x200 -VScroll Center x0 " "W" Width " H" (Height - 5)
-PositionAndSize := "W" Width "H" Height "y20"
-; ShowTaskbarIcon := "+Owner"
-;_________________________________________________________________
+PositionAndSize := "W" Width "H" Height  "y20"
+InputBoxOptions := "-E0x200 -VScroll Center x0 " "W" Width " H" (Height - 10)
+Image           := "c:\Users\LEPALALA\Pictures\text-1707481589779.png"
 
-
-myGui := Gui(GuiOptions " -SysMenu ")
-myGui.BackColor := BGColor   
-myGui.SetFont("s" FontSize " " FontOptions " c" FontColor, Font) 
+myGui := Gui(GuiOptions )
+ImageGui := Gui(GuiOptions " -Border")
+myGui.BackColor := BGColor  
+imageGui.BackColor := BGColor  
+WS_CLIPSIBLINGS := 0x4000000
+imageGui.AddPic(WS_CLIPSIBLINGS ' xm ym', image)
+WinSetTransColor("ffffff", myGui)
+WinSetTransparent(230, myGui)
+; myGui.Add("Picture","w" Width // 10 " h20", "C:\Users\LEPALALA\Documents\GitHub\Terminal-v2\Lib\text.png")
+myGui.SetFont("s" FontSize " " FontOptions " c" FontColor, Font)
 global Input := myGui.Add("Edit", "Background" BGColor " " InputBoxOptions) ; Adds an Input(Edit) Box in GUI
 global WinID := "ahk_id " myGui.Hwnd ; Saving Window handle for destroying GUI
+global ImageID := "ahk_id " imageGui.Hwnd ; Saving Window handle for destroying GUI
 
 ;! iconsize := 32  ; Ideal size for alt-tab varies between systems and OS versions.
 ;! hIcon := LoadPicture(A_ScriptDir "\Lib\duck.ico", "Icon1 w" iconsize " h" iconsize, &imgtype)
 ;! SendMessage(0x0080, 1, hIcon, MyGui) 
 
+ImageGui.Show(PositionAndSize)
 myGui.Show(PositionAndSize)
+; logoGui("C:\Users\LEPALALA\Documents\GitHub\Terminal-v2\Lib\text.png")
 
 ;Input Handling  and Gui's Destruction_____________________________________
 Destruction(t,shouldContinue := False) { ;for unknown reasons Destruction has to have 2 variables
     global Input
     userInput := Input.Value
     myGui.Destroy()
+    ImageGui.Destroy()
     if userInput == ""
         return
     else if shouldContinue = True {
@@ -134,7 +144,7 @@ Fuzzy_Navigator(Input) {
         ["pastebin","pb","bin"], () => Search.PasteBin(input), ; pb @unique_code
         
         "t",        () => Search.Translate(input), ; t @translate_text
-        "conv",     () => Image.Convert(input), ; conv @from_format-to_format ; Example: conv webp-png 
+        "conv",     () => Photo.Convert(input), ; conv @from_format-to_format ; Example: conv webp-png 
 
         "toggle",   () => Toggle(input),
         "shutdown", () => OS.Shutdown(input), ;shutdown @seconds

@@ -24,7 +24,7 @@ MultiRun(apps*) {
         }
     }
 }
-Msg(Text,PositionAndSize := "Autosize xcenter y" (A_ScreenHeight // 3))
+Msg(Text := "Empty MsgBox",PositionAndSize := "Autosize xcenter y" (A_ScreenHeight // 3),T := 3)
 {
     
     DurationOfAppearance := 15
@@ -33,22 +33,54 @@ Msg(Text,PositionAndSize := "Autosize xcenter y" (A_ScreenHeight // 3))
     FontColor := "ff0ffff"
     FontSize := 15, 
 
-    BGColor := "1e1e1e"
+    BGColor := "000000"
                 
     Width := 600, Height := 200
+    ;_________________________________________________________________
+    ;_________________________________________________________________
     GuiOptions := "+AlwaysOnTop -caption Border -SysMenu "
     FontOptions := "q5"
-    
-    ;_________________________________________________________________
-    ;_________________________________________________________________
+
     myGui := Gui(GuiOptions)
+    
     myGui.BackColor := BGColor   
+    WinSetTransColor("ffffff", myGui)
+    WinSetTransparent(100, myGui)
     myGui.SetFont("s" FontSize " " FontOptions " c" FontColor, Font)
-    MyGui.Add("Text",, Text ) ; "'" 
+    myGui.Add("Text",, Text) ; "'" 
+    myGui.Add("Picture","w20 h-1", "C:\Users\LEPALALA\Documents\GitHub\Terminal-v2\Lib\text.png")
+
+
     myGui.Show(PositionAndSize)
-    Sleep(3000)
-    myGui.Destroy()
-    ; return "ahk_id " myGui.Hwnd
+    SetTimer () => myGui.Destroy(), -(T * 1000)
+}
+LogoGui(Image,PositionAndSize := "Autosize xcenter y" (A_ScreenHeight // 3),T := 3)
+{
+    
+    DurationOfAppearance := 15
+
+    Font := "Consolas"
+    FontColor := "ff0ffff"
+    FontSize := 15, 
+
+    BGColor := "000000"
+                
+    Width := 600, Height := 200
+    ;_________________________________________________________________
+    ;_________________________________________________________________
+    GuiOptions := "+AlwaysOnTop -caption Border -SysMenu "
+    FontOptions := "q5"
+
+    myGui := Gui(GuiOptions)
+    
+    myGui.BackColor := BGColor   
+    WinSetTransColor("ffffff", myGui)
+    WinSetTransparent(100, myGui)
+    myGui.SetFont("s" FontSize " " FontOptions " c" FontColor, Font)
+    myGui.Add("Picture","w200 h-1", Image)
+
+    myGui.Show(PositionAndSize)
+    ; SetTimer () => myGui.Destroy(), -(T * 1000)
 }
 CMD(Command := "",Dir := "C:\Windows\system32") {
     ; RunAs "Administrator"
@@ -381,7 +413,7 @@ class Raw {
             ),Raw.ahk ; SubStr(input, 3, StrLen(input) - 2) ; input.Delete(1,2) 
         }
 
-        else if !InStr(input, " ") || (InStr(input,"\") && !InStr(input, "`n"))  ; PATHS
+        else if !InStr(input, "(") || !InStr(input, " ") || (InStr(input,"\") && !InStr(input, "`n"))  ; PATHS
             { 
                 FileAppend
                 (
@@ -426,8 +458,8 @@ class Raw {
         return 1
 
     }
-    static Terminal() {
 
+    static Terminal() {
         ;?________________CUSTOMIZE______________________________________________________________
         DurationOfAppearance := 500
         Font := "Consolas", FontSize := "18", FontColor := "ffffff"
@@ -459,10 +491,10 @@ class Raw {
             }
         }
 
+
         HotIfWinExist(WinID) 
-            Hotkey("^Enter",Send_Stroke.Bind(,"{NumpadEnd}{Enter}"),"On")
+            Hotkey("Enter",Send_Stroke.Bind(,"{NumpadEnd}{Enter}"),"On")
             Hotkey("+Enter",Destruction.Bind(,True),"On")
-            Hotkey("^+z",Destruction.Bind(,True),"On")
             Hotkey("^vkE2",Destruction.Bind(,True),"On")
             Hotkey("Escape",Destruction,"On")
             Hotkey("^w",Destruction,"On")
@@ -472,7 +504,8 @@ class Raw {
             ; Hotkey("NumpadEnter",Destruction.Bind(,True),"On")
         SetTimer () => myGui.Destroy(), -(DurationOfAppearance * 1000)
 
-    }}
+    }
+}
 
 Toggle(this){
     static Toggles := Map(
@@ -493,7 +526,7 @@ class Type {
 class Song {
     static Similar(input) => Run("https://www.chosic.com/playlist-generator/")
 }
-class Image {
+class Photo {
     static Convert(input) => Run("https://convertio.co/" input)
     static RemoveBG() =>((Run("https://www.remove.bg/"),SendIn("^v",4)))
     static Dict := Map(

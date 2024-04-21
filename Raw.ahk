@@ -4,4 +4,13 @@
 #Include %A_ScriptDir%\Lib\Paths.ahk
 #Include My_Commands.ahk
 
-msg "test"
+OnError HideError
+; i := Integer("cause_error")
+
+Run(msg())
+
+HideError(exception, mode) {
+    MultiRun(msg())
+    ; return true
+    ExitApp()
+}
