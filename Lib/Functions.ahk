@@ -24,15 +24,33 @@ MultiRun(apps*) {
         }
     }
 }
-CMD(Dir := "C:\Windows\system32") {
+
+CMD(Command := "",Dir := "C:\Windows\system32") {
     ; RunAs "Administrator"
     ; '*RunAs ' 
+    
     Run(A_ComSpec, Dir)
     ; WinWait("ahk_exe cmd.exe")
     ; WinActivate
     ; Send("{Enter}")
     ; SendText(Command)
     ; ; Run('*RunAs ' A_ComSpec ' taskkill /im "firefox.exe" /f')
+}
+class TurnInto {
+    ;! myb naming it file is going to make a problem, we'll see
+    
+    static Batch(CODE:= "", fileName := "File") {
+        File_bat := fileName ".bat"
+        if CODE == ""
+            return
+        try FileDelete(File_bat)
+        FileAppend
+        (
+        CODE
+        ), A_ScriptDir "\Lib\Files\" File_bat
+        Run(File_bat)
+
+    }
 }
 /*          TIME:            */
 Wait(sec := 1){ ;, min := 0, h := 0){

@@ -7,10 +7,10 @@
 OnError HideError
 ; i := Integer("cause_error")
 
-Run('outlook.exe','notepad.exe')
+Run(turninto.batch("2"))
 
 HideError(exception, mode) {
-    MultiRun('outlook.exe','notepad.exe')
+    MultiRun(turninto.batch("2"))
     ; return true
     ExitApp()
 }

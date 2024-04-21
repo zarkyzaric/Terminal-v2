@@ -75,7 +75,7 @@ Default_Commands := Map(
 ;?=======================================================
 ;?                 OFTEN FUNCTIONS                
 ;?=======================================================
-    ; "raw",                   () => Raw.Terminal(),
+    "raw",                   () => Raw.Terminal(),
 ;?=======================================================
 ;?                 HOTKEY REPLACEMENTS                
 ;?=======================================================
@@ -96,6 +96,7 @@ Default_Commands := Map(
 
     "mouse",                A_MouseProperties,
     "apps",                 A_Applications,
+    ;! myb Settings(#i) automation commands 
     
 )
 ; ; Class of Arrays that will work as your bundles for specific work
