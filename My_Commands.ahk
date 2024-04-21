@@ -79,7 +79,7 @@ Default_Commands := Map(
 ;?=======================================================
 ;?                 HOTKEY REPLACEMENTS                
 ;?=======================================================
-    ["task manager","tman","task","tsk","mngr"
+    ["tsk","task manager","tman","task","mngr"
     ,"manager","tskmngr"],   () => Send("^+{Escape}"),
     ["settings","sett"],     () => Send("#i"),
     "display",               () => Send("#u"),

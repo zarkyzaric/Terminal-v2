@@ -69,3 +69,51 @@ LeaveBrac(s) {
 }
 ;-----------------------------------------------------------------------------------------
 
+; ščžćđ
+:*?:\vs::š
+:*?:\vc::č
+:*?:\vz::ž
+:*?:\'c::ć
+:*?:\;c::ć
+:*?:\dj::đ
+:*?:\vS::Š
+:*?:\vC::Č
+:*?:\vZ::Ž
+:*?:\'C::Ć
+:*?:\;C::Ć
+:*?:\Dj::Đ
+
+
+:*?:\e;skull::💀
+; :*?:\e;speechless::😶
+; :*?:\e;zzz::😴
+; :*?:\e;sad::😔
+; :*?:\e;madface::😠
+; :*?:\e;emotionless::😑
+; :*?:\e;wink::😉
+; :*?:\e;smiley::😊
+
+; :*?:html5template::
+; (
+; <!DOCTYPE html>
+; <html lang="en">
+; <head>
+;     <meta charset="UTF-8">
+;     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+;     <title>Document</title>
+; </head>
+; <body>
+    
+; </body>
+; </html>
+; )
+
+; :*?:>>notepad.::{
+;     Run("notepad.exe")
+; }
+
+:*b0:@gmail::
+{
+    Send(".com")
+}
+
