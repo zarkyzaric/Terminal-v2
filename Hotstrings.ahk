@@ -107,10 +107,18 @@ LeaveBrac(s) {
 ; </body>
 ; </html>
 ; )
+; ::forloop::
+; (
+; for (int i = 0; i < count; i++) 
+; { 
+
+; }
+; )
 
 ; :*?:>>notepad.::{
 ;     Run("notepad.exe")
 ; }
+
 
 :*b0:@gmail::
 {

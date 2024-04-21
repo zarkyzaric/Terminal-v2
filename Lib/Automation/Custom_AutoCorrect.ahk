@@ -19,6 +19,7 @@
 
 
 
+
 ; Often fast writing mistakes
 ;---------------------
 ::its::it's
@@ -76,6 +77,20 @@
 :*:Params::Parameters
 
 
+
+; Clipboard Modifiers
+;---------------------
+:*:clipupper::{
+    A_Clipboard := StrUpper(A_Clipboard)
+}
+; :*:cliplower::{
+    ;     A_Clipboard := StrLower(A_Clipboard)
+    ; }
+    ; :*:cliptitle::{
+        ;     A_Clipboard := StrTitle(A_Clipboard)
+        ; }
+        
+        
 ;Often mistakes
 ;---------------------
 ::beldner::blender  
@@ -94,32 +109,17 @@
 ::animaiton::animation
 ::downlaod::download
 ::compilaiton::compilation
-
-
-; Clipboard Modifiers
-;---------------------
-:*:clipupper::{
-    A_Clipboard := StrUpper(A_Clipboard)
-}
-; :*:cliplower::{
-;     A_Clipboard := StrLower(A_Clipboard)
-; }
-; :*:cliptitle::{
-;     A_Clipboard := StrTitle(A_Clipboard)
-; }
-
-
-
-
-
-
-
-
-
-
-
-
-
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
 
 
 
