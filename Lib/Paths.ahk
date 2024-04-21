@@ -45,6 +45,7 @@ class C {
 ; Main Directories
 Lib := A_ScriptDir "\Lib"
 Batch := A_ScriptDir "\Lib\Batch"
+Automation := A_ScriptDir "\Lib\Automation"
 Singletons := A_ScriptDir "\Lib\Singletons"
 Data_Types := A_ScriptDir "\Lib\Data_Types"
 

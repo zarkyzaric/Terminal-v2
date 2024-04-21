@@ -86,22 +86,21 @@ Default_Commands := Map(
     ["emo","emoji"],         () => Send("#."),
     "tbar",      () => Send("#b{Enter}"),
     "display",               () => Send("#u"),
-    "taskbar",               Batch "\Toggle_Hide_Taskbar.exe",
+    "taskbar",               Automation "\Toggle_Hide_Taskbar.exe",
     ; ; Windows Window Switching:
     "1",                     () => Send("#1"),
     "2",                     () => Send("#2"),
     "3",                     () => Send("#3"),
     "4",                     () => Send("#4"),
     "5",                     () => Send("#5"),
+
     "mouse",                A_MouseProperties,
     "apps",                 A_Applications,
     
-
-
 )
-; Great for Workflows
 ; ; Class of Arrays that will work as your bundles for specific work
 ; ; for example your Work, Project and so on...
 ; class Pack {
-; :*    :startday::
-; }
+    ; :*    :startday::
+    ; }
+; Great for Workflows   
