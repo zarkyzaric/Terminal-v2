@@ -67,7 +67,7 @@ Destruction(t,shouldContinue := False) { ;for unknown reasons Destruction has to
     global Input
     userInput := Input.Value
     myGui.Destroy()
-    ; ImageGui.Destroy()
+    ; ImageGui.Destroy()    
     if userInput == ""
         return
     else if shouldContinue = True {
