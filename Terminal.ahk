@@ -11,12 +11,19 @@
 ;todo----------------------------------------------------------
 ;todo       CUSTOMIZE POPUP WINDOW'S APPEARANCE             
 ;todo----------------------------------------------------------
-DurationOfAppearance := 1000
+DurationOfAppearance := 30 ; seconds
 
-Font := "Consolas", FontColor := "F0FFFF", FontSize := 17, 
-BGColor := "101010" 
+Font          := "Consolas", 
+FontColor     := "F0FFFF" ; RGB
+FontSize      := 17 
 
-Width := 400, Height := 50
+BGColor       := "101010" 
+
+Width         := 400
+Height        := 50
+
+Image         := "c:\Users\LEPALALA\Pictures\WALLPAPERS\O\1331117.png"
+Transparancy  := 200     ; 0-255 
 ;todo----------------------------------------------------------
 
 ;_________________________________________________________________
@@ -24,20 +31,19 @@ Width := 400, Height := 50
 ;_________________________________________________________________
 
 
-GuiOptions := "+AlwaysOnTop -caption Border -SysMenu "
+GuiOptions := "+AlwaysOnTop -caption +Border -SysMenu "
 FontOptions := "q5"
 PositionAndSize := "W" Width "H" Height  "y20"
 InputBoxOptions := "-E0x200 -VScroll Center x0 " "W" Width " H" (Height - 10)
-Image           := "c:\Users\LEPALALA\Pictures\text-1707481589779.png"
 
 myGui := Gui(GuiOptions )
-ImageGui := Gui(GuiOptions " -Border")
-myGui.BackColor := BGColor  
+ImageGui := Gui(GuiOptions)
 imageGui.BackColor := BGColor  
+myGui.BackColor := BGColor  
+WinSetTransColor("000000", myGui)
+WinSetTransparent(Transparancy, myGui)
 WS_CLIPSIBLINGS := 0x4000000
-imageGui.AddPic(WS_CLIPSIBLINGS ' xm ym', image)
-WinSetTransColor("ffffff", myGui)
-WinSetTransparent(230, myGui)
+imageGui.AddPic(WS_CLIPSIBLINGS ' x0 y0', image)
 ; myGui.Add("Picture","w" Width // 10 " h20", "C:\Users\LEPALALA\Documents\GitHub\Terminal-v2\Lib\text.png")
 myGui.SetFont("s" FontSize " " FontOptions " c" FontColor, Font)
 global Input := myGui.Add("Edit", "Background" BGColor " " InputBoxOptions) ; Adds an Input(Edit) Box in GUI
@@ -50,14 +56,14 @@ global ImageID := "ahk_id " imageGui.Hwnd ; Saving Window handle for destroying 
 
 ImageGui.Show(PositionAndSize)
 myGui.Show(PositionAndSize)
+; WinActivate WinID
 ; logoGui("C:\Users\LEPALALA\Documents\GitHub\Terminal-v2\Lib\text.png")
 
 ;Input Handling  and Gui's Destruction_____________________________________
 Destruction(t,shouldContinue := False) { ;for unknown reasons Destruction has to have 2 variables
     global Input
     userInput := Input.Value
-    myGui.Destroy()
-    ImageGui.Destroy()
+    myGui.Destroy(),ImageGui.Destroy()
     if userInput == ""
         return
     else if shouldContinue = True {
