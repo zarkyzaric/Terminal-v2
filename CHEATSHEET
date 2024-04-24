@@ -38,7 +38,7 @@
 | git                    | @search_text                        | Searches GitHub using the provided text                       | git chatbot source code                 |
 | g                      | @prompt                             | Performs a GPT search with the given prompt                   | g Explain quantum computing             |
 | p                      | @search_text                        | Searches Pinterest with the given text                        | p DIY home decor                        |
-| em                     | @search_text                        | Searches for emojis based on the input text                   | em smiley face                          |
+| em                     | @emoji_name                         | Searches for emojis based on the input text                   | em smiley face                          |
 | def                    | @define_text                        | Searches for definitions of the given text                    | def philosophy                          |
 | art                    | @prompt                             | Generates art based on the given prompt                       | art surreal landscapes                  |
 | pastebin, pb, bin      | @unique_code                        | Searches PasteBin with the unique code                        | pb hG9zkP1                              |
