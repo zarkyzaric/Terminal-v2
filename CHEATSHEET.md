@@ -23,7 +23,7 @@
 | note, notepad                         | Runs Notepad                     |
 | cmd                                   | Runs Command Line                |
 | raw                                   | Mini Popup Code Editor           |
-| task manager, tman, task, tsk, mngr, manager, tskmngr | Opens Task Manager |
+| task manager, tsk, task,  mngr,       | Opens Task Manager               |
 | settings                              | Opens Settings                   |
 | display                               | Display                          |
 | emo, emoji                            | Emojies                          |
