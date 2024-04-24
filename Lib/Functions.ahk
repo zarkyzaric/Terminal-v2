@@ -49,11 +49,13 @@ Msg(Text := "Empty MsgBox",PositionAndSize := "Autosize xcenter y" (A_ScreenHeig
     myGui.SetFont("s" FontSize " " FontOptions " c" FontColor, Font)
     myGui.Add("Text",, Text) ; "'" 
     myGui.Add("Picture","w20 h-1", "C:\Users\LEPALALA\Documents\GitHub\Terminal-v2\Lib\text.png")
-
+    myGui.AddText()
 
     myGui.Show(PositionAndSize)
     SetTimer () => myGui.Destroy(), -(T * 1000)
 }
+
+
 LogoGui(Image,PositionAndSize := "Autosize xcenter y" (A_ScreenHeight // 3),T := 3)
 {
     
@@ -509,7 +511,7 @@ class Raw {
 
 Toggle(this){
     static Toggles := Map(
-    "taskbar",  Batch '\Toggle_Hide_Taskbar.exe',
+    "taskbar",  Automation '\Toggle_Hide_Taskbar.exe',
     
     )
     GoThrough(Toggles,this)

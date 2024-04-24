@@ -89,6 +89,8 @@ HotIfWinExist(WinID)
     Hotkey("LWin",Destruction,"On")
     Hotkey("^w",Destruction,"On")
     Hotkey("/",Send_Stroke.Bind(,"_"),"On") ;!
+    Hotkey("'",Send_Stroke.Bind(,"`'`'{Left}"),"On") ;!
+    Hotkey('"',Send_Stroke.Bind(,"`"`"{Left}"),"On") ;!
     ; Hotkey("!Tab",Send_Stroke.Bind(,"!{Tab}!{Tab}!{Tab}"),"On") ;!
 ;todo----------------------------------------------------------
 
