@@ -1,3 +1,5 @@
+
+## See [CHEATSHEET](...blob/main/CHEATSHEET.md)
 ## Version 2.2 in development:
 Planned new features & progress of the project can be found [here](https://github.com/users/zarkyzaric/projects/1/views/1)
 
