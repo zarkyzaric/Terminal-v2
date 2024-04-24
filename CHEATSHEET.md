@@ -10,24 +10,24 @@
 | appdata                        | AppData                                 |
 | startmenu                      | StartMenu                               |
 | programs                       | Programs                                |
-| myprograms                     | User.AppData\Local\Programs             |
-| g, gpt, chatgpt                | https://chat.openai.com                 |
+| myprograms                     | ...\AppData\Local\Programs              |
+| g, gpt, chatgpt                | ChatGPT                                 |
 | gm, gmail                      | Google Gmail                            |
 | c, cal, calendar               | Google Calendar                         |
-| dm                             | Instagram Direct Message                |
-| ins, insta                     | Instagram                               |
 | trans                          | Google Translate                        |
-| wa                             | https://web.whatsapp.com/               |
 | maps                           | Google Maps                             |
-| pint, p                        | https://www.pinterest.com/              |
-| note, notepad                         | Runs Notepad                              |
-| cmd                                   | Runs Command Line                                      |
+| ins, insta                     | Instagram                               |
+| dm                             | Instagram Direct Message                |
+| wa                             | Whatsapp                                |
+| pint, p                        | Pinterest                               |
+| note, notepad                         | Runs Notepad                     |
+| cmd                                   | Runs Command Line                |
 | raw                                   | Mini Popup Code Editor           |
-| task manager, tman, task, tsk, mngr, manager, tskmngr | Opens Task Manager         |
-| settings                              | Opens Settings                    |
-| display                               | Display                    |
-| emo, emoji                            | Emojies                    |
-| tbar, taskbar                         | Activates Taskbar             |
+| task manager, tman, task, tsk, mngr, manager, tskmngr | Opens Task Manager |
+| settings                              | Opens Settings                   |
+| display                               | Display                          |
+| emo, emoji                            | Emojies                          |
+| tbar, taskbar                         | Focuses on Taskbar               |
 
 | Functions              | Parameters                          | Description                                                  | Example                                 |
 |------------------------|-------------------------------------|--------------------------------------------------------------|-----------------------------------------|
