@@ -20,3 +20,12 @@
 | wa                             | https://web.whatsapp.com/               |
 | maps                           | Google.Maps                             |
 | pint, p                        | https://www.pinterest.com/              |
+| note, notepad                         | Runs Notepad                              |
+| cmd                                   | Runs Command Line                                      |
+| raw                                   | Raw.Terminal()                             |
+| task manager, tman, task, tsk, mngr, manager, tskmngr | Sends keystroke Ctrl + Shift + Escape |
+| settings                              | Sends keystroke Win + I                    |
+| display                               | Sends keystroke Win + U                    |
+| emo, emoji                            | Sends keystroke Win + .                    |
+| tbar, taskbar                         | Sends keystroke Win + B, Enter             |
+| display                               | Sends keystroke Win + U                    |
