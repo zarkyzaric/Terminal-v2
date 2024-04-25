@@ -31,7 +31,7 @@
 
 | Functions              | Parameters                          | Description                                                  | Example                                 |
 |------------------------|-------------------------------------|--------------------------------------------------------------|-----------------------------------------|
-| r                      | raw_ahk_code                       | Runs AHK (AutoHotkey) code directly                           | r Run 'notepad.exe'                      |
+| r                      | raw_ahk_code                       | Runs AHK (AutoHotkey) code directly                           | r Run 'notepad.exe'                     |
 | s                      | search_text                        | Performs a smart search based on the input                    | s what is AI?                           |
 | y, z                   | search_text                        | Searches YouTube with the given text                          | y latest tech innovations               |
 | git                    | search_text                        | Searches GitHub using the provided text                       | git chatbot source code                 |

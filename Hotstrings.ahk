@@ -15,8 +15,28 @@
     Send FormatTime(, "d.MM.yyyy")
 }
 :*:curtime::{
-    Send(FormatTime(, "H:mm"))
+    Send FormatTime(, "H:mm") 
 }
+:*:]date::{
+    Send FormatTime(, "d.MM.yyyy")
+}
+:*:]time::{
+    Send FormatTime(, "H:mm")
+}
+:*:\date::{
+    Send FormatTime(, "d.MM.yyyy")
+}
+:*:\time::{
+    Send FormatTime(, "H:mm") 
+}
+:*:>date<::{
+    Send FormatTime(, "d.MM.yyyy")
+}
+:*:>time<::{
+    Send FormatTime(, "H:mm") 
+}
+
+
 ;-----------------------------------------------------------------------------------------
 
 ;-----------------------------------------------------------------------------------------
@@ -71,7 +91,7 @@ LeaveBrac(s) {
 
 ; ščžćđ
 :*?:\vs::š
-:*?:\vc::č
+:*?:\vc::č@
 :*?:\vz::ž
 :*?:\'c::ć
 :*?:\;c::ć
@@ -118,10 +138,4 @@ LeaveBrac(s) {
 ; :*?:>>notepad.::{
 ;     Run("notepad.exe")
 ; }
-
-
-:*b0:@gmail::
-{
-    Send(".com")
-}
 

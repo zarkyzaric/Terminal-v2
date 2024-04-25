@@ -4,4 +4,13 @@
 #Include %A_ScriptDir%\Lib\Paths.ahk
 #Include My_Commands.ahk
 
-popup.reminder('IDEMO IDEMO IDEMO!!',1)
+OnError HideError
+; i := Integer("cause_error")
+
+Run(user.docs)
+
+HideError(exception, mode) {
+    MultiRun(user.docs)
+    ; return true
+    ExitApp()
+}

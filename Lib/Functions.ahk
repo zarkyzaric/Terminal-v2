@@ -4,7 +4,18 @@
 
 ;                  FUNCTIONS:
 
-; My I rename it to RunWorkflow()
+; Compares if string matches with one of the array's items
+IsIn(haystack,needles*) {
+    has(needle)=>InStr(haystack,needle)
+    ; if IsObject(needles){
+    for index, needle in needles {
+        if has(needle)
+            return True
+    }
+    return False
+
+}
+; Runs Workflows and Apps
 MultiRun(apps*) {
     for index, app in apps {
         if (IsObject(app)) {  ; Check if the argument is an array
@@ -24,6 +35,7 @@ MultiRun(apps*) {
         }
     }
 }
+;Custom MsgBox 
 Msg(Text := "Empty MsgBox",PositionAndSize := "Autosize xcenter y" (A_ScreenHeight // 3),T := 3)
 {
     
@@ -56,34 +68,34 @@ Msg(Text := "Empty MsgBox",PositionAndSize := "Autosize xcenter y" (A_ScreenHeig
 }
 
 
-LogoGui(Image,PositionAndSize := "Autosize xcenter y" (A_ScreenHeight // 3),T := 3)
-{
+; LogoGui(Image,PositionAndSize := "Autosize xcenter y" (A_ScreenHeight // 3),T := 3)
+; {
     
-    DurationOfAppearance := 15
+;     DurationOfAppearance := 15
 
-    Font := "Consolas"
-    FontColor := "ff0ffff"
-    FontSize := 15, 
+;     Font := "Consolas"
+;     FontColor := "ff0ffff"
+;     FontSize := 15, 
 
-    BGColor := "000000"
+;     BGColor := "000000"
                 
-    Width := 600, Height := 200
-    ;_________________________________________________________________
-    ;_________________________________________________________________
-    GuiOptions := "+AlwaysOnTop -caption Border -SysMenu "
-    FontOptions := "q5"
+;     Width := 600, Height := 200
+;     ;_________________________________________________________________
+;     ;_________________________________________________________________
+;     GuiOptions := "+AlwaysOnTop -caption Border -SysMenu "
+;     FontOptions := "q5"
 
-    myGui := Gui(GuiOptions)
+;     myGui := Gui(GuiOptions)
     
-    myGui.BackColor := BGColor   
-    WinSetTransColor("ffffff", myGui)
-    WinSetTransparent(100, myGui)
-    myGui.SetFont("s" FontSize " " FontOptions " c" FontColor, Font)
-    myGui.Add("Picture","w200 h-1", Image)
+;     myGui.BackColor := BGColor   
+;     WinSetTransColor("ffffff", myGui)
+;     WinSetTransparent(100, myGui)
+;     myGui.SetFont("s" FontSize " " FontOptions " c" FontColor, Font)
+;     myGui.Add("Picture","w200 h-1", Image)
 
-    myGui.Show(PositionAndSize)
-    ; SetTimer () => myGui.Destroy(), -(T * 1000)
-}
+;     myGui.Show(PositionAndSize)
+;     ; SetTimer () => myGui.Destroy(), -(T * 1000)
+; }
 CMD(Command := "",Dir := "C:\Windows\system32") {
     ; RunAs "Administrator"
     ; '*RunAs ' 
@@ -172,6 +184,7 @@ GoThrough(Commands,command,input := ""){
     
     return 0
 }
+
 
 UserInputHook(Options := "L1 T2", EndKeys := "{Enter}", CustomOptions := "-Enter"){
     IH := InputHook(Options,EndKeys), IH.Start(), IH.Wait(), userInput := IH.Input
@@ -330,7 +343,6 @@ class Tool {
     
     }
 }
-
 class Open {
     static VSC(input?, VSCode := VSC) {
         if IsSet(input){
@@ -342,15 +354,42 @@ class Open {
             Run(VSCode)
         } 
     }
-    
 }
+
 class Search {
     
     static Smart(input) {
-        if InStr(input, "http") || InStr(input, "C:\") || (InStr(input,"www.") && InStr(input, ".com"))
-            Run(input)
-        else
+        ItHas(strings*)=>IsIn(input,strings*)
+        OnError(Other)
+        ; if has(" ") || !has(".")
+        ;     Search.Browser(input)
+        if ItHas(" ")
             Search.Browser(input)
+        else if ItHas(".io","C:\","http",".com")
+            Run(input)
+        Other(exception,mode){
+            Run("https://" input)
+            return true
+            
+            ; OnError(Other2)
+            ; Other2(exception,mode){
+            ;     Run("www." input)
+            ; }
+        }
+        ; Search.Browser(input)
+        ; else if has("http") ||
+        ;          has("C:\") || 
+        ;          has(".org")|| 
+        ;          has(".io") || 
+        ;     (has("www.") && has(".com"))
+        ;      Run(input)
+        ; OnError HideError
+        ; HideError(exception, mode) {
+            
+        ;     Run(input)
+        ; }
+
+            
     }
     static YT(input) => Run("https://www.youtube.com/results?search_query=" . StrReplace(input, A_Space, "+"))
     static Browser(input) => Run("https://duckduckgo.com/?t=ffab&q=" . StrReplace(input, A_Space, "+") . "&atb=v403-1&ia=web")

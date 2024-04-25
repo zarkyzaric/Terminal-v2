@@ -11,19 +11,20 @@
 ;todo----------------------------------------------------------
 ;todo       CUSTOMIZE POPUP WINDOW'S APPEARANCE             
 ;todo----------------------------------------------------------
+
 DurationOfAppearance := 30 ; seconds
 
 Font          := "Consolas", 
 FontColor     := "F0FFFF" ; RGB
 FontSize      := 17 
 
-BGColor       := "2e023e" 
+BGColor       := "2e023e" ; RGB
 
 Width         := 400
 Height        := 50
 
-Image         := A_ScriptDir "\Lib\Images\icon.png"
-GIF         := A_ScriptDir "\Lib\Images\bg.gif"
+; Image         := A_ScriptDir "\Lib\Images\icon.png"
+; GIF         := A_ScriptDir "\Lib\Images\bg.gif"
 ; Transparancy  := 245    ; 0-255 
 ;todo----------------------------------------------------------
 
@@ -120,9 +121,9 @@ Fuzzy_Navigator(Input) {
     ;     OnError Raw.Run(input)
     GoTh := GoThrough.Bind(,input)
     if GoTh(Default_Commands)
-        return 1
+        return
     if GoTh(My_Commands)
-        return 1
+        return
     spacePos := InStr(Input," ")
     if !(spacePos)
         return
@@ -168,7 +169,7 @@ Fuzzy_Navigator(Input) {
 
         "theme",    () => Settings.Theme(input), ; theme @NN | N is either 1 or 0, first N is for System's Theme, second is for Window's theme (1=light, 0=dark)
         "brightness",() => Settings.Brightness(input), ; brightness @% | Example: brightness 70
-        ; "play",     () => Run("ahk_exe ApplicationFrameHost.exe " input),
+        ; "play",     () => Run("ahk_exe ApplicationFrameHost.exe " input), 
 
     )
     GoThrough(FuncCalls,prefix)
