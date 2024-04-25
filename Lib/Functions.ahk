@@ -99,7 +99,7 @@ CMD(Command := "",Dir := "C:\Windows\system32") {
     ; RunAs "Administrator"
     ; '*RunAs ' 
     
-    Run(A_ComSpec ' ' Command, Dir)
+    Run(A_ComSpec ' /k ' Command, Dir)
     ; WinWait("ahk_exe cmd.exe")
     ; WinActivate
     ; Send("{Enter}")
@@ -459,6 +459,7 @@ class Raw {
         #Include My_Commands.ahk`n"
         ),Raw.ahk
 
+        
         if InStr(input, "c="){ ; A_Clipboard := %Variable or a String%
             FileAppend
             (
@@ -466,7 +467,13 @@ class Raw {
             A_Clipboard := " SubStr(input, 3, StrLen(input) - 2) 
             ),Raw.ahk ; SubStr(input, 3, StrLen(input) - 2) ; input.Delete(1,2) 
         }
-
+        else if InStr(input,"(") || InStr(input,"."){
+            FileAppend
+            (
+            "" 
+            input
+            ),Raw.ahk ; SubStr(input, 3, StrLen(input) - 2) ; input.Delete(1,2) 
+        }
         else if !InStr(input, "(") || !InStr(input, " ") || (InStr(input,"\") && !InStr(input, "`n"))  ; PATHS
             { 
                 FileAppend
@@ -605,12 +612,13 @@ class Settings {
 class OS {
     static ShutdownIn(X,T) => (Sleep(T*1000),Shutdown(X),ExitApp())
 
-    static Shutdown(T) => OS.ShutdownIn(1,T)
-    static Logoff(T) => OS.ShutdownIn(0,T)
-    static Restart(T) => OS.ShutdownIn(2,T)
-    static ForceShutdown(T) => OS.ShutdownIn(4,T)
-    static ForceRestart(T) => OS.ShutdownIn(6,T)
-    ; static RIP(T) => OS.ShutdownIn(8,T) ; use on your own responsability
+    static Shutdown(T := 1) => OS.ShutdownIn(1,T)
+    static Sleep(T := 1) => (Sleep(T*1000),SendMessage(0x112, 0xF170, 2,, "Program Manager"))
+    static Logoff(T := 1) => OS.ShutdownIn(0,T)
+    static Restart(T := 1) => OS.ShutdownIn(2,T)
+    static ForceShutdown(T := 1) => OS.ShutdownIn(4,T)
+    static ForceRestart(T := 1) => OS.ShutdownIn(6,T)
+    ; static RIP(T := 1) => OS.ShutdownIn(8,T) ; use on your own responsability
 }
 class PowerShell {
     static Path := "C:\Windows\system32\WindowsPowerShell\v1.0\powershell.exe"
@@ -618,6 +626,7 @@ class PowerShell {
     static AppsUseLightTheme(N) => PowerShell.Run('"New-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize -Name AppsUseLightTheme -Value "' N '" -Type Dword -Force"')
     static SystemUsesLightTheme(N) => PowerShell.Run('"New-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\Themes\Personalize -Name SystemUsesLightTheme -Value "' N '" -Type Dword -Force"')
     static SetBrightness(P) => PowerShell.Run('"(Get-WmiObject -Namespace root/WMI -Class WmiMonitorBrightnessMethods).WmiSetBrightness(1,"' P '")"')
+    static ScreenSaver() => PowerShell.Run('-command "& (Get-ItemProperty ‘HKCU:Control Panel\Desktop’).{SCRNSAVE.EXE}"')
 }   
 
 class Get {
@@ -684,7 +693,7 @@ class Mp3 {
       6 ActivateTab
       7 SetActiveAlt
 */
-HideFromTaskbar(T){
+HideFromTaskbar(T := 3){
     IID_ITaskbarList  := "{56FDF342-FD6D-11d0-958A-006097C9A090}"
     CLSID_TaskbarList := "{56FDF344-FD6D-11d0-958A-006097C9A090}"
     

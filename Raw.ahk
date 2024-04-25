@@ -3,5 +3,4 @@
 #Include %A_ScriptDir%\Lib\Functions.ahk
 #Include %A_ScriptDir%\Lib\Paths.ahk
 #Include My_Commands.ahk
-
-CMD("/k dir")
+os.sleep(1)

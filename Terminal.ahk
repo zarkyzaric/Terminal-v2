@@ -155,7 +155,6 @@ Fuzzy_Navigator(Input) {
         "wiki",     () =>  Search.Wikipedia(input), ; wiki @search_text
         ["sof","so"], () => Search.StackOverflow(input),
         "maps",     () => Search.Maps(input), ; maps @search_text
-        "cmd",     () => CMD(input), ; maps @search_text
         ["pastebin","pb","bin"], () => Search.PasteBin(input), ; pb @unique_code
         
         "t",        () => Search.Translate(input), ; t @translate_text
@@ -164,12 +163,15 @@ Fuzzy_Navigator(Input) {
         "shutdown", () => OS.Shutdown(input), ;shutdown @seconds
         "logoff",   () => OS.Logoff(input), ; logoff @seconds
         "restart",  () => OS.Restart(input), ; restart @seconds
+        "sleep",  () => OS.Sleep(input), ; restart @seconds
+        
         
         "h",        () => (Run(Help), SendIn("!s",1.5), SendText(input),Send("{Enter}")), ; h @search_text
         
         "theme",    () => Settings.Theme(input), ; theme @NN | N is either 1 or 0, first N is for System's Theme, second is for Window's theme (1=light, 0=dark)
         "brightness",() => Settings.Brightness(input), ; brightness @% | Example: brightness 70
         ; "play",     () => Run("ahk_exe ApplicationFrameHost.exe " input), 
+        "cmd",     () => CMD(input), ; maps @search_text
         ["touch","mfl","mf"], () => FileGen(input),
 
     )
