@@ -4,13 +4,9 @@
 #Include %A_ScriptDir%\Lib\Paths.ahk
 #Include My_Commands.ahk
 
-OnError HideError
-; i := Integer("cause_error")
-
-Run(user.docs)
-
-HideError(exception, mode) {
-    MultiRun(user.docs)
-    ; return true
-    ExitApp()
-}
+FileGen
+(
+"
+#Requires AutoHotkey v2.0
+Run 'notepad' "
+),"new.ahk"

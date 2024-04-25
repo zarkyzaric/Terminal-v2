@@ -60,7 +60,6 @@ Msg(Text := "Empty MsgBox",PositionAndSize := "Autosize xcenter y" (A_ScreenHeig
     WinSetTransparent(100, myGui)
     myGui.SetFont("s" FontSize " " FontOptions " c" FontColor, Font)
     myGui.Add("Text",, Text) ; "'" 
-    myGui.Add("Picture","w20 h-1", "C:\Users\LEPALALA\Documents\GitHub\Terminal-v2\Lib\text.png")
     myGui.AddText()
 
     myGui.Show(PositionAndSize)
@@ -107,22 +106,29 @@ CMD(Command := "",Dir := "C:\Windows\system32") {
     ; SendText(Command)
     ; ; Run('*RunAs ' A_ComSpec ' taskkill /im "firefox.exe" /f')
 }
-class TurnInto {
+FileGen(CODE:= "", fullFileName := "New.txt"){
     ;! myb naming it file is going to make a problem, we'll see
-    
-    static Batch(CODE:= "", fileName := "File") {
-        File_bat := fileName ".bat"
-        if CODE == ""
-            return
-        try FileDelete(File_bat)
-        FileAppend
-        (
-        CODE
-        ), A_ScriptDir "\Lib\Files\" File_bat
-        Run(File_bat)
+    Separator := InStr(CODE," || ")
+    if !Separator
+        return
+    Content := SubStr(CODE, 1, Separator - 1)
+    fullFileName := SubStr(CODE, Separator + StrLen(Content) + 1)
+    ; MsgBox(Content)
+    ; MsgBox(fullFileName)
+
+    if Content == ""
+        return
+    ; try FileDelete(File_type)
+    FileAppend
+    (
+    Content
+    ), A_ScriptDir "\Lib\Files\" fullFileName
+    Run(A_ScriptDir "\Lib\Files\" fullFileName)
+
 
     }
-}
+
+
 /*          TIME:            */
 Wait(sec := 1){ ;, min := 0, h := 0){
     Sleep(sec * 1000) ; + min*60*1000 + h*3600*1000)
@@ -281,7 +287,7 @@ class Tool {
      
         g_CrdGet.Show("AutoSize y0 x" A_ScreenWidth / 20 * 13.5)
      }
-    static Clock() {
+    static Clock(T:=3) {
 
         static clock_hwnd
     
@@ -340,6 +346,13 @@ class Tool {
             Hotkey("LButton",Destruction, "On")
         g_Clock.OnEvent("Close", Destruction)
         g_Clock.Show("W350 H320 y" A_ScreenHeight / 5 " x" A_ScreenWidth / 2 - 220)
+        ; MsgBox ProcessGetName(g_Clock.Title)
+        Sleep(T*1000)
+        ; PID := WinGetPID(g_Clock.Title)
+        ; Send("{Escape}")
+        WinKill g_Clock.Title
+        ; ProcessClose PID 
+
     
     }
 }

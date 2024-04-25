@@ -39,7 +39,7 @@ PositionAndSize := "W" Width "H" Height  "y20"
 InputBoxOptions := "-E0x200 -VScroll Center x0 " "W" Width " H" (Height - 10)
 
 myGui := Gui(GuiOptions )
-ImageGui := Gui(GuiOptions)
+; ImageGui := Gui(GuiOptions)
 ; imageGui.Add("ActiveX","w300 h100 x100 y-30", GIF)
 ; imageGui.BackColor := BGColor  
 myGui.BackColor := BGColor  
@@ -137,8 +137,8 @@ Fuzzy_Navigator(Input) {
     static FuncCalls := Map(  
         ;TODO "default",  () => SetDefault(input),
         "r",        () => Raw.Run(input), ; r @raw_ahk_code
+        "run",      () => Run(input),
         
-
         ; DON'T WORK ANYMORE
         ;! "mp3",      () => Mp3.Download(input), ; mp3 @song_name
         ;! "mpy",      () => Mp3.Download(input,"LINK"), ; mpy @youtube_url
@@ -159,17 +159,17 @@ Fuzzy_Navigator(Input) {
         
         "t",        () => Search.Translate(input), ; t @translate_text
         "conv",     () => Photo.Convert(input), ; conv @from_format-to_format ; Example: conv webp-png 
-
         "toggle",   () => Toggle(input),
         "shutdown", () => OS.Shutdown(input), ;shutdown @seconds
         "logoff",   () => OS.Logoff(input), ; logoff @seconds
         "restart",  () => OS.Restart(input), ; restart @seconds
-
+        
         "h",        () => (Run(Help), SendIn("!s",1.5), SendText(input),Send("{Enter}")), ; h @search_text
-
+        
         "theme",    () => Settings.Theme(input), ; theme @NN | N is either 1 or 0, first N is for System's Theme, second is for Window's theme (1=light, 0=dark)
         "brightness",() => Settings.Brightness(input), ; brightness @% | Example: brightness 70
         ; "play",     () => Run("ahk_exe ApplicationFrameHost.exe " input), 
+        ["touch","mfl","mf"], () => FileGen(input),
 
     )
     GoThrough(FuncCalls,prefix)

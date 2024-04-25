@@ -43,6 +43,7 @@ class C {
 }
 
 ; Main Directories
+Terminal := A_ScriptDir "\Terminal.ahk"
 Lib := A_ScriptDir "\Lib"
 Executables := A_ScriptDir "\Lib\Executables"
 Automation := A_ScriptDir "\Lib\Automation"

@@ -17,14 +17,14 @@
 ; Ctrl + Alt + T or Ctrl + \ or RCtrl => Runs the Terminal
 ; ^vkE2:: 
 ; RControl::
-^!t::Run(A_ScriptDir "\Terminal.ahk")
+^!t::Run Terminal
 ; ^!q::Run('pythonw.exe `"' A_ScriptDir '`"\GUI.py"')
 
 ;-----------------------------------------------------------------------------------------
 
 ;-----------------------------------------------------------------------------------------
 ; Ctrl + Backspace => Deletes last word
-^Backspace::SendInput("^+{Left}{Backspace}") ; Fixes Ctrl+Backspace to delete previous word
+^Backspace::SendInput "^+{Left}{Backspace}" ; Fixes Ctrl+Backspace to delete previous word
 ;-----------------------------------------------------------------------------------------
 
 ;-----------------------------------------------------------------------------------------
