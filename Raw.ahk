@@ -4,9 +4,4 @@
 #Include %A_ScriptDir%\Lib\Paths.ahk
 #Include My_Commands.ahk
 
-FileGen
-(
-"
-#Requires AutoHotkey v2.0
-Run 'notepad' "
-),"new.ahk"
+CMD("/k dir")

@@ -89,7 +89,7 @@ HotIfWinExist(WinID)
     Hotkey("LButton",Destruction,"On")
     Hotkey("LWin",Destruction,"On")
     Hotkey("^w",Destruction,"On")
-    Hotkey("/",Send_Stroke.Bind(,"_"),"On") ;!
+    ; Hotkey("/",Send_Stroke.Bind(,"_"),"On") ;!
     Hotkey("'",Send_Stroke.Bind(,"`'`'{Left}"),"On") ;!
     Hotkey('"',Send_Stroke.Bind(,"`"`"{Left}"),"On") ;!
     ; Hotkey("!Tab",Send_Stroke.Bind(,"!{Tab}!{Tab}!{Tab}"),"On") ;!
@@ -155,6 +155,7 @@ Fuzzy_Navigator(Input) {
         "wiki",     () =>  Search.Wikipedia(input), ; wiki @search_text
         ["sof","so"], () => Search.StackOverflow(input),
         "maps",     () => Search.Maps(input), ; maps @search_text
+        "cmd",     () => CMD(input), ; maps @search_text
         ["pastebin","pb","bin"], () => Search.PasteBin(input), ; pb @unique_code
         
         "t",        () => Search.Translate(input), ; t @translate_text

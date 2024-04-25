@@ -99,7 +99,7 @@ CMD(Command := "",Dir := "C:\Windows\system32") {
     ; RunAs "Administrator"
     ; '*RunAs ' 
     
-    Run(A_ComSpec, Dir)
+    Run(A_ComSpec ' ' Command, Dir)
     ; WinWait("ahk_exe cmd.exe")
     ; WinActivate
     ; Send("{Enter}")
