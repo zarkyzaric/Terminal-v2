@@ -17,7 +17,7 @@ Default_Commands := Map(
         ["startup","sup"],        A_Startup,
         "startmenu",              A_StartMenu,
         "programs",               A_Programs,
-        "myprograms", User.AppData "\Local\Programs",
+        "myprograms",             User.AppData "\Local\Programs",
     ;?=======================================================
     ;?                 OFTEN WEBSITES                
     ;?=======================================================
