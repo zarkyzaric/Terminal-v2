@@ -18,10 +18,6 @@
 ; ^vkE2:: 
 ; RControl::
 ^!t::Run(Terminal)
-; ^!q::Run('pythonw.exe `"' A_ScriptDir '`"\GUI.py"')
-
-;-----------------------------------------------------------------------------------------
-
 ;-----------------------------------------------------------------------------------------
 ; Ctrl + Backspace => Deletes last word
 ^Backspace::SendInput "^+{Left}{Backspace}" ; Fixes Ctrl+Backspace to delete previous word
