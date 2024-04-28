@@ -43,18 +43,17 @@ Default_Commands := Map(
         ["notepad","note"],     "notepad.exe",
         ["calc", "calculator"], "calc.exe", 
         "word",                 "winword.exe",
-        ["ex","excel"],         "excel.exe",
+        ; ["ex","excel"],         "excel.exe",
+        ; ["python","py"],        "python.exe",
+        ;?=======================================================
+        ;?                 OFTEN FUNCTIONS                
+        ;?=======================================================
         "cmd",                  () => CMD(),
-        ["python","py"],        "python.exe",
-    ;?=======================================================
-    ;?                 OFTEN FUNCTIONS                
-    ;?=======================================================
         "raw",                   () => Raw.Terminal(),
     ;?=======================================================
     ;?                 HOTKEY REPLACEMENTS                
     ;?=======================================================
-        ["tsk","task manager","tman","task","mngr"
-        ,"manager","tskmngr"],   () => Send("^+{Escape}"),
+        ["tsk","task manager","task"],() => Send("^+{Escape}"),
         ["settings","sett"],     () => Send("#i"),
         "display",               () => Send("#u"),
         ["emo","emoji"],         () => Send("#."),
