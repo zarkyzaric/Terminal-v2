@@ -423,7 +423,7 @@ class Search {
 }
 class Raw {
 
-   static ahk := "Raw.ahk"
+   static ahk := Lib "\Raw.ahk"
    static Run(input) {
         if input == ""
             return
