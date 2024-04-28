@@ -70,6 +70,12 @@ Default_Commands := Map(
     ;?=======================================================
         "taskbar",               Automation "\Toggle_Hide_Taskbar.exe",
         "taskkill",              Automation '\Taskkiller.bat',
+        "shutdown", () => OS.Shutdown(), ;shutdown @seconds
+        "logoff",   () => OS.Logoff(), ; logoff @seconds
+        "restart",  () => OS.Restart(), ; restart @seconds
+        "sleep",  () => OS.Sleep(), ; restart @seconds
+        
+        
     
         ; ; Windows Window Switching:
         "1",                     () => Send("#1"),
