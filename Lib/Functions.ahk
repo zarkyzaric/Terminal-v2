@@ -104,7 +104,6 @@ CMD(Command := "",Dir := "C:\Windows\system32") {
     ; WinActivate
     ; Send("{Enter}")
     ; SendText(Command)
-    ; ; Run('*RunAs ' A_ComSpec ' taskkill /im "firefox.exe" /f')
 }
 FileGen(CODE:= "", fullFileName := "New.txt"){
     ;! myb naming it file is going to make a problem, we'll see
@@ -372,37 +371,16 @@ class Open {
 class Search {
     
     static Smart(input) {
-        ItHas(strings*)=>IsIn(input,strings*)
         OnError(Other)
-        ; if has(" ") || !has(".")
-        ;     Search.Browser(input)
-        if ItHas(" ")
+        ItHas(strings*)=>IsIn(input,strings*)
+        if ItHas(" ") || !ItHas(".")
             Search.Browser(input)
         else if ItHas(".io","C:\","http",".com")
             Run(input)
         Other(exception,mode){
             Run("https://" input)
-            return true
-            
-            ; OnError(Other2)
-            ; Other2(exception,mode){
-            ;     Run("www." input)
-            ; }
+            ; return true
         }
-        ; Search.Browser(input)
-        ; else if has("http") ||
-        ;          has("C:\") || 
-        ;          has(".org")|| 
-        ;          has(".io") || 
-        ;     (has("www.") && has(".com"))
-        ;      Run(input)
-        ; OnError HideError
-        ; HideError(exception, mode) {
-            
-        ;     Run(input)
-        ; }
-
-            
     }
     static YT(input) => Run("https://www.youtube.com/results?search_query=" . StrReplace(input, A_Space, "+"))
     static Browser(input) => Run("https://duckduckgo.com/?t=ffab&q=" . StrReplace(input, A_Space, "+") . "&atb=v403-1&ia=web")
@@ -434,7 +412,7 @@ class Search {
         return
     }
     static PasteBin(input) => Run("https://pastebin.com/" input)
-    static GPT(input) => (Run("https://chat.openai.com"),SendIn("+{Esc}" input,4),SendIn("{Enter}",2))
+    static GPT(input) => (Run("https://chat.openai.com"),WinWait,WinActivate,SendIn("+{Esc}",3),SendIn(input,1),SendIn("{Enter}",1))
     static GitHub(input) => Run("https://github.com/search?q=" StrReplace(input, A_Space, "+") "&type=repositories")
     static Pinterest(input) => Run("https://www.pinterest.com/search/pins/?q=" StrReplace(input, A_Space, "%20") "&rs=typed")
     static Emoji(input) => Run("https://emojipedia.org/search?q=" StrReplace(input, A_Space, "+"))

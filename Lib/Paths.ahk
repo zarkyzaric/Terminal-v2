@@ -43,46 +43,16 @@ class C {
 }
 
 ; Main Directories
-Terminal := A_ScriptDir "\Terminal.ahk"
-Lib := A_ScriptDir "\Lib"
-Executables := A_ScriptDir "\Lib\Executables"
-Automation := A_ScriptDir "\Lib\Automation"
-Singletons := A_ScriptDir "\Lib\Singletons"
-Data_Types := A_ScriptDir "\Lib\Data_Types"
 
 
-VSCodium := "C:\Program Files\VSCodium\VSCodium.exe"
 VSC := User.AppData "\Local\Programs\Microsoft VS Code\Code.exe"
-
-
-
-; class My {
-;     static Documents := A_MyDocuments
-;     static Docs := A_MyDocuments
-;     static Videos := A_User "\Videos"
-;     static Music := A_User "\Music"
-;     static Pictures := A_User "\Pictures"
-;     static Downloads := A_User "\Downloads"
-;     static Desktop := A_Desktop
-;     static Startup :=  A_Startup
-;     static StartMenu := A_StartMenu
-;     static Programs := A_Programs
-;     ; class AppData {
-;         ;     static this := A_User "\AppData"
-;         ;     static Local := AppData.this "\Local"
-;         ; }
-;         static AppData := A_User "\AppData"
-; }
-
+VSCodium := "C:\Program Files\VSCodium\VSCodium.exe"
 
 
 ; Class Default {
-;     ; static Browser := 
-; }
+    ;     ; static Browser := 
+    ; }
 ;? _______________RANDOM___________________________________________________________________
-
-
-
 A_WindowsTools := "shell:::{D20EA4E1-3957-11D2-A40B-0C5020524153}"
 A_ThisPC := "shell:::{20D04FE0-3AEA-1069-A2D8-08002B30309D}"
 A_RecycleBin := "shell:::{645FF040-5081-101B-9F08-00AA002F954E}"
@@ -106,7 +76,12 @@ A_AllTasks_GodMode := "shell:::{ED7BA470-8E54-465E-825C-99712043E01C}"
 A_Firewall := "shell:::{4026492F-2F69-46B8-B9BF-5654FC07E423}"
 A_WindowsSearch := "shell:::{2559A1F8-21D7-11D4-BDAF-00C04F60B9F0}"
 A_FolderOptions := "shell:::{6DFD7C5C-2451-11D3-A299-00C04F8EF6AF}"
-
+Terminal := A_ScriptDir "\Terminal.ahk"
+Lib := A_ScriptDir "\Lib"
+Executables := Lib "\Executables"
+Automation := Lib "\Automation"
+Singletons := Lib "\Singletons"
+Setup_Requirements := Lib "\Setup_Requirements"
 
 ;IMI PATHS
 class KURS {
@@ -123,4 +98,5 @@ class KURS {
     static RS := KURS.ID "35"
     static SA := KURS.ID "396"
 }
-
+ Default_Browser := ''
+ Default_Browser := 'C:\Program Files\Mozilla Firefox\firefox.exe'
