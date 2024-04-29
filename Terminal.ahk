@@ -13,6 +13,8 @@
 ;todo       CUSTOMIZE POPUP WINDOW'S APPEARANCE             
 ;todo----------------------------------------------------------
 
+global hi := -1
+
 DurationOfAppearance := 30 ; seconds
 
 Font          := "Consolas", 
@@ -76,7 +78,32 @@ Destruction(t,shouldContinue := False) { ;for unknown reasons Destruction has to
         (Fuzzy_Navigator(userInput)) ;If not found in first terminal, then go into a second one
     }
 }
+Arrow(t,Arrow := "Up"){
+    OnError ShowEmpty
+    static i := 0
+    fileContent := FileRead("History.txt")
+    history:= StrSplit(fileContent,"`n")
+    len := history.Length
+    ; msgbox history[len - i]
+    og_input := Input.Value
+    if i <= len && i >= -1 {
+        if Arrow == "Up"        && i < len - 1 { 
+            i += 1
+            ; if i == len
+        }
+        else if Arrow == "Down" && i > 0 {
+            i -= 1
+            if i == 0
+                Input.Value := og_input
 
+        }
+        Input.Value := history[len - i]
+    }
+    ShowEmpty(exception, mode) {
+        ; Input.Value := og_input
+        i := -1
+    }
+}
 ; If Input Bar exists or is active the following hotkeys will do certain actions
 
 ;todo----------------------------------------------------------
@@ -90,10 +117,11 @@ HotIfWinExist(WinID)
     Hotkey("LButton",Destruction,"On")
     Hotkey("LWin",Destruction,"On")
     Hotkey("^w",Destruction,"On")
-    ; Hotkey("/",Send_Stroke.Bind(,"_"),"On") ;!
     Hotkey("'",Send_Stroke.Bind(,"`'`'{Left}"),"On") ;!
     Hotkey('"',Send_Stroke.Bind(,"`"`"{Left}"),"On") ;!
-    ; Hotkey("!Tab",Send_Stroke.Bind(,"!{Tab}!{Tab}!{Tab}"),"On") ;!
+    
+    Hotkey("Up",Arrow.Bind(,"Up"),"On")
+    Hotkey("Down",Arrow.Bind(,"Down"),"On")
 ;todo----------------------------------------------------------
 
 SetTimer () => ExitApp(), -(DurationOfAppearance * 1000)
@@ -109,17 +137,15 @@ SetTimer () => ExitApp(), -(DurationOfAppearance * 1000)
 ;?_______________________________________________________________________________________________
 Fuzzy_Navigator(Input) {
     global Default_Commands,My_Commands
+    Content := FileRead("History.txt")
     
+    FileAppend(Input '`n' ,"History.txt")
     if Input==""
         return
     else if SubStr(input,1,2) == "c=" {
         Raw.Run(input)
         return
     }
-    ; try 
-    ;     GoThrough(Solos,Input)
-    ; catch Error as err
-    ;     OnError Raw.Run(input)
     GoTh := GoThrough.Bind(,input)
     if GoTh(Default_Commands)
         return
@@ -146,7 +172,7 @@ Fuzzy_Navigator(Input) {
 
         "s",        () => Search.Smart(input), ; s @search_text
         ["y","z"],  () => Search.YT(input), ; y @search_text
-        "git",      () => Search.GitHub(input), ; git @search_text
+        ["gh","git"],      () => Search.GitHub(input), ; git @search_text
         "github",   ()=> Run("www.github.com/" input),
         "g",        () => Search.GPT(input), ; g @prompt
         "p",        () => Search.Pinterest(input), ; p @search_text
@@ -161,18 +187,18 @@ Fuzzy_Navigator(Input) {
         "t",        () => Search.Translate(input), ; t @translate_text
         "conv",     () => Photo.Convert(input), ; conv @from_format-to_format ; Example: conv webp-png 
         "toggle",   () => Toggle(input),
+
         "shutdown", () => OS.Shutdown(input), ;shutdown @seconds
         "logoff",   () => OS.Logoff(input), ; logoff @seconds
         "restart",  () => OS.Restart(input), ; restart @seconds
         "sleep",  () => OS.Sleep(input), ; restart @seconds
         
-        
         "h",        () => (Run(Help), SendIn("!s",1.5), SendText(input),Send("{Enter}")), ; h @search_text
         
         "theme",    () => Settings.Theme(input), ; theme @NN | N is either 1 or 0, first N is for System's Theme, second is for Window's theme (1=light, 0=dark)
         "brightness",() => Settings.Brightness(input), ; brightness @% | Example: brightness 70
-        ; "play",     () => Run("ahk_exe ApplicationFrameHost.exe " input), 
-        "cmd",     () => CMD(input), ; maps @search_text
+
+        "cmd",     () => CMD(input), ; cmd @cmd_parameters
         ["touch","mfl","mf"], () => FileGen(input),
 
     )

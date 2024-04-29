@@ -98,5 +98,3 @@ class KURS {
     static RS := KURS.ID "35"
     static SA := KURS.ID "396"
 }
- Default_Browser := ''
- Default_Browser := 'C:\Program Files\Mozilla Firefox\firefox.exe'

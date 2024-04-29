@@ -65,108 +65,42 @@ Msg(Text := "Empty MsgBox",PositionAndSize := "Autosize xcenter y" (A_ScreenHeig
     myGui.Show(PositionAndSize)
     SetTimer () => myGui.Destroy(), -(T * 1000)
 }
+; Passes @param as Command Line parameter
+CMD(Command := "",Dir := "C:\Windows\system32") => Run(A_ComSpec ' /k ' Command, Dir)
 
-
-; LogoGui(Image,PositionAndSize := "Autosize xcenter y" (A_ScreenHeight // 3),T := 3)
-; {
-    
-;     DurationOfAppearance := 15
-
-;     Font := "Consolas"
-;     FontColor := "ff0ffff"
-;     FontSize := 15, 
-
-;     BGColor := "000000"
-                
-;     Width := 600, Height := 200
-;     ;_________________________________________________________________
-;     ;_________________________________________________________________
-;     GuiOptions := "+AlwaysOnTop -caption Border -SysMenu "
-;     FontOptions := "q5"
-
-;     myGui := Gui(GuiOptions)
-    
-;     myGui.BackColor := BGColor   
-;     WinSetTransColor("ffffff", myGui)
-;     WinSetTransparent(100, myGui)
-;     myGui.SetFont("s" FontSize " " FontOptions " c" FontColor, Font)
-;     myGui.Add("Picture","w200 h-1", Image)
-
-;     myGui.Show(PositionAndSize)
-;     ; SetTimer () => myGui.Destroy(), -(T * 1000)
-; }
-CMD(Command := "",Dir := "C:\Windows\system32") {
-    ; RunAs "Administrator"
-    ; '*RunAs ' 
-    
-    Run(A_ComSpec ' /k ' Command, Dir)
-    ; WinWait("ahk_exe cmd.exe")
-    ; WinActivate
-    ; Send("{Enter}")
-    ; SendText(Command)
-}
-FileGen(CODE:= "", fullFileName := "New.txt"){
+FileGen(CODE:= "", fullFileName := A_ScriptDir "\Lib\Files\" "New.txt"){
     ;! myb naming it file is going to make a problem, we'll see
     Separator := InStr(CODE," || ")
     if !Separator
         return
     Content := SubStr(CODE, 1, Separator - 1)
-    fullFileName := SubStr(CODE, Separator + StrLen(Content) + 1)
-    ; MsgBox(Content)
-    ; MsgBox(fullFileName)
-
     if Content == ""
         return
-    ; try FileDelete(File_type)
-    FileAppend
-    (
-    Content
-    ), A_ScriptDir "\Lib\Files\" fullFileName
-    Run(A_ScriptDir "\Lib\Files\" fullFileName)
-
-
-    }
-
-
-/*          TIME:            */
-Wait(sec := 1){ ;, min := 0, h := 0){
-    Sleep(sec * 1000) ; + min*60*1000 + h*3600*1000)
+    fullFileName := A_ScriptDir "\Lib\Files\" SubStr(CODE, Separator + StrLen(Content) + 1)
+    ; MsgBox(Content),MsgBox(fullFileName)
+    FileAppend Content,  fullFileName
+    Run(fullFileName)
 }
+
+
+;  TIME BASED ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+; Same as Sleep, just in seconds, 
+Wait(sec := 1, min := 0) => ( Sleep(min * 60000),Sleep(sec * 1000) )
+
 SendIn(text, sec := 1){
     Sleep(sec * 1000)
     Send(text)
 }
-RunSend(App,Key, sec := 2) {
-    Run(App)
-    Sleep(sec*1000)
-    Send(Key)
-}
+RunSend(App,Keystroke, sec := 2) => (Run(App),WinWait(App),WinActivate(),Sleep(sec * 1000),Send(Keystroke))
 
 /*       HOTKEY FUNC:        */
 F11(sec := 1){
     Sleep(sec * 1000)
     Send("{F11}")
 }
-Minimize(winTitle) {
-    WinWait(winTitle)
-    WinMinimize(winTitle)
-}
-
-; GO THROUGH
+Minimize(winTitle) => ( WinWait(winTitle),WinMinimize(winTitle) )
+; Goes Through an Dictonary and activates or runs matching key's value (aither Bound Function or Path)
 GoThrough(Commands,command,input := ""){
-    ; if input != "" {
-    ;     properRun2(Commands,command,input){
-    ;         Commands[command].Call(input)
-    ;         return 1
-    ;     }
-    ;     thisRun := properRun2.Bind(Commands,command,input)
-    ;     for key in Commands{
-    ;         if (StrCompare(key,command) == 0) {
-    ;             thisRun()
-    ;         }
-    ;     }
-    ; }
-    ; else {
         properRun(Commands,key){
             IsObject(Commands[key]) ? Commands[key].Call() : Run(Commands[key])
             return 1
@@ -184,9 +118,6 @@ GoThrough(Commands,command,input := ""){
                 thisRun()
             }
         }
-        
-    ; }
-    
     return 0
 }
 
@@ -423,8 +354,9 @@ class Search {
 }
 class Raw {
 
-   static ahk := Lib "\Raw.ahk"
+   static ahk := "Raw.ahk"
    static Run(input) {
+        Has(needles*)=>IsIn(input,needles*)
         if input == ""
             return
         try FileDelete(Raw.ahk)
@@ -436,24 +368,14 @@ class Raw {
         #Include %A_ScriptDir%\Lib\Paths.ahk
         #Include My_Commands.ahk`n"
         ),Raw.ahk
-
         
-        if InStr(input, "c="){ ; A_Clipboard := %Variable or a String%
+        if Has('c='){ ; A_Clipboard := %Variable or a String%
             FileAppend
             (
-            "
-            A_Clipboard := " SubStr(input, 3, StrLen(input) - 2) 
-            ),Raw.ahk ; SubStr(input, 3, StrLen(input) - 2) ; input.Delete(1,2) 
+            '`nA_Clipboard := ' SubStr(input, 3, StrLen(input) - 2) 
+            ),Raw.ahk ; input.Delete(1,2) 
         }
-        else if InStr(input,"(") || InStr(input,"."){
-            FileAppend
-            (
-            "" 
-            input
-            ),Raw.ahk ; SubStr(input, 3, StrLen(input) - 2) ; input.Delete(1,2) 
-        }
-        else if !InStr(input, "(") || !InStr(input, " ") || (InStr(input,"\") && !InStr(input, "`n"))  ; PATHS
-            { 
+        else if (!Has('(') && !Has(' ')) || (Has('.') && !Has(' ')) || (Has(':\') && !Has( '`n')) { 
                 FileAppend
                 (
                 "
@@ -470,29 +392,13 @@ class Raw {
                 "
                 ),Raw.ahk
             }
-        ; else if !InStr(input,"'") || !InStr(input,"'")] 
-        else { ; if InStr(input, "`n") || InStr(input,'"') || InStr(input,"'"){
-            ; Lines := StrSplit(input,"`n")
-            ; for i, line in Lines{
-            ;     if line == "" || line== "`n"{
-            ;         Lines.RemoveAt(i)
-            ;         continue
-            ;     }
-                ; StrReplace(Lines[A_Index], " ", "(",,,1)
-                ; bracPos := InStr(line, " ")
-                ; command := SubStr(Lines[A_Index], 1, bracPos - 1)
-                ; input := SubStr(Lines[A_Index], bracPos + 1)
-                ; Lines[A_Index] := command "(" command ")"
-
+        else {
                 FileAppend
                 (
-                "`n"
-                input
+                "`n" input
                 ),Raw.ahk
             }
-        ; else {
-        ;     return 0
-        ; }
+
         Run(Raw.ahk)
         return 1
 
@@ -690,25 +596,25 @@ HideFromTaskbar(T := 3){
     tbl := ""
     }
 
-    Test1() {
-        MyGui := Gui()
-        MyGui.Opt("+AlwaysOnTop -Caption +ToolWindow")  ; +ToolWindow avoids a taskbar button and an alt-tab menu item.
-        MyGui.BackColor := "EEAA99"  ; Can be any RGB color (it will be made transparent below).
-        MyGui.SetFont("s32")  ; Set a large font size (32-point).
-        CoordText := MyGui.Add("Text", "cLime", "XXXXX YYYYY")  ; XX & YY serve to auto-size the window.
-        ; Make all pixels of this color transparent and make the text itself translucent (150):
-        WinSetTransColor(MyGui.BackColor " 150", MyGui)
-        SetTimer(UpdateOSD, 200)
-        SetTimer () => myGui.Destroy(), -3000
-        UpdateOSD()  ; Make the first update immediate rather than waiting for the timer.
-        MyGui.Show("x750 y800 NoActivate")  ; NoActivate avoids deactivating the currently active window.
-        HotIfWinExist "A"
-        UpdateOSD(*)
-        {
-            MouseGetPos &MouseX, &MouseY
-            CoordText.Value := "X" MouseX ", Y" MouseY
-            A_Clipboard := " " MouseX ", " MouseY
-        }
+Test1() {
+    MyGui := Gui()
+    MyGui.Opt("+AlwaysOnTop -Caption +ToolWindow")  ; +ToolWindow avoids a taskbar button and an alt-tab menu item.
+    MyGui.BackColor := "EEAA99"  ; Can be any RGB color (it will be made transparent below).
+    MyGui.SetFont("s32")  ; Set a large font size (32-point).
+    CoordText := MyGui.Add("Text", "cLime", "XXXXX YYYYY")  ; XX & YY serve to auto-size the window.
+    ; Make all pixels of this color transparent and make the text itself translucent (150):
+    WinSetTransColor(MyGui.BackColor " 150", MyGui)
+    SetTimer(UpdateOSD, 200)
+    SetTimer () => myGui.Destroy(), -3000
+    UpdateOSD()  ; Make the first update immediate rather than waiting for the timer.
+    MyGui.Show("x750 y800 NoActivate")  ; NoActivate avoids deactivating the currently active window.
+    HotIfWinExist "A"
+    UpdateOSD(*)
+    {
+        MouseGetPos &MouseX, &MouseY
+        CoordText.Value := "X" MouseX ", Y" MouseY
+        A_Clipboard := " " MouseX ", " MouseY
+    }
 }
 
     

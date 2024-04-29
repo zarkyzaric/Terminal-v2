@@ -1,3 +1,0 @@
-A_AhkPath
-
-POSSIBALLY input.txt to be a list of previously used commands and adds new command on top of the ordered file

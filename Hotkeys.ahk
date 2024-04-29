@@ -17,7 +17,8 @@
 ; Ctrl + Alt + T or Ctrl + \ or RCtrl => Runs the Terminal
 ; ^vkE2:: 
 ; RControl::
-^!t::Run(Terminal)
+^!t::
+RCtrl::Run(Terminal)
 ;-----------------------------------------------------------------------------------------
 ; Ctrl + Backspace => Deletes last word
 ^Backspace::SendInput "^+{Left}{Backspace}" ; Fixes Ctrl+Backspace to delete previous word

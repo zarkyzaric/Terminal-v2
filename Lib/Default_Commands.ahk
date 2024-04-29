@@ -31,7 +31,7 @@ Default_Commands := Map(
         ["ins","insta"],        Instagram.com,
         ["wa","whatsapp"],      "https://web.whatsapp.com/",
         ["pint","p"],           "https://www.pinterest.com/",
-        "discord",              "https://discord.com/channels/@me",
+        ["discord","disc"],             "https://discord.com/channels/@me",
     ;?=======================================================
     ;?                 DEFAULT APPS                
     ;?=======================================================
