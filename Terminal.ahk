@@ -15,7 +15,7 @@
 
 global hi := -1
 
-DurationOfAppearance := 30 ; seconds
+DurationOfAppearance := 60 ; seconds
 
 Font          := "Consolas", 
 FontColor     := "F0FFFF" ; RGB

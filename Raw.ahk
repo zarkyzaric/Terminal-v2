@@ -4,4 +4,4 @@
 #Include %A_ScriptDir%\Lib\Paths.ahk
 #Include My_Commands.ahk
 
-msg()
+run("C:/Users/LEPALALA/Music/YT Download/")

@@ -49,6 +49,7 @@ Default_Commands := Map(
         ;?                 OFTEN FUNCTIONS                
         ;?=======================================================
         "cmd",                  () => CMD(),
+        "py",                  "python.exe",
         "raw",                   () => Raw.Terminal(),
     ;?=======================================================
     ;?                 HOTKEY REPLACEMENTS                
@@ -70,6 +71,7 @@ Default_Commands := Map(
     ;?=======================================================
         "taskbar",               Automation "\Toggle_Hide_Taskbar.exe",
         "taskkill",              Automation '\Taskkiller.bat',
+        "mp3",                   () => (Run("pythonw.exe " Automation '\yt_downloader.py'),WinWait(),WinActivate()),
         "shutdown", () => OS.Shutdown(), ;shutdown @seconds
         "logoff",   () => OS.Logoff(), ; logoff @seconds
         "restart",  () => OS.Restart(), ; restart @seconds
