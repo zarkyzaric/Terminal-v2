@@ -137,12 +137,11 @@ SetTimer () => ExitApp(), -(DurationOfAppearance * 1000)
 ;?_______________________________________________________________________________________________
 Fuzzy_Navigator(Input) {
     global Default_Commands,My_Commands
-    Content := FileRead("History.txt")
-    
-    FileAppend(Input '`n' ,"History.txt")
+    ; Content := FileRead("History.txt")
     if Input==""
         return
-    else if SubStr(input,1,2) == "c=" {
+    FileAppend(Input '`n' ,"History.txt")
+    if SubStr(input,1,2) == "c=" {
         Raw.Run(input)
         return
     }
