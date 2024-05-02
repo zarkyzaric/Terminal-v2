@@ -101,3 +101,8 @@ class KURS {
 
  Default_Browser := 'C:\Program Files\Mozilla Firefox\firefox.exe'
  Default_Browser := 'C:\Program Files\Mozilla Firefox\firefox.exe'
+ Default_Browser := 'C:\Program Files\Mozilla Firefox\firefox.exe'
+ Default_Browser := 'C:\Program Files\Mozilla Firefox\firefox.exe'
+ Default_Browser := 'C:\Program Files\Mozilla Firefox\firefox.exe'
+ Default_Browser := 'C:\Program Files\Mozilla Firefox\firefox.exe'
+ Default_Browser := 'C:\Program Files\Mozilla Firefox\firefox.exe'

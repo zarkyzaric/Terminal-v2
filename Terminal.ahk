@@ -1,19 +1,12 @@
 #Requires Autohotkey v2.0
+#Include %A_ScriptDir%\Lib\All.ahk
 #SingleInstance Force ; If script is running in the background, and you want to start it again, this input makes sure that is executed without a questioning you do you want to shutdown the previous one, but rather exits by default
 #NoTrayIcon
-; library for personalized functions:
-#Include %A_ScriptDir%\Lib\Functions.ahk
-;library for file locations,paths,urls,classes:
-#Include %A_ScriptDir%\Lib\Paths.ahk
-#Include %A_ScriptDir%\Lib\Default_Commands.ahk
-#Include My_Commands.ahk
-;F0FFFF;FFF8DC
 
-;todo----------------------------------------------------------
-;todo       CUSTOMIZE POPUP WINDOW'S APPEARANCE             
-;todo----------------------------------------------------------
 
-global hi := -1
+;*----------------------------------------------------------
+;*       CUSTOMIZE POPUP WINDOW'S APPEARANCE             
+;*----------------------------------------------------------
 
 DurationOfAppearance := 60 ; seconds
 
@@ -80,12 +73,15 @@ Destruction(t,shouldContinue := False) { ;for unknown reasons Destruction has to
 }
 Arrow(t,Arrow := "Up"){
     OnError ShowEmpty
+    og_input := Input.Value
     static i := 0
     fileContent := FileRead("History.txt")
     history:= StrSplit(fileContent,"`n")
-    len := history.Length
+    if fileContent == ""
+        len := -1
+    else
+        len := history.Length
     ; msgbox history[len - i]
-    og_input := Input.Value
     if i <= len && i >= -1 {
         if Arrow == "Up"        && i < len - 1 { 
             i += 1
@@ -138,7 +134,7 @@ SetTimer () => ExitApp(), -(DurationOfAppearance * 1000)
 Fuzzy_Navigator(Input) {
     global Default_Commands,My_Commands
     ; Content := FileRead("History.txt")
-    if Input==""
+    if Input=="" 
         return
     FileAppend(Input '`n' ,"History.txt")
     if SubStr(input,1,2) == "c=" {
@@ -202,6 +198,9 @@ Fuzzy_Navigator(Input) {
 
     )
     GoThrough(FuncCalls,prefix)
+    ;TODO myb add here to delete this unrecognized input
+    ;TODO if !GoThrough(FuncCalls,prefix)
+    ;TODO delete last History.txt line
     ExitApp()
 
 }
