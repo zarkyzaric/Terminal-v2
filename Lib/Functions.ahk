@@ -73,7 +73,7 @@ CMD(Commands*) {
         Command := Command . com " & "
     }
     Command := SubStr(Command,1,StrLen(Command) - 2)
-    MsgBox(Command)
+    ; MsgBox(Command)
     Run(A_ComSpec ' /k ' Command, Dir)
 }
 FileGen(CODE:= "", fullFileName := A_ScriptDir "\Lib\Files\" "New.txt"){
