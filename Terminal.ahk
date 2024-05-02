@@ -194,6 +194,7 @@ Fuzzy_Navigator(Input) {
         "brightness",() => Settings.Brightness(input), ; brightness @% | Example: brightness 70
 
         "cmd",     () => CMD(input), ; cmd @cmd_parameters
+        "taskkill",     () => CMD("taskkill /im " input ".exe /f","timeout /t 2","exit"), ; cmd @cmd_parameters
         ["touch","mfl","mf"], () => FileGen(input),
 
     )

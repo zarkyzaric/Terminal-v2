@@ -77,7 +77,7 @@ FontColor := "003366" ; "003366" is dark blue
 
 Global hFactor := 0 ; Don't change size here.  Change in TogSize() function, below.
 Global wFactor := 0 ; Don't change here.  Change in TogSize() function.
-FormName := "Hotstring Helper -- Muli-Line" ; Change here, if desired.
+FormName := "Hotstring Helper -- Multi-Line" ; Change here, if desired.
 
 hh := Gui('', FormName)
 hh.Opt("-MinimizeBox +alwaysOnTop")

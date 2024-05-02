@@ -99,10 +99,5 @@ class KURS {
     static SA := KURS.ID "396"
 }
 
- Default_Browser := 'C:\Program Files\Mozilla Firefox\firefox.exe'
- Default_Browser := 'C:\Program Files\Mozilla Firefox\firefox.exe'
- Default_Browser := 'C:\Program Files\Mozilla Firefox\firefox.exe'
- Default_Browser := 'C:\Program Files\Mozilla Firefox\firefox.exe'
- Default_Browser := 'C:\Program Files\Mozilla Firefox\firefox.exe'
- Default_Browser := 'C:\Program Files\Mozilla Firefox\firefox.exe'
+ This_ProjectDir := 'C:\Users\LEPALALA\Documents\GitHub\Terminal-v2'
  Default_Browser := 'C:\Program Files\Mozilla Firefox\firefox.exe'

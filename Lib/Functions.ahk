@@ -66,8 +66,16 @@ Msg(Text := "Empty MsgBox",PositionAndSize := "Autosize xcenter y" (A_ScreenHeig
     SetTimer () => myGui.Destroy(), -(T * 1000)
 }
 ; Passes @param as Command Line parameter
-CMD(Command := "",Dir := "C:\Windows\system32") => Run(A_ComSpec ' /k ' Command, Dir)
-
+CMD(Commands*) {
+    Dir := "C:\Windows\system32"
+    Command := ""
+    for com in Commands {
+        Command := Command . com " & "
+    }
+    Command := SubStr(Command,1,StrLen(Command) - 2)
+    MsgBox(Command)
+    Run(A_ComSpec ' /k ' Command, Dir)
+}
 FileGen(CODE:= "", fullFileName := A_ScriptDir "\Lib\Files\" "New.txt"){
     ;! myb naming it file is going to make a problem, we'll see
     Separator := InStr(CODE," || ")

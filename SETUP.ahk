@@ -5,6 +5,11 @@
 ; Sets up default Browser
 ;! Doesnt run ps1 correctly
 ; try FileDelete(Setup_Requirements "\DefaultBrowserPath.txt")
+
+FileAppend
+(
+    "`n This_ProjectDir := '" A_ScriptDir "'"
+),Lib "\Paths.ahk"
 FileAppend("",Setup_Requirements "\DefaultBrowserPath.txt")
 Run(Setup_Requirements "\Get_Defaults.ps1")
 F := FileOpen(Setup_Requirements "\DefaultBrowserPath.txt","r")
