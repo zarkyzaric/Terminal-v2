@@ -49,7 +49,4 @@ RCtrl::Run(Terminal)
 ;-----------------------------------------------------------------------------------------
 
 
-^!h:: {
-Run This_ProjectDir "\Lib\Append.ahk"
-Send("^!h")
-}
+^!h::Run(This_ProjectDir "\Lib\Append.ahk"),Send("^!h")

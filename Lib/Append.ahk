@@ -31,10 +31,14 @@ RepStr := ch.AddEdit('vRepStr +Wrap y+2 xs h100 w320')
 chID:= "ahk_id " ch.Hwnd
 ch.Show('Autosize Center')
 Destruction(t,YN := "Yes") => chButtonCancel()
-
+Ignore(t,IgnoreThisKey := "Yes") {
+    Send("")
+}
 HotIfWinExist chID
     Hotkey("Escape",Destruction,"On")
     Hotkey("^Space",Destruction,"On")
+    Hotkey("Enter",Ignore,"On")
+
 }
 chButtonAppend(*) {
     tDefHotStr := ch['DefHotStr'].text
@@ -55,8 +59,10 @@ Appendit(tDefHotStr, tRepStr){
         return
     }
     FileDelete(SavePath)
+    if InStr(tRepStr,"`n",,StrLen(tRepStr) - 2)
+        tRepStr := SubStr(tRepStr,1,StrLen(tRepStr) - 2)
     if !InStr(tRepStr,"() =>") && !InStr(tRepStr,".Bind")  
-        NewLine := "`"" tDefHotStr "`",    " "`"" tRepStr "`", "
+        NewLine := '`"' tDefHotStr '`",    ' '`"' tRepStr '`", '
     else 
         NewLine := "`"" tDefHotStr "`",    " tRepStr ", "
     FileAppend(Left NewLine Right, SavePath)
@@ -65,6 +71,7 @@ Appendit(tDefHotStr, tRepStr){
 
 chButtonOpen(*) {
     Run "notepad.exe "  SavePath
+    ExitApp
 }
 
 chButtonCancel(*) {
