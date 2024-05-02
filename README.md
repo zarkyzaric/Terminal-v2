@@ -1,11 +1,10 @@
 
 ## See CHEATSHEET of all default commands [here](/CHEATSHEET.md)
+
 ## Version 2.4 in development:
 Planned new features & progress of the project can be found [here](https://github.com/users/zarkyzaric/projects/1/views/1)
 
 # Changelog for v2.3
-
-## Added Features
 - **Command Line Access (`cmd` command)**: Type directly into your Command Line. Example: `cmd /k tasklist`.
 - **File Creation Commands (`mf`, `touch`, `mkfile`)**: Create files with the syntax `"your text || filename.filetype"`. Example: `"Hello World || example.txt"`.
 - **Sleep Command (`sleep`)**: Turns your monitor off and puts the computer into sleep/standby mode.
