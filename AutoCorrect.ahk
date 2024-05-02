@@ -348,7 +348,7 @@ Appendit(tMyDefaultOpts, tDefHotStr, tRepStr)
   Else {
     WholeStr :=  ":" . tMyDefaultOpts . ":" . tDefHotStr . "::" . tRepStr . tComStr
   }
-  FileAppend("`n" WholeStr, A_ScriptFullPath) ; 'n makes sure it goes on a new line.
+  FileAppend("`n" WholeStr, A_ScriptDir "\Custom_AutoCorrect.ahk") ; 'n makes sure it goes on a new line.
   Reload() ; relaod the script so the new hotstring will be ready for use.
 }
 

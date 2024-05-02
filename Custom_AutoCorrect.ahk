@@ -172,6 +172,7 @@
 ; :*C:Iwd::I'd
 ; :*C:iwd::i'd
 :*C:Ithd::It'd
+:*C:Itd::It'd
 :*C:ithd::it'd
 :*C:Its::It's
 :*C:its::it's
@@ -315,3 +316,5 @@
 :*?:\'C::Ć
 :*?:\;C::Ć
 :*?:\Dj::Đ
+
+

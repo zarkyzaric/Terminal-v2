@@ -9,14 +9,39 @@ RButton & WheelDown::AltTab
 RButton & WheelUp::ShiftAltTab
 RButton::RButton
 
+;? OFTEN APPS | APPS HOTKEYS - - - - - - - - - - - - - - - - - - - - - - - - 
+;! -  -  -  -  -  -  -  -  -  -  -  - CAPSLOCK + KEY
+; CapsLock & a::
+; CapsLock & b::
+CapsLock & c::Run Google.Calendar
+; CapsLock & d::
+; CapsLock & e::
+; CapsLock & f::Run Default_Browser
+CapsLock & g::Run 'https://chat.openai.com'
+CapsLock & h::Run Help
+; CapsLock & i::
+; CapsLock & j::
+; CapsLock & k::
+; CapsLock & l::
+CapsLock & m::Run Google.Gmail
+; CapsLock & n::
+; CapsLock & o::
+; CapsLock & p::
+; CapsLock & q::
+; CapsLock & r::
+; CapsLock & s::        
+; CapsLock & t::
+; CapsLock & u::
+; CapsLock & v::
+; CapsLock & w::
+; CapsLock & x::
+; CapsLock & y::
+; CapsLock & z::
+; NumLock & z::
+; #HotIf
 
-
-;? OFTEN USED WINDOWS SETTINGS AND APPS
-;! -  -  -  -  -  -  -  -  -  -  -  -
-#HotIf GetKeyState("LShift","P")
-;! CapsLock + LShift + KEY
 #HotIf GetKeyState("CapsLock","P")
-; RShift::L
+; RShift::LC
 ; LShift & a::
 ; LShift & b::
 LShift & c::Run 'calc.exe'
