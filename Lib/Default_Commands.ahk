@@ -87,5 +87,8 @@ Default_Commands := Map(
         "5",                     () => Send("#5"),
     
         ;! myb Settings(#i) automation commands 
+
+        "similar",               "https://www.chosic.com/playlist-generator/",
+
         
     )

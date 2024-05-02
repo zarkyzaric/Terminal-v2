@@ -190,11 +190,11 @@ Fuzzy_Navigator(Input) {
         "shutdown", () => OS.Shutdown(input), ;shutdown @seconds
         "logoff",   () => OS.Logoff(input), ; logoff @seconds
         "restart",  () => OS.Restart(input), ; restart @seconds
-        "sleep",  () => OS.Sleep(input), ; restart @seconds
-        
+        "sleep",    () => OS.Sleep(input), ; restart @seconds
+        "mp3",      () => CMD("cd C:\Users\LEPALALA\Documents\GitHub\Terminal-v2\Lib\Automation & python yt_bg.py `"" input "`"" " & exit"),
         "h",        () => (Run(Help), SendIn("!s",1.5), SendText(input),Send("{Enter}")), ; h @search_text
         
-        "theme",    () => Settings.Theme(input), ; theme @NN | N is either 1 or 0, first N is for System's Theme, second is for Window's theme (1=light, 0=dark)
+        "theme",     () => Settings.Theme(input), ; theme @NN | N is either 1 or 0, first N is for System's Theme, second is for Window's theme (1=light, 0=dark)
         "brightness",() => Settings.Brightness(input), ; brightness @% | Example: brightness 70
 
         "cmd",     () => CMD(input), ; cmd @cmd_parameters
