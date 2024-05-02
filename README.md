@@ -5,7 +5,7 @@
 Planned new features & progress of the project can be found [here](https://github.com/users/zarkyzaric/projects/1/views/1)
 
 # Changelog for v2.3
-- **Command Line Access (`cmd` command)**: Type directly into your Command Line. Example: `cmd /k tasklist`.
+- **Command Line Access (`cmd` command)**: Type directly into your Command Line. Example: `cmd tasklist`.
 - **File Creation Commands (`mf`, `touch`, `mkfile`)**: Create files with the syntax `"your text || filename.filetype"`. Example: `"Hello World || example.txt"`.
 - **Sleep Command (`sleep`)**: Turns your monitor off and puts the computer into sleep/standby mode.
 - **Auto Detection**: Automatically detects your default browser.
