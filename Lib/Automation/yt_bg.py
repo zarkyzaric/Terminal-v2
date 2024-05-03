@@ -13,7 +13,7 @@ video_url = sys.argv[1]
 
 # Getting cleaned title
 response = req.get(video_url)
-soup = bs(response.text,"html.parser")
+soup = bs(response.text,"html.parser")  
 title_elem = soup.find('title')
 if title_elem:
     full_title = title_elem.text

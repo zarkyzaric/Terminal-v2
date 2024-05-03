@@ -551,8 +551,10 @@ class Get {
 
 DownloadMP3(){
     Send("^l")
+    Sleep(100)
     input := Get.SelectedText()
-    CMD("cd " A_ScriptDir "\Automation & python yt_bg.py `"" input "`"" " & exit")
+    CMD("cd " A_ScriptDir "\Automation", "python yt_bg.py `"" input "`"","exit")
+    return
 }
 
 
@@ -631,7 +633,3 @@ Test1() {
     }
 }
 
-    
-    
-    
-; }
