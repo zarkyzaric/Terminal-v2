@@ -57,7 +57,6 @@ global WinID := "ahk_id " myGui.Hwnd ; Saving Window handle for destroying GUI
 ; ImageGui.Show(PositionAndSize)
 myGui.Show(PositionAndSize)
 ; WinActivate WinID
-; logoGui("C:\Users\LEPALALA\Documents\GitHub\Terminal-v2\Lib\text.png")
 
 ;Input Handling  and Gui's Destruction_____________________________________
 Destruction(t,shouldContinue := False) { ;for unknown reasons Destruction has to have 2 variables
@@ -187,14 +186,15 @@ Fuzzy_Navigator(Input) {
         "logoff",   () => OS.Logoff(input), ; logoff @seconds
         "restart",  () => OS.Restart(input), ; restart @seconds
         "sleep",    () => OS.Sleep(input), ; restart @seconds
-        "mp3",      () => CMD("cd C:\Users\LEPALALA\Documents\GitHub\Terminal-v2\Lib\Automation & python yt_bg.py `"" input "`"" " & exit"),
         "h",        () => (Run(Help), SendIn("!s",1.5), SendText(input),Send("{Enter}")), ; h @search_text
         
         "theme",     () => Settings.Theme(input), ; theme @NN | N is either 1 or 0, first N is for System's Theme, second is for Window's theme (1=light, 0=dark)
         "brightness",() => Settings.Brightness(input), ; brightness @% | Example: brightness 70
-
-        "cmd",     () => CMD(input), ; cmd @cmd_parameters
-        "taskkill",     () => CMD("taskkill /im " input ".exe /f","timeout /t 2","exit"), ; cmd @cmd_parameters
+        
+        "cmd",      () => CMD(input), ; cmd @cmd_parameters
+        "taskkill", () => CMD("taskkill /im " input ".exe /f","timeout /t 2","exit"), ; cmd @cmd_parameters
+        "pip",      () => CMD("pip " input), ; cmd @cmd_parameters
+        "mp3",      () => CMD("cd " A_ScriptDir "\Lib\Automation & python yt_bg.py `"" input "`"" " & exit"),
         ["touch","mfl","mf"], () => FileGen(input),
 
     )

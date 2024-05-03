@@ -529,9 +529,9 @@ class Get {
         ClipWait 2
         Selected_Text := A_Clipboard 
         A_Clipboard := OG_Clipboard
-        return Selected_Text 
+        return Selected_Text
     }
-    
+
     static WallpaperPath() {
     AD_GETWP_BMP := 0
     AD_GETWP_LAST_APPLIED := 0x00000002
@@ -547,7 +547,13 @@ class Get {
     MsgBox "Wallpaper: " Wallpaper
     }
 }
-    
+
+
+DownloadMP3(){
+    Send("^l")
+    input := Get.SelectedText()
+    CMD("cd " A_ScriptDir "\Automation & python yt_bg.py `"" input "`"" " & exit")
+}
 
 
 

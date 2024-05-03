@@ -10,6 +10,11 @@ FileAppend
 (
     "`n This_ProjectDir := '" A_ScriptDir "'"
 ),Lib "\Paths.ahk"
+; FileAppend
+; (
+;     "`n^!h::Run(This_ProjectDir `"\Lib\Append.ahk`"),Send(`"^!h`")"
+; ), A_ScriptDir "\Hotkeys.ahk"
+
 FileAppend("",Setup_Requirements "\DefaultBrowserPath.txt")
 Run(Setup_Requirements "\Get_Defaults.ps1")
 F := FileOpen(Setup_Requirements "\DefaultBrowserPath.txt","r")
@@ -23,6 +28,7 @@ FileAppend
 ),Lib "\Paths.ahk"
 
 Run("Hotkeys.ahk")
+Run(Setup_Requirements "\install_requirements.py")
 ; RunWait("Hotkeys.ahk")
 Sleep(1000)
 FileCreateShortcut(A_ScriptDir "\Hotkeys.ahk", A_Startup "\Hotkeys.lnk")

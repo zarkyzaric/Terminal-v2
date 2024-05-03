@@ -4,7 +4,9 @@ from tkinter import messagebox
 import os
 
 # Folder to save the MP3
-save_path = "C:/Users/LEPALALA/Music/YT Download/"
+# Folder to save the MP3
+sep = os.sep
+save_path = os.path.expanduser("~" + sep + "Music" + sep + "YT Download" )
 def auto_close_messagebox(title, message, duration=3000):  # Duration in milliseconds
     """
     Display a custom message box that closes after a specified duration.

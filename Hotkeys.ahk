@@ -48,5 +48,7 @@ RCtrl::Run(Terminal)
 ; ^!d:: Send("#!d")
 ;-----------------------------------------------------------------------------------------
 
+; ^!h::Run(A_ScriptDir "\Lib\Append.ahk"),Send("^!h")
+^!j::DownloadMP3()
 
-^!h::Run(This_ProjectDir "\Lib\Append.ahk"),Send("^!h")
+Run(A_ScriptDir "\Lib\Append.ahk")

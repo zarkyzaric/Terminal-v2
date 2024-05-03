@@ -24,20 +24,20 @@ RepStr := ch.AddEdit('vRepStr +Wrap y+2 xs h100 w320')
 ; ----- Buttons
 (ButApp := ch.AddButton('xm y+10', '&Append')).OnEvent("Click", chButtonAppend)
 (ButOpen := ch.AddButton('+notab x+10', '&Open')).OnEvent("Click", chButtonOpen)
-(ButCancel := ch.AddButton('+notab x+10', '&Cancel')).OnEvent("Click", chButtonCancel)
+(ButCancel := ch.AddButton(' x+10', '&Cancel')).OnEvent("Click", chButtonCancel)
 
-^!h::  ; Activation hotkey-combo (Win+h)
+^!h::  ; Activation hotkey-combo (Ctrl+Alt+h)
 {
 chID:= "ahk_id " ch.Hwnd
 ch.Show('Autosize Center')
 Destruction(t,YN := "Yes") => chButtonCancel()
-Ignore(t,IgnoreThisKey := "Yes") {
-    Send("")
-}
+; Ignore(t,IgnoreThisKey := "Yes") {
+;     Send("")
+; }
 HotIfWinExist chID
     Hotkey("Escape",Destruction,"On")
     Hotkey("^Space",Destruction,"On")
-    Hotkey("Enter",Ignore,"On")
+    ; Hotkey("Enter",Ignore,"On")
 
 }
 chButtonAppend(*) {
@@ -66,7 +66,7 @@ Appendit(tDefHotStr, tRepStr){
     else 
         NewLine := "`"" tDefHotStr "`",    " tRepStr ", "
     FileAppend(Left NewLine Right, SavePath)
-    ; Reload()  ; Reload the script so the new hotstring is active.
+    Reload()  ; Reload the script so the new hotstring is active.
 }
 
 chButtonOpen(*) {
