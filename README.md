@@ -1,29 +1,19 @@
 
 ## See CHEATSHEET of all default commands [here](/CHEATSHEET.md)
-## Version 2.2 in development:
+
+## Version 2.4 in development:
 Planned new features & progress of the project can be found [here](https://github.com/users/zarkyzaric/projects/1/views/1)
 
----
-# Release Notes for Version v2.1
-
-We are excited to announce the release of Version 2.1! This update brings a number of fixes and enhancements that improve the overall user experience and expand functionality. Below are the details of the changes included in this release.
-
-## What's New in v2.1
-
-### New Features:
-- **Daily.ahk:** A new feature that makes it easy to set up and access your favorite programs, websites, and folders all in one place. With `Daily.ahk`, you can organize these into groups (or packs) that can automatically open when you start your computer, or you can open them quickly anytime you need them. Perfect for streamlining your daily tasks and staying organized!
-- **Raw Command Access:** The `raw` command has been introduced as a mini popup code box for quick and convenient AHKv2 code testing. 
-- **Search Wikipedia:** You can now search Wikipedia directly with the shortcut `wiki [searchText]`.
-- **Map Searches:** Use `maps [searchText]` to quickly search for locations.
-- **GitHub URL Search:** The shortcut `github [urlText]` has been added to allow for easy navigation to GitHub URLs. (works as if you're adding to "www.github.com/")
-
-### Enhancements:
-- **Font Color:** Changed the font color for better readability and user interface contrast.
-
-### Fixes:
-- **Brightness Adjustment:** Fixed issues related to brightness control settings.
-- **Raw.Run() Function:** The Raw.Run() function has been corrected and now operates as expected.
-- **"Y" Key Enhancement:** Pressing "y" without parameters now directly opens YouTube, enhancing quick access.
+# Changelog for v2.3
+- **Command Line Access (`cmd` command)**: Type directly into your Command Line. Example: `cmd tasklist`.
+- **File Creation Commands (`mf`, `touch`, `mkfile`)**: Create files with the syntax `"your text || filename.filetype"`. Example: `"Hello World || example.txt"`.
+- **Sleep Command (`sleep`)**: Turns your monitor off and puts the computer into sleep/standby mode.
+- **Auto Detection**: Automatically detects your default browser.
+- **Command Navigation**: Use arrow up/down keys to switch through previous commands, similar to standard terminals.
+- **Hotstring Helper**: Eases the creation of hotstrings from AutoCorrect scripts.
+- **HotkeyLord.ahk Script**: Enhances functionality with additional scripting capabilities.
+- **Taskill Function**: Similar to the `cmd.exe taskkill` command, but you only need to input the name of the application (without `.exe`).
+- **Command Addition Shortcut**: Use Ctrl+Alt+H to open a window for creating new commands.
 
 ---
 # Custom Search Functions and Commands Popup Terminal
