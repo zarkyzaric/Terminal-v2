@@ -6,7 +6,9 @@ from bs4 import BeautifulSoup as bs
 import re
 # Folder to save the MP3
 sep = os.sep
+# save path is current user Music directory subfolder "Youtube Downloads" (created if doesn't exist)
 save_path = os.path.expanduser("~" + sep + "Music" + sep + "Youtube Downloads" )
+# passes url argument: ex: https://www.youtube.com/watch?v=dQw4w9WgXcQ
 video_url = sys.argv[1]
 
 # Getting cleaned title
