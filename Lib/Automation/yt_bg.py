@@ -47,9 +47,17 @@ video_url = sys.argv[1] #***
 title = get_title(video_url)
 # Trash strings in taht can appear in title
 trash = [
-        r'\s*-\sYoutube',
-        r'\s\(OFFICIAL\sVIDEO\)',
-]
+
+    # Example pattern to remove '- Youtube'
+    r'\s*\-\s*Youtube',        
+    r'\s?\((OFFICIAL\s)?(MUSIC\s)?(VIDEO|AUDIO)\)', #
+    r'\s?\((320|128)\s?(kbps)?\)',                  #
+    r'\s?\(Snap2s\.com\)',                          #  
+    r'\s?\((\s*)?\)',                               # ()
+    r'\s?Prod\.\sby[^.]+',                          # Handles Prod. by
+    # r'#\S+',
+    ]
+
 # Regex parse for cleaning up the title
 title = clear_title(title,trash)
 
