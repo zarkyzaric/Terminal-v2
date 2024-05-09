@@ -26,7 +26,7 @@ RepStr := ch.AddEdit('vRepStr +Wrap y+2 xs h100 w320')
 (ButOpen := ch.AddButton('+notab x+10', '&Open')).OnEvent("Click", chButtonOpen)
 (ButCancel := ch.AddButton(' x+10', '&Cancel')).OnEvent("Click", chButtonCancel)
 
-^!h::  ; Activation hotkey-combo (Ctrl+Alt+h)
+^!+h::  ; Activation hotkey-combo (Ctrl+Alt+h)
 {
 chID:= "ahk_id " ch.Hwnd
 ch.Show('Autosize Center')

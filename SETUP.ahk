@@ -32,6 +32,7 @@ Run(Setup_Requirements "\install_requirements.py")
 ; RunWait("Hotkeys.ahk")
 Sleep(1000)
 FileCreateShortcut(A_ScriptDir "\Hotkeys.ahk", A_Startup "\Hotkeys.lnk")
+FileCreateShortcut(A_ScriptDir "\Startup.ahk", A_Startup "\Startup.lnk")
 
 ; Sleep(1000)
 ; FileCreateShortcut(A_ScriptDir "\Hotkeys.ahk", A_Startup "\Hotkeys.lnk")

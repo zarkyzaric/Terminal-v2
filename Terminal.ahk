@@ -50,9 +50,6 @@ global Input := myGui.Add("Edit", "Background" BGColor " " InputBoxOptions) ; Ad
 global WinID := "ahk_id " myGui.Hwnd ; Saving Window handle for destroying GUI
 ; global ImageID := "ahk_id " imageGui.Hwnd ; Saving Window handle for destroying GUI
 
-;! iconsize := 32  ; Ideal size for alt-tab varies between systems and OS versions.
-;! hIcon := LoadPicture(A_ScriptDir "\Lib\duck.ico", "Icon1 w" iconsize " h" iconsize, &imgtype)
-;! SendMessage(0x0080, 1, hIcon, MyGui) 
 
 ; ImageGui.Show(PositionAndSize)
 myGui.Show(PositionAndSize)
@@ -157,8 +154,8 @@ Fuzzy_Navigator(Input) {
 ;?=======================================================
     static FuncCalls := Map(  
         ;TODO "default",  () => SetDefault(input),
-        "r",        () => Raw.Run(input), ; r @raw_ahk_code
-        "run",      () => Run(input),
+        "raw",        () => Raw.Run(input), ; r @raw_ahk_code
+        "r",      () => Raw.Run('Run' input ''),
         
         ; DON'T WORK ANYMORE
         ;! "mp3",      () => Mp3.Download(input), ; mp3 @song_name
@@ -166,7 +163,7 @@ Fuzzy_Navigator(Input) {
 
         "s",        () => Search.Smart(input), ; s @search_text
         ["y","z"],  () => Search.YT(input), ; y @search_text
-        ["gh","git"],      () => Search.GitHub(input), ; git @search_text
+        ["gh","git"],() => Search.GitHub(input), ; git @search_text
         "github",   ()=> Run("www.github.com/" input),
         "g",        () => Search.GPT(input), ; g @prompt
         "p",        () => Search.Pinterest(input), ; p @search_text
@@ -194,7 +191,7 @@ Fuzzy_Navigator(Input) {
         "cmd",      () => CMD(input), ; cmd @cmd_parameters
         "taskkill", () => CMD("taskkill /im " input ".exe /f","timeout /t 2","exit"), ; cmd @cmd_parameters
         "pip",      () => CMD("pip " input), ; cmd @cmd_parameters
-        "mp3",      () => CMD("cd " A_ScriptDir "\Lib\Automation & python yt_bg.py `"" input "`"" " & exit"),
+        "mp3",      () => CMD("cd " A_ScriptDir "\Lib\Automation & python yt_bg.py `"" input "`"" ""),
         ["touch","mfl","mf"], () => FileGen(input),
 
     )

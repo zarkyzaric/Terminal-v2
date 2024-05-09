@@ -49,6 +49,14 @@ RCtrl::Run(Terminal)
 ;-----------------------------------------------------------------------------------------
 
 ; ^!h::Run(A_ScriptDir "\Lib\Append.ahk"),Send("^!h")
-^!j::DownloadMP3()
+^!+j::
+{
+    Send("^l")
+    input := Get.SelectedText()
+    CMD("cd " A_ScriptDir "\Lib\Automation & python yt_bg.py `"" input "`"" " & exit")
+
+}
+
+^!p::Run (Lib . "\Tools\GetPath.ahk")
 
 Run(A_ScriptDir "\Lib\Append.ahk")

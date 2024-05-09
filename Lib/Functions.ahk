@@ -88,7 +88,7 @@ FileGen(CODE:= "", fullFileName := A_ScriptDir "\Lib\Files\" "New.txt"){
     ; MsgBox(Content),MsgBox(fullFileName)
     FileAppend Content,  fullFileName
     Run(fullFileName)
-}
+}   
 
 
 ;  TIME BASED ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -225,7 +225,7 @@ class Tool {
      
         g_CrdGet.Show("AutoSize y0 x" A_ScreenWidth / 20 * 13.5)
      }
-    static Clock(T:=3) {
+    static Clock(T:=5) {
 
         static clock_hwnd
     
@@ -244,7 +244,7 @@ class Tool {
         , clock_Date := FormatTime(, "d MMMM")
     
         ;Create the gui
-        g_Clock := Gui("-Border", "Clock")
+        g_Clock := Gui("", "Clock")
         g_Clock.BackColor := "171717"
     
         clock_hwnd := g_Clock.hwnd
@@ -286,10 +286,9 @@ class Tool {
         g_Clock.Show("W350 H320 y" A_ScreenHeight / 5 " x" A_ScreenWidth / 2 - 220)
         ; MsgBox ProcessGetName(g_Clock.Title)
         Sleep(T*1000)
+        Reload()
         ; PID := WinGetPID(g_Clock.Title)
-        ; Send("{Escape}")
-        WinKill g_Clock.Title
-        ; ProcessClose PID 
+        ; WinKill g_Clock.Title
 
     
     }
@@ -299,7 +298,7 @@ class Open {
         if IsSet(input){
             if VSCode != VSC
                 VSCode := VSCodium
-            Run(VSC " " input)   ;() => (Send("{LWin}"),SendIn("vs",0.1),SendIn("{Enter}",0.1),SendIn("{LWin}{Up}"))
+            Run(VSC " " input)
             }
         else {
             Run(VSCode)
@@ -351,7 +350,7 @@ class Search {
         return
     }
     static PasteBin(input) => Run("https://pastebin.com/" input)
-    static GPT(input) => (Run("https://chat.openai.com"),WinWait,WinActivate,SendIn("+{Esc}",3),SendIn(input,1),SendIn("{Enter}",1))
+    static GPT(input) => (Run("https://chat.openai.com"),WinWait,WinActivate,SendIn("+{Esc}",3),Sleep(1000),SendText(input),SendIn("{Enter}",1))
     static GitHub(input) => Run("https://github.com/search?q=" StrReplace(input, A_Space, "+") "&type=repositories")
     static Pinterest(input) => Run("https://www.pinterest.com/search/pins/?q=" StrReplace(input, A_Space, "%20") "&rs=typed")
     static Emoji(input) => Run("https://emojipedia.org/search?q=" StrReplace(input, A_Space, "+"))
@@ -377,21 +376,22 @@ class Raw {
         #Include My_Commands.ahk`n"
         ),Raw.ahk
         
-        if Has('c='){ ; A_Clipboard := %Variable or a String%
-            FileAppend
-            (
-            '`nA_Clipboard := ' SubStr(input, 3, StrLen(input) - 2) 
-            ),Raw.ahk ; input.Delete(1,2) 
-        }
-        else if (!Has('(') && !Has(' ')) || (Has('.') && !Has(' ')) || (Has(':\') && !Has( '`n')) { 
+        ; if Has('c:='){ ; A_Clipboard := %Variable or a String%
+        ;     FileAppend
+        ;     (
+        ;     '`nA_Clipboard := ' SubStr(input, 3, StrLen(input) - 2) 
+        ;     ),Raw.ahk ; input.Delete(1,2) 
+        ; }
+
+        if (!Has('(') && !Has(' ')) || (Has('.') && !Has(' ')) || (Has(':\') && !Has( '`n')) { 
                 FileAppend
                 (
                 "
                 OnError HideError
                 ; i := Integer(`"cause_error`")
-    
+
                 Run(" input ")
-                
+
                 HideError(exception, mode) {
                     MultiRun(" input ")
                     ; return true
@@ -399,20 +399,21 @@ class Raw {
                 }
                 "
                 ),Raw.ahk
-            }
+        }
         else {
-                FileAppend
-                (
-                "`n" input
+            FileAppend
+            (
+            "`n" input
                 ),Raw.ahk
-            }
-
+        }
+    
+        
         Run(Raw.ahk)
         return 1
 
     }
 
-    static Terminal() {
+    static Editor() {
         ;?________________CUSTOMIZE______________________________________________________________
         DurationOfAppearance := 500
         Font := "Consolas", FontSize := "18", FontColor := "ffffff"
@@ -420,9 +421,9 @@ class Raw {
         Width := 500, Height := 600
         
         ;*________________Gui_Object(Appearance)______________________________________________________________________
-        GuiOptions := "AlwaysOnTop -caption Border"
+        GuiOptions := "AlwaysOnTop +Caption +Border "
         FontOptions := "q5"
-        EditBoxOptions := "-E0x200 -VScroll " "W" Width " h" (Height - 5)
+        EditBoxOptions := "-E0x200 -VScroll " "W" (Width - 5) " h" (Height - 5)
         PositionAndSize := "W" Width "H" Height "y20"
         myGui := Gui(GuiOptions)
         myGui.BackColor := BGColor   
@@ -474,7 +475,6 @@ class Type {
     static Enter() => Send("{Enter}")    
     static Backspace() => Send("{BS}")
     static Space() => Send(A_Space)
-    static Cao() => Send("Caos")
 }
 class Song {
     static Similar(input) => Run("https://www.chosic.com/playlist-generator/")
@@ -504,13 +504,13 @@ class Settings {
 class OS {
     static ShutdownIn(X,T) => (Sleep(T*1000),Shutdown(X),ExitApp())
 
-    static Shutdown(T := 1) => OS.ShutdownIn(1,T)
-    static Sleep(T := 1) => (Sleep(T*1000),SendMessage(0x112, 0xF170, 2,, "Program Manager"))
-    static Logoff(T := 1) => OS.ShutdownIn(0,T)
-    static Restart(T := 1) => OS.ShutdownIn(2,T)
-    static ForceShutdown(T := 1) => OS.ShutdownIn(4,T)
-    static ForceRestart(T := 1) => OS.ShutdownIn(6,T)
-    ; static RIP(T := 1) => OS.ShutdownIn(8,T) ; use on your own responsability
+    static Shutdown(T:=1) => OS.ShutdownIn(1,T)
+    static Sleep(T:=1) => (Sleep(T*1000),SendMessage(0x112, 0xF170, 2,, "Program Manager"))
+    static Logoff(T:=1) => OS.ShutdownIn(0,T)
+    static Restart(T:=1) => OS.ShutdownIn(2,T)
+    static ForceShutdown(T:=1) => OS.ShutdownIn(4,T)
+    static ForceRestart(T:=1) => OS.ShutdownIn(6,T)
+    ; static RIP(T:=1) => OS.ShutdownIn(8,T) ; use on your own responsability
 }
 class PowerShell {
     static Path := "C:\Windows\system32\WindowsPowerShell\v1.0\powershell.exe"
@@ -548,17 +548,6 @@ class Get {
     }
 }
 
-
-DownloadMP3(){
-    Send("^l")
-    Sleep(100)
-    input := Get.SelectedText()
-    CMD("cd " A_ScriptDir "\Automation", "python yt_bg.py `"" input "`"","exit")
-    return
-}
-
-
-
 class Mp3 {
     static URL := "https://yt2k.com/en/youtube-mp3-v2"
     static Download(input := "", mode := ""){
@@ -593,6 +582,7 @@ class Mp3 {
       6 ActivateTab
       7 SetActiveAlt
 */
+
 HideFromTaskbar(T := 3){
     IID_ITaskbarList  := "{56FDF342-FD6D-11d0-958A-006097C9A090}"
     CLSID_TaskbarList := "{56FDF344-FD6D-11d0-958A-006097C9A090}"
