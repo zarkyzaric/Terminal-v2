@@ -89,7 +89,8 @@ FileGen(CODE:= "", fullFileName := A_ScriptDir "\Lib\Files\" "New.txt"){
     FileAppend Content,  fullFileName
     Run(fullFileName)
 }   
-
+; Clears content of a file (file becomes empty)
+ClearFile(fileName) => FileAppend("",fileName)
 
 ;  TIME BASED ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ; Same as Sleep, just in seconds, 
@@ -359,10 +360,19 @@ class Search {
     static Maps(input) => Run("https://www.google.com/maps?q=" StrReplace(input,A_Space,"+"))
     static StackOverflow(input) => Run("https://stackoverflow.com/search?q=" StrReplace(input,A_Space,"+"))
 }
+
+
+Toggle(this){
+    static Toggles := Map(
+    "taskbar",  Automation '\Toggle_Hide_Taskbar.exe',
+    
+    )
+    GoThrough(Toggles,this)
+}
 class Raw {
 
-   static ahk := "Raw.ahk"
-   static Run(input) {
+    static ahk := "Raw.ahk"
+    static Run(input, mode := '') {
         Has(needles*)=>IsIn(input,needles*)
         if input == ""
             return
@@ -375,39 +385,27 @@ class Raw {
         #Include %A_ScriptDir%\Lib\Paths.ahk
         #Include My_Commands.ahk`n"
         ),Raw.ahk
-        
-        ; if Has('c:='){ ; A_Clipboard := %Variable or a String%
-        ;     FileAppend
-        ;     (
-        ;     '`nA_Clipboard := ' SubStr(input, 3, StrLen(input) - 2) 
-        ;     ),Raw.ahk ; input.Delete(1,2) 
-        ; }
-
-        if (!Has('(') && !Has(' ')) || (Has('.') && !Has(' ')) || (Has(':\') && !Has( '`n')) { 
-                FileAppend
-                (
-                "
-                OnError HideError
-                ; i := Integer(`"cause_error`")
-
-                Run(" input ")
-
-                HideError(exception, mode) {
-                    MultiRun(" input ")
-                    ; return true
-                    ExitApp()
-                }
-                "
-                ),Raw.ahk
-        }
-        else {
-            FileAppend
-            (
-            "`n" input
-                ),Raw.ahk
-        }
     
-        
+        if mode = 'RUN'{
+            code :=
+        (
+        "
+        OnError HideError
+        ; i := Integer(`"cause_error`")
+
+        Run(" input ")
+
+        HideError(exception, mode) {
+            MultiRun(" input ")
+            ; return true
+            ExitApp()
+        }
+        "
+        )
+        }
+        else
+            code := input
+        FileAppend(code,Raw.ahk)   
         Run(Raw.ahk)
         return 1
 
@@ -460,15 +458,7 @@ class Raw {
 
     }
 }
-
-Toggle(this){
-    static Toggles := Map(
-    "taskbar",  Automation '\Toggle_Hide_Taskbar.exe',
-    
-    )
-    GoThrough(Toggles,this)
-}
-
+         
 
 
 class Type {

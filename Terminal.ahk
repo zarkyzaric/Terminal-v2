@@ -157,10 +157,6 @@ Fuzzy_Navigator(Input) {
         "raw",        () => Raw.Run(input), ; r @raw_ahk_code
         "r",      () => Raw.Run('Run' input ''),
         
-        ; DON'T WORK ANYMORE
-        ;! "mp3",      () => Mp3.Download(input), ; mp3 @song_name
-        ;! "mpy",      () => Mp3.Download(input,"LINK"), ; mpy @youtube_url
-
         "s",        () => Search.Smart(input), ; s @search_text
         ["y","z"],  () => Search.YT(input), ; y @search_text
         ["gh","git"],() => Search.GitHub(input), ; git @search_text

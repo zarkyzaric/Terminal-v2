@@ -8,7 +8,8 @@ Class Instagram {
     static DM := instagram.url "/direct"
 }
 class Google {
-    static Calendar := "https://calendar.google.com/calendar/u/0/r"
+    static Calendar := "https://calendar.google.com/calendar/u//r"
+    static Tasks := Google.Calendar "/tasks"
     static Maps := "https://www.google.com/maps"
     static Translate := "https://translate.google.com/"
     static Gmail := "https://mail.google.com/mail/u/0/#inbox"
@@ -98,3 +99,8 @@ class KURS {
     static RS := KURS.ID "35"
     static SA := KURS.ID "396"
 }
+
+ This_ProjectDir := 'C:\Users\LEPALALA\Documents\GitHub\Terminal-v2'
+ Default_Browser := 'C:\Program Files\Mozilla Firefox\firefox.exe'
+ This_ProjectDir := 'C:\Users\LEPALALA\Documents\GitHub\Terminal-v2'
+ Default_Browser := 'C:\Program Files\Mozilla Firefox\firefox.exe'

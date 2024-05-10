@@ -57,6 +57,6 @@ RCtrl::Run(Terminal)
 
 }
 
-^!p::Run (Lib . "\Tools\GetPath.ahk")
+^!p::Run (Lib "\Tools\GetPath.ahk")
 
 Run(A_ScriptDir "\Lib\Append.ahk")

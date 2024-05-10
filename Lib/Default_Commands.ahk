@@ -24,6 +24,7 @@ Default_Commands := Map(
         ["g","gpt","chatgpt"],  "https://chat.openai.com",
         ["gm","gmail"],         Google.Gmail,
         ["cal","calendar"],     Google.Calendar,
+        ["tasks"],              Google.Tasks,
         ["trans","translate"],  Google.Translate,
         "maps",                 Google.Maps,
         ["y","yt","youtube"],   Google.Youtube,
@@ -31,7 +32,7 @@ Default_Commands := Map(
         ["ins","insta"],        Instagram.com,
         ["wa","whatsapp"],      "https://web.whatsapp.com/",
         ["pint","p"],           "https://www.pinterest.com/",
-        ["discord","disc"],             "https://discord.com/channels/@me",
+        ["discord","disc"],     "https://discord.com/channels/@me",
     ;?=======================================================
     ;?                 DEFAULT APPS                
     ;?=======================================================
@@ -44,13 +45,13 @@ Default_Commands := Map(
         ["calc", "calculator"], "calc.exe", 
         "word",                 "winword.exe",
         ; ["ex","excel"],         "excel.exe",
-        ; ["python","py"],        "python.exe",
-        ;?=======================================================
-        ;?                 OFTEN FUNCTIONS                
-        ;?=======================================================
+        ["python","py"],        "python.exe",
+    ;?=======================================================
+    ;?                 OFTEN FUNCTIONS                
+    ;?=======================================================
         "cmd",                  () => CMD(),
-        "py",                  "python.exe",
-        "raw",                   () => Raw.Editor(),
+        "raw",                  () => Raw.Editor(),
+        "get path",             Lib "\Tools\GetPath.ahk",
     ;?=======================================================
     ;?                 HOTKEY REPLACEMENTS                
     ;?=======================================================
@@ -76,6 +77,7 @@ Default_Commands := Map(
         "logoff",   () => OS.Logoff(), ; logoff @seconds
         "restart",  () => OS.Restart(), ; restart @seconds
         "sleep",  () => OS.Sleep(), ; restart @seconds
+
         
         
     
