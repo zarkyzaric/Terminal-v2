@@ -53,11 +53,11 @@ trash = [
 
     # Example pattern to remove '- Youtube'
     r'\s*\-\s*Youtube',        
-    r'\s?\((OFFICIAL\s)?(MUSIC\s)?(VIDEO|AUDIO)\)', #
+    r'\s?\((OFFICIAL\s)?(MUSIC\s)?(VIDEO|AUDIO)\s?\d*\)', #
     r'\s?\((320|128)\s?(kbps)?\)',                  #
     r'\s?\(Snap2s\.com\)',                          #  
     r'\s?\((\s*)?\)',                               # ()
-    r'\s?Prod\.\sby[^.]+',                          # Handles Prod. by *
+    # r'\s?Prod\.\sby[^.]+',                          # Handles Prod. by *
     # r'#\S+',
     ]
 

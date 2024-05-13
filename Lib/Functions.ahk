@@ -1,5 +1,6 @@
 #Requires AutoHotkey v2.0 
 #Include %A_ScriptDir%\Lib\Paths.ahk
+#Include %A_ScriptDir%\Lib\FindText.ahk
 
 
 ;                  FUNCTIONS:
@@ -351,7 +352,26 @@ class Search {
         return
     }
     static PasteBin(input) => Run("https://pastebin.com/" input)
-    static GPT(input) => (Run("https://chat.openai.com"),WinWait,WinActivate,SendIn("+{Esc}",3),Sleep(1000),SendText(input),SendIn("{Enter}",1))
+    static GPT(input) {
+    Run("https://chatgpt.com")
+    ; WinActivate("ahk_exe " Default_Browser)
+    Loop 10000 {
+        t1:=A_TickCount, Text:=X:=Y:=""
+        Text:="|<gptpin>**50$20.0Dz07Us3U70kkkMz46Qt1a6ENUXyLgbbD9tnmSQwbbD9tnmSQwbbD9tnmSQwbbD9tXaC0tnkSQTz7XzXMTln1UsQ0Q3sy8"
+        ok:=FindText(&X, &Y, 0,0,0,0,0,0, Text)
+        if !ok.length
+            continue
+        else
+            {
+                FindText().Click(X+100, Y, "L")
+                break
+            }
+        }
+    ; Send("{LButton}")
+    Send(input)
+    Send("{Enter}")
+
+    }
     static GitHub(input) => Run("https://github.com/search?q=" StrReplace(input, A_Space, "+") "&type=repositories")
     static Pinterest(input) => Run("https://www.pinterest.com/search/pins/?q=" StrReplace(input, A_Space, "%20") "&rs=typed")
     static Emoji(input) => Run("https://emojipedia.org/search?q=" StrReplace(input, A_Space, "+"))

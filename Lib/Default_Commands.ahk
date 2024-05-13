@@ -21,7 +21,7 @@ Default_Commands := Map(
     ;?=======================================================
     ;?                 OFTEN WEBSITES                
     ;?=======================================================
-        ["g","gpt","chatgpt"],  "https://chat.openai.com",
+        ["g","gpt","chatgpt"],  "https://chatgpt.com",
         ["gm","gmail"],         Google.Gmail,
         ["cal","calendar"],     Google.Calendar,
         ["tasks"],              Google.Tasks,

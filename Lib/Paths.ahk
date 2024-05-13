@@ -42,7 +42,7 @@ class C {
         static Fonts := "C:\Windows\Fonts"
     }
 }
-
+ChatGPT := "https://chatgpt.com"
 ; Main Directories
 
 
@@ -99,8 +99,3 @@ class KURS {
     static RS := KURS.ID "35"
     static SA := KURS.ID "396"
 }
-
- This_ProjectDir := 'C:\Users\LEPALALA\Documents\GitHub\Terminal-v2'
- Default_Browser := 'C:\Program Files\Mozilla Firefox\firefox.exe'
- This_ProjectDir := 'C:\Users\LEPALALA\Documents\GitHub\Terminal-v2'
- Default_Browser := 'C:\Program Files\Mozilla Firefox\firefox.exe'

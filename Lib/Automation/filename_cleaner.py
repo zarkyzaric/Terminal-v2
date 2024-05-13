@@ -31,7 +31,7 @@ trash = [
     r'\s?\((320|128)\s?(kbps)?\)',                  #
     r'\s?\(Snap2s\.com\)',                          #  
     r'\s?\((\s*)?\)',                               # ()
-    r'\s?Prod\.\sby[^.]+',                          # Handles Prod. by
+    # r'\s?Prod\.\sby[^.]+',                          # Handles Prod. by
     # r'#\S+',
     ]
 
