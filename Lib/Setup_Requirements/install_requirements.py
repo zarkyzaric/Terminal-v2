@@ -2,7 +2,7 @@ import subprocess
 import sys
 
 # List of required libraries
-required_libraries = ['pytube', 'moviepy', 'requests', 'beautifulsoup4']
+required_libraries = ['pytube', 'moviepy', 'requests', 'beautifulsoup4','Pillow','pytesseract','pyperclip']
 
 # Check if required libraries are installed
 missing_libraries = [lib for lib in required_libraries if lib not in sys.modules]

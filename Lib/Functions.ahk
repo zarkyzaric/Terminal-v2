@@ -67,15 +67,16 @@ Msg(Text := "Empty MsgBox",PositionAndSize := "Autosize xcenter y" (A_ScreenHeig
     SetTimer () => myGui.Destroy(), -(T * 1000)
 }
 ; Passes @param as Command Line parameter
-CMD(Commands*) {
-    Dir := "C:\Windows\system32"
-    Command := ""
-    for com in Commands {
-        Command := Command . com " & "
-    }
-    Command := SubStr(Command,1,StrLen(Command) - 2)
+CMD(Command := "", DefaultDir := False) {
+    if DefaultDir
+        Dir := "C:\Windows\system32"
+    ; Command := ""
+    ; for com in Commands {
+    ;     Command := Command . com " & "
+    ; }
+    ; Command := SubStr(Command,1,StrLen(Command) - 2)
     ; MsgBox(Command)
-    Run(A_ComSpec ' /k ' Command, Dir)
+    Run(A_ComSpec ' /k ' Command) ;, Dir)
 }
 FileGen(CODE:= "", fullFileName := A_ScriptDir "\Lib\Files\" "New.txt"){
     ;! myb naming it file is going to make a problem, we'll see
@@ -555,6 +556,24 @@ class Get {
     ComCall(GetWallpaper, AD, "ptr", wszWallpaper, "uint", cchWallpaper, "uint", AD_GETWP_LAST_APPLIED)
     Wallpaper := StrGet(wszWallpaper, "UTF-16")
     MsgBox "Wallpaper: " Wallpaper
+    }
+    static ActiveFolderPath() {
+        shellWindows := ComObject("Shell.Application").Windows
+        for window in shellWindows {
+            try {
+                if (InStr(window.FullName, "explorer.exe")) {
+                    doc := window.Document
+                    if (doc) {
+                        path := doc.Folder.Self.Path
+                        return path
+                    }
+                }
+            }
+            catch Error as e {
+                ; Handle error if necessary
+            }
+        }
+        return "No active folder path found."
     }
 }
 

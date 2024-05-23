@@ -99,3 +99,6 @@ class KURS {
     static RS := KURS.ID "35"
     static SA := KURS.ID "396"
 }
+
+ This_ProjectDir := 'C:\Users\LEPALALA\Documents\GitHub\Terminal-v2'
+ Default_Browser := 'C:\Program Files\Mozilla Firefox\firefox.exe'

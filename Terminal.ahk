@@ -154,8 +154,8 @@ Fuzzy_Navigator(Input) {
 ;?=======================================================
     static FuncCalls := Map(  
         ;TODO "default",  () => SetDefault(input),
-        "raw",        () => Raw.Run(input), ; r @raw_ahk_code
-        "r",      () => Raw.Run('Run' input ''),
+        "raw",      () => Raw.Run(input), ; r @raw_ahk_code
+        "r",        () => Raw.Run(input,'RUN'),
         
         "s",        () => Search.Smart(input), ; s @search_text
         ["y","z"],  () => Search.YT(input), ; y @search_text
@@ -185,10 +185,13 @@ Fuzzy_Navigator(Input) {
         "brightness",() => Settings.Brightness(input), ; brightness @% | Example: brightness 70
         
         "cmd",      () => CMD(input), ; cmd @cmd_parameters
-        "taskkill", () => CMD("taskkill /im " input ".exe /f","timeout /t 2","exit"), ; cmd @cmd_parameters
+        "taskkill", () => CMD("taskkill /im & " input ".exe /f & timeout /t 2 & exit"), ; cmd @cmd_parameters
         "pip",      () => CMD("pip " input), ; cmd @cmd_parameters
         "mp3",      () => CMD("cd " A_ScriptDir "\Lib\Automation & python yt_bg.py `"" input "`"" ""),
-        ["touch","mfl","mf"], () => FileGen(input),
+        ; ["touch","mfl","mf"], () => FileGen(input),
+        ["co","create",
+        "new","touch"], () => CMD('cd `"' A_ScriptDir '\Lib\Automation`" & python create_and_open_file.py `"' input '`"' ' ' '`"' Get.ActiveFolderPath() '`"  & exit'),
+
 
     )
     GoThrough(FuncCalls,prefix)
