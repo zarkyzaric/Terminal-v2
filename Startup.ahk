@@ -10,12 +10,11 @@ Run(A_ScriptDir "\Daily.ahk"),Sleep(10000)
 Run(A_ScriptDir "\Hotkeys.ahk"),Sleep(10000)
 Run(A_ScriptDir "\HotKeyLord.ahk"),Sleep(10000)
 
-Run(A_ScriptDir "\Hotkeys.ahk"),Sleep(10000)
 
 Run(A_ScriptDir "\Custom_AutoCorrect.ahk"),Sleep(1)
 ; Run(Automation "\filename_cleaner.py"),Sleep(3000)
 
-Run(A_ScriptDir "\Lib\Tools\GetPath.ahk")
+; Run(A_ScriptDir "\Lib\Tools\GetPath.ahk")
 
 ; Script for killing unessessary background programs
 ; Run(A_ScriptDir "\Lib\Automation\taskkiller.bat")

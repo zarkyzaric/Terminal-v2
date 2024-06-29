@@ -17,7 +17,7 @@ CapsLock & c::Run Google.Calendar
 ; CapsLock & d::
 ; CapsLock & e::
 ; CapsLock & f::Run Default_Browser
-CapsLock & g::Run 'https://chat.openai.com'
+; CapsLock & g::Run ChatGPT
 CapsLock & h::Run Help
 ; CapsLock & i::
 ; CapsLock & j::

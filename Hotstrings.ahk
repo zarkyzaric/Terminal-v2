@@ -41,6 +41,8 @@
 ;-----------------------------------------------------------------------------------------
 ; AUTO FINISH BRACES
 ;-----------------------------------------------------------------------------------------
+; :*?B0:(::){Left}
+; :*?B0:[::]{Left}
 #HotIf !(WinActive("ahk_class Chrome_WidgetWin_1")) && !(WinActive("ahk_exe ghostwriter.exe"))
 LeaveBrac(s) {
     ; Selected := Get.SelectedText()
@@ -48,32 +50,36 @@ LeaveBrac(s) {
     ; if  Selected != "" {
         ;     Send Selected
         ; }
-        Send s "{Left}"
-    Hook := InputHook("L1 V1 *" , "{BS}") ;
-    Hook.Start(), Hook.Wait(), userInput := Hook.Input
-    Reason := Hook.EndReason
-    if (Reason == "EndKey") {
-        Send "{NumpadDel}"
+        Send s 
+        Send "{Left}"
+        Hook := InputHook("L1 V1 *" , "{BS}") ;
+        Hook.Start(), Hook.Wait(), userInput := Hook.Input
+        Reason := Hook.EndReason
+        if (Reason == "EndKey") {
+            Send "{NumpadDel}"
+        }
+        
+        ; else if userInput == ")"
+        ;     Send "{Right}{BS}"
     }
-    ; else if userInput == ")"
-    ;     Send "{Right}{BS}"
-}
-/*          EASYTYPE ()[]{}""''        */
-:*b0:(:: {
-    LeaveBrac(")")
-}
-:*b0:[:: {
-    LeaveBrac("]")
-}
-:*b0:{:: {
-    LeaveBrac("{}}")
-}
-:*b0:":: {
-    LeaveBrac('"')
-}
-:*b0:':: {
-    LeaveBrac("'")
-}
+    /*          EASYTYPE ()[]{}""''        */
+; :*b0:(:: {
+;     LeaveBrac(")")
+; }
+; :*b0:[:: {
+;     LeaveBrac("]")
+; }
+; ; :*?B0:{::{}}{Left}
+
+; :*b0:{:: {
+;     LeaveBrac("{U+007D}")
+; }
+; :*b0:":: {
+;     LeaveBrac('"')
+; }
+; :*b0:':: {
+;     LeaveBrac("'")
+; }
 #HotIf
 ;-----------------------------------------------------------------------------------------
 
@@ -123,12 +129,18 @@ LeaveBrac(s) {
 
 ; ščžćđŠČŽĆĐ
 ;---------------------
+:*?:\sh::š
+:*?:\ch::č
+:*?:\zh::ž
 :*?:\vs::š
 :*?:\vc::č
 :*?:\vz::ž
 :*?:\'c::ć
 :*?:\;c::ć
 :*?:\dj::đ
+:*?:\Sh::Š
+:*?:\Ch::Č
+:*?:\Zh::Ž
 :*?:\vS::Š
 :*?:\vC::Č
 :*?:\vZ::Ž

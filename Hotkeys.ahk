@@ -36,7 +36,7 @@ Examples: ;!
 ; ^vkE2:: 
 ; RControl::
 ^!t::
-RCtrl::Run(Terminal)
+^!q::Run(Terminal)
 ; ;-----------------------------------------------------------------------------------------
 ; ; Ctrl + Backspace => Deletes last word
 ; ^Backspace::SendInput "^+{Left}{Backspace}" ; Fixes Ctrl+Backspace to delete previous word
