@@ -118,7 +118,6 @@ Default_Commands := Map(
     ["gm","gmail"],         Google.Gmail,
     ["cal","calendar"],     Google.Calendar,
     "dm",                   Instagram.DM,
-    ["ins","insta"],        Instagram.com,
     "trans",                Google.Translate,
     "wa",                   "https://web.whatsapp.com/",
     "maps",                 Google.Maps,

@@ -3,15 +3,16 @@
 #Include %A_ScriptDir%\Lib\Functions.ahk
 #Include %A_ScriptDir%\Lib\Paths.ahk
 #Include My_Commands.ahk
-    Loop 10000 {
-        t1:=A_TickCount, Text:=X:=Y:=""
-        Text:="|<gptpin>**50$20.0Dz07Us3U70kkkMz46Qt1a6ENUXyLgbbD9tnmSQwbbD9tnmSQwbbD9tnmSQwbbD9tXaC0tnkSQTz7XzXMTln1UsQ0Q3sy8"
-        ok:=FindText(&X, &Y, 0,0,0,0,0,0, Text)
-        if !ok.length
-            continue
-        else
-            {
-                FindText().Click(X+50, Y, "L")
-                break
-            }
-        }
+#F10::
+F22:: {
+    hook := InputHook("L3 -V M")
+    hook.KeyOpt("{All}", "+E")
+    hook.KeyOpt("1234567890{Numpad1}{Numpad2}{Numpad3}{Numpad4}{Numpad5}{Numpad6}{Numpad7}{Numpad8}{Numpad9}{Numpad0}{F22}{F10}", "-E +S")
+    hook.Start()
+    KeyWait SubStr(A_ThisHotkey, -3)
+    hook.Stop()
+    if (hook.Input) {
+        Send "{Volume_Up}"
+        SoundSetVolume Integer(hook.Input)
+    }
+}

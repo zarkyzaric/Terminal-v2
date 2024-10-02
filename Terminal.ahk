@@ -161,17 +161,17 @@ Fuzzy_Navigator(Input) {
         ["y","z"],  () => Search.YT(input), ; y @search_text
         ["gh","git"],() => Search.GitHub(input), ; git @search_text
         "github",   ()=> Run("www.github.com/" input),
-        "g",        () => Search.GPT(input), ; g @prompt
+        "g",   () => Search.ChatGPT(input), ; g @prompt
         "p",        () => Search.Pinterest(input), ; p @search_text
         "em",       () => Search.Emoji(input), ; em @search_text
         "def",      () => Search.Meaning(input), ; def @define_text
         "gm",       () => Google.Mail(input), ; gm  @N
         "wiki",     () =>  Search.Wikipedia(input), ; wiki @search_text
         ["sof","so"], () => Search.StackOverflow(input),
-        "maps",     () => Search.Maps(input), ; maps @search_text
+        ["m","map","maps"],     () => Search.Maps(input), ; maps @search_text
         ["pastebin","pb","bin"], () => Search.PasteBin(input), ; pb @unique_code
         
-        "t",        () => Search.Translate(input), ; t @translate_text
+        ["t","trans"], () => Search.Translate(input), ; t @translate_text
         "conv",     () => Photo.Convert(input), ; conv @from_format-to_format ; Example: conv webp-png 
         "toggle",   () => Toggle(input),
 
@@ -191,8 +191,6 @@ Fuzzy_Navigator(Input) {
         ; ["touch","mfl","mf"], () => FileGen(input),
         ["co","create",
         "new","touch"], () => CMD('cd `"' A_ScriptDir '\Lib\Automation`" & python create_and_open_file.py `"' input '`"' ' ' '`"' Get.ActiveFolderPath() '`"  & exit'),
-
-
     )
     GoThrough(FuncCalls,prefix)
     ;TODO myb add here to delete this unrecognized input

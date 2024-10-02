@@ -2,11 +2,27 @@
 #Requires AutoHotkey v2.0
 Help := "https://www.autohotkey.com/docs/v2/FAQ.htm"
 
+;? _____________________SCRIPT'S DIRS__________________________________________________________________________________
+Hotkeys := A_ScriptDir "\Hotkeys"
+Hotstrings := A_ScriptDir "\Hotstrings"
+Startup := A_ScriptDir "Startup"
+Terminal := A_ScriptDir "\Terminal.ahk"
+Lib := A_ScriptDir "\Lib"
+Executables := Lib "\Executables"
+Automation := Lib "\Automation"
+Singletons := Lib "\Singletons"
+Setup_Requirements := Lib "\Setup_Requirements"
+
 Class Instagram {
     static COM := "https://www.instagram.com"
     static URL := "https://www.instagram.com"
     static DM := instagram.url "/direct"
 }
+
+WhatsApp := "web.whatsapp.com"
+
+
+
 class Google {
     static Calendar := "https://calendar.google.com/calendar/u//r"
     static Tasks := Google.Calendar "/tasks"
@@ -77,12 +93,6 @@ A_AllTasks_GodMode := "shell:::{ED7BA470-8E54-465E-825C-99712043E01C}"
 A_Firewall := "shell:::{4026492F-2F69-46B8-B9BF-5654FC07E423}"
 A_WindowsSearch := "shell:::{2559A1F8-21D7-11D4-BDAF-00C04F60B9F0}"
 A_FolderOptions := "shell:::{6DFD7C5C-2451-11D3-A299-00C04F8EF6AF}"
-Terminal := A_ScriptDir "\Terminal.ahk"
-Lib := A_ScriptDir "\Lib"
-Executables := Lib "\Executables"
-Automation := Lib "\Automation"
-Singletons := Lib "\Singletons"
-Setup_Requirements := Lib "\Setup_Requirements"
 
 ;IMI PATHS
 class KURS {

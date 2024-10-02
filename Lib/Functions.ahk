@@ -16,7 +16,8 @@ IsIn(haystack,needles*) {
     return False
 
 }
-; Runs Workflows and Apps
+;If you want to run multiple apps in one function
+; Runs Workflows,Arrays,Paths,Urls
 MultiRun(apps*) {
     for index, app in apps {
         if (IsObject(app)) {  ; Check if the argument is an array
@@ -58,7 +59,7 @@ Msg(Text := "Empty MsgBox",PositionAndSize := "Autosize xcenter y" (A_ScreenHeig
     
     myGui.BackColor := BGColor   
     WinSetTransColor("ffffff", myGui)
-    WinSetTransparent(100, myGui)
+    WinSetTransparent(150, myGui)
     myGui.SetFont("s" FontSize " " FontOptions " c" FontColor, Font)
     myGui.Add("Text",, Text) ; "'" 
     myGui.AddText()
@@ -76,7 +77,7 @@ CMD(Command := "", DefaultDir := False) {
     ; }
     ; Command := SubStr(Command,1,StrLen(Command) - 2)
     ; MsgBox(Command)
-    Run(A_ComSpec ' /k ' Command) ;, Dir)
+    Run(A_ComSpec ' /k ' Command, Dir)
 }
 FileGen(CODE:= "", fullFileName := A_ScriptDir "\Lib\Files\" "New.txt"){
     ;! myb naming it file is going to make a problem, we'll see
@@ -112,9 +113,10 @@ F11(sec := 1){
 Minimize(winTitle) => ( WinWait(winTitle),WinMinimize(winTitle) )
 ; Goes Through an Dictonary and activates or runs matching key's value (aither Bound Function or Path)
 GoThrough(Commands,command,input := ""){
+
         properRun(Commands,key){
-            IsObject(Commands[key]) ? Commands[key].Call() : Run(Commands[key])
-            return 1
+            IsObject(Commands[key]) ? Commands[key].Call() : Search.Smart(Commands[key])
+
         }
         for key in Commands{
             thisRun := properRun.Bind(Commands,key)
@@ -129,9 +131,72 @@ GoThrough(Commands,command,input := ""){
                 thisRun()
             }
         }
+
     return 0
+
+
 }
 
+BrowserTabFinder(title) {
+    SetTitleMatchMode 2
+    browsers := ["brave.exe", "firefox.exe", "chrome.exe", "msedge.exe", "opera.exe",  "iexplore.exe", "safari.exe"]
+    for _, browser in browsers {
+        if WinExist("ahk_exe " . browser) {
+            WinActivate
+            originalTitle := WinGetTitle("A")
+            tabCount := 0
+            Loop {
+                tabCount++
+                Send "^{Tab}"
+                Sleep 100
+                if WinActive("ahk_exe " . browser) {
+                    currentTitle := WinGetTitle("A")
+                    if InStr(currentTitle, title) {
+                        WinActivate
+                        return true
+                    }
+                    if (currentTitle == originalTitle || tabCount > 50) {
+                        break
+                    }
+                } else {
+                    ToolTip "Browser window lost focus. Total tabs counted: " . tabCount
+                    SetTimer () => ToolTip(), -5000
+                    return false
+                }
+            }
+        }
+    }
+    ToolTip "No supported browser found or target tab not found"
+    ; Send "^1"
+    ; Sleep 1000
+    ToolTip "Trying again"
+    SetTimer () => ToolTip(), -5000
+    return false
+}
+click_chatgpt_inputarea(title) {
+    if WinExist(title) {
+        WinGetPos ,,&W, &H, "A"
+        W := W / 2
+        H := H - 75
+        MouseMove W, H
+        Sleep 500
+        Click
+        Sleep 500
+    }
+}
+
+copy2clip() {
+    bak := ClipboardAll()
+    A_Clipboard := ""
+    Send("^c")
+    if ClipWait(1.2, 1) {
+        return A_Clipboard
+    } else {
+        ToolTip("Couldn't put text into Clipboard.")
+        SetTimer () => ToolTip(), -5000
+        A_Clipboard := bak
+    }
+}
 
 UserInputHook(Options := "L1 T2", EndKeys := "{Enter}", CustomOptions := "-Enter"){
     IH := InputHook(Options,EndKeys), IH.Start(), IH.Wait(), userInput := IH.Input
@@ -145,7 +210,6 @@ if StrCompare(CustomOptions,"-Enter") > 0 {
     Send("{Enter}")
 }
 }
-
 
 /*       KEYBOARD:          */
 /*      GUI FUNCTIONS     */
@@ -297,15 +361,13 @@ class Tool {
     }
 }
 class Open {
-    static VSC(input?, VSCode := VSC) {
+    static VSC(input?, Editor?) {
         if IsSet(input){
-            if VSCode != VSC
-                VSCode := VSCodium
-            Run(VSC " " input)
-            }
-        else {
-            Run(VSCode)
-        } 
+            !IsSet(Editor) ? Run(VSC " " input) : Run(VSCodium " " input)   ;() => (Send("{LWin}"),SendIn("vs",0.1),SendIn("{Enter}",0.1),SendIn("{LWin}{Up}"))
+        }
+        else
+            Run(Editor)
+
     }
 }
 
@@ -371,6 +433,31 @@ class Search {
     ; Send("{LButton}")
     Send(input)
     Send("{Enter}")
+
+    }
+static ChatGPT(Search_text,prompt:="") {
+    if prompt == ""
+        A_Clipboard := Search_text . "`s"
+    else
+        A_Clipboard := prompt . ' > ' . Search_text . "`s"
+    if !BrowserTabFinder('ChatGPT') {
+        Run ChatGPT
+        Sleep 3000
+        if BrowserTabFinder('ChatGPT') {
+            WinWaitActive 'ChatGPT'
+            Sleep 200
+            WinActivate 'ChatGPT'
+            Sleep 200
+        }  
+    }
+    click_chatgpt_inputarea('ChatGPT')
+    WinActivate 'ChatGPT'
+    Send '^v' . ".{Backspace}"
+    ; Send '^v' 
+    ; Sleep 100
+    ; Send ".{Backspace}"
+    Sleep 100
+    Send '{Enter}'
 
     }
     static GitHub(input) => Run("https://github.com/search?q=" StrReplace(input, A_Space, "+") "&type=repositories")
@@ -577,61 +664,32 @@ class Get {
     }
 }
 
-class Mp3 {
-    static URL := "https://yt2k.com/en/youtube-mp3-v2"
-    static Download(input := "", mode := ""){
-        Run Mp3.URL
-        Sleep 1000
-        MouseMove  926 , 601 
-        MouseClick "left"
-        if mode == "LINK" {
-            Send(input)
-            Goto Rest
-        }
-        Send(input " audio")
-        Rest:
-        Sleep 500
-        MouseMove  1371 , 615 
-        MouseClick "left"
-        Sleep 500
-        MouseMove  485 , 965
-        MouseClick "left"
-    } 
-}
-/*
-  Methods in ITaskbarList's VTable:
-    IUnknown:
-      0 QueryInterface  -- use ComObjQuery instead
-      1 AddRef          -- use ObjAddRef instead
-      2 Release         -- use ObjRelease instead
-    ITaskbarList:
-      3 HrInit
-      4 AddTab
-      5 DeleteTab
-      6 ActivateTab
-      7 SetActiveAlt
-*/
+; class Mp3 {
+; }
 
-HideFromTaskbar(T := 3){
-    IID_ITaskbarList  := "{56FDF342-FD6D-11d0-958A-006097C9A090}"
-    CLSID_TaskbarList := "{56FDF344-FD6D-11d0-958A-006097C9A090}"
-    
-    ; Create the TaskbarList object.
-    tbl := ComObject(CLSID_TaskbarList, IID_ITaskbarList)
-    
-    activeHwnd := WinExist("A")
-    
-    ComCall(3, tbl)                     ; tbl.HrInit()
-    ComCall(5, tbl, "ptr", activeHwnd)  ; tbl.DeleteTab(activeHwnd)
-    Sleep T * 1000  
-    ComCall(4, tbl, "ptr", activeHwnd)  ; tbl.AddTab(activeHwnd)
-    
-    ; When finished with the object, simply replace any references with
-    ; some other value (or if its a local variable, just return):
-    tbl := ""
-    }
 
-Test1() {
+;? Hidden because it's pretty much useless 
+; HideFromTaskbar(T := 3){
+;     IID_ITaskbarList  := "{56FDF342-FD6D-11d0-958A-006097C9A090}"
+;     CLSID_TaskbarList := "{56FDF344-FD6D-11d0-958A-006097C9A090}"
+    
+;     ; Create the TaskbarList object.
+;     tbl := ComObject(CLSID_TaskbarList, IID_ITaskbarList)
+    
+;     activeHwnd := WinExist("A")
+    
+;     ComCall(3, tbl)                     ; tbl.HrInit()
+;     ComCall(5, tbl, "ptr", activeHwnd)  ; tbl.DeleteTab(activeHwnd)
+;     Sleep T * 1000  
+;     ComCall(4, tbl, "ptr", activeHwnd)  ; tbl.AddTab(activeHwnd)
+    
+;     ; When finished with the object, simply replace any references with
+;     ; some other value (or if its a local variable, just return):
+;     tbl := ""
+;     }
+
+
+ShowMouseCordsGui() {
     MyGui := Gui()
     MyGui.Opt("+AlwaysOnTop -Caption +ToolWindow")  ; +ToolWindow avoids a taskbar button and an alt-tab menu item.
     MyGui.BackColor := "EEAA99"  ; Can be any RGB color (it will be made transparent below).

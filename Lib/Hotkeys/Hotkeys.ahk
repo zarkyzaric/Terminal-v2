@@ -42,6 +42,7 @@ Examples: ;!
 ; ^Backspace::SendInput "^+{Left}{Backspace}" ; Fixes Ctrl+Backspace to delete previous word
 ; ;-----------------------------------------------------------------------------------------
 
+
 ;-----------------------------------------------------------------------------------------
 ; Ctrl + Alt + D => Time and Date popup Window
 ^!d::Tool.Clock()

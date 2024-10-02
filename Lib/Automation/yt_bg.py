@@ -4,8 +4,11 @@ import os,sys
 import re
 import requests as req
 from bs4 import BeautifulSoup as bs
+# Folder to save the MP3
+user_path = os.path.expanduser('~')
 
-
+save_path = os.path.join(user_path,'Music','Downloads')
+# save_path = os.path.join('.','Music','Rodj')
 def get_title(video_url):
     response = req.get(video_url)
     soup = bs(response.text,"html.parser")
@@ -39,12 +42,10 @@ def convert_to_mp3(input_file, output_file):
 
 
 
-# Folder to save the MP3
-sep = os.sep
+
 # save path is current user Music directory subfolder "Youtube Downloads" (created if doesn't exist)
-save_path = os.path.expanduser("~" + sep + "Music" + sep + "Youtube Downloads")
 # passes url argument: ex: https://www.youtube.com/watch?v=dQw4w9WgXcQ
-video_url = sys.argv[1] #*
+video_url = 'https://www.youtube.com/watch?v=giWyK6CW5qI' #*
 
 # Getting title
 title = get_title(video_url)
@@ -56,9 +57,14 @@ trash = [
     r'\s?\((OFFICIAL\s)?(MUSIC\s)?(VIDEO|AUDIO)\s?\d*\)', #
     r'\s?\((320|128)\s?(kbps)?\)',                  #
     r'\s?\(Snap2s\.com\)',                          #  
-    r'\s?\((\s*)?\)',                               # ()
+    r'\s?\((\s*)?\)',   
+    r'\s*-\s*HD',
+    r'\sHD\s*',
+    r'\s*LYRICS\s*',
+    # ()
     # r'\s?Prod\.\sby[^.]+',                          # Handles Prod. by *
     # r'#\S+',
+    r'\s-',
     ]
 
 # Regex parse for cleaning up the title

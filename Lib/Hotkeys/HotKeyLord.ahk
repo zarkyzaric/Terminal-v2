@@ -7,17 +7,17 @@
 ; RButton + Wheel => Switching trought tabs
 RButton & WheelDown::AltTab
 RButton & WheelUp::ShiftAltTab
-RButton::RButton
+    RButton::RButton
 
 ;? OFTEN APPS | APPS HOTKEYS - - - - - - - - - - - - - - - - - - - - - - - - 
 ;! -  -  -  -  -  -  -  -  -  -  -  - CAPSLOCK + KEY
 ; CapsLock & a::
-; CapsLock & b::
+CapsLock & b::Run Default_Browser
 CapsLock & c::Run Google.Calendar
 ; CapsLock & d::
 ; CapsLock & e::
-; CapsLock & f::Run Default_Browser
-; CapsLock & g::Run ChatGPT
+; CapsLock & f::
+CapsLock & g::Run ChatGPT
 CapsLock & h::Run Help
 ; CapsLock & i::
 ; CapsLock & j::
@@ -33,7 +33,7 @@ CapsLock & m::Run Google.Gmail
 ; CapsLock & t::
 ; CapsLock & u::
 ; CapsLock & v::
-; CapsLock & w::
+CapsLock & w::Run WhatsApp
 ; CapsLock & x::
 ; CapsLock & y::
 ; CapsLock & z::

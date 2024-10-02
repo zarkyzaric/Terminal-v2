@@ -7,6 +7,8 @@
 ; Often fast writing mistakes
 ;---------------------
 
+:*?B0:{::{}}{Left}
+
 ::ws::was
 ::hwo::how
 ::wich::which
@@ -56,17 +58,12 @@
 
 ;Contractions
 ;---------------------
-::its::it's
+; ::its::it's
 ::I am::I'm
-:C:Im::I'm 
 ::I will::I'll
 ::Ill::I'll
 ::does not::doesn't
 ::did not::didn't
-:*C:He had::He'd
-:*C:he had::he'd
-:*C:He has::He's
-:*C:he has::he's
 :*C:He is::He's
 :*C:he is::he's
 :*C:He will::He'll
@@ -81,38 +78,24 @@
 :*C:i have::I've
 :*C:I will::I'll
 :*C:i will::I'll
-:*C:I would::I'd
-:*C:i would::I'd
 :*C:It had::It'd
 :*C:it had::it'd
-:*C:It has::It's
-:*C:it has::it's
 :*C:It is::It's
 :*C:it is::it's
 :*C:It will::It'll
 :*C:it will::it'll
-:*C:It would::It'd
-:*C:it would::it'd
 :*C:She had::She'd
 :*C:she had::she'd
-:*C:She has::She's
-:*C:she has::she's
 :*C:She is::She's
 :*C:she is::she's
 :*C:She will::She'll
 :*C:she will::she'll
-:*C:She would::She'd
-:*C:she would::she'd
 :*C:That had::That'd
 :*C:that had::that'd
-:*C:That has::That's
-:*C:that has::that's
 :*C:That is::That's
 :*C:that is::that's
 :*C:That will::That'll
 :*C:that will::that'll
-:*C:That would::That'd
-:*C:that would::that'd
 :*C:We are::We're
 :*C:we are::we're
 :*C:We had::We'd
@@ -121,8 +104,6 @@
 :*C:we have::we've
 :*C:We will::We'll
 :*C:we will::we'll
-:*C:We would::We'd
-:*C:we would::we'd
 :*C:What had::What'd
 :*C:what had::what'd
 :*C:What has::What's
@@ -131,8 +112,6 @@
 :*C:what is::what's
 :*C:What will::What'll
 :*C:what will::what'll
-:*C:What would::What'd
-:*C:what would::what'd
 :*C:Who had::Who'd
 :*C:who had::who'd
 :*C:Who has::Who's
@@ -141,8 +120,6 @@
 :*C:who is::who's
 :*C:Who will::Who'll
 :*C:who will::who'll
-:*C:Who would::Who'd
-:*C:who would::who'd
 :*C:You are::You're
 :*C:you are::you're
 :*C:You had::You'd
@@ -151,35 +128,6 @@
 :*C:you have::you've
 :*C:You will::You'll
 :*C:you will::you'll
-:*C:You would::You'd
-:*C:you would::you'd
-; Hed => He'd  
-:*C:Hed::He'd
-:*C:hed::he'd
-:*C:Hes::He's
-:*C:hes::he's
-; :*C:Heill::He'll
-; :*C:heill::he'll
-:*C:Hed::He'd
-:*C:hed::he'd
-:*C:Iam::I'm
-:*C:iam::I'm
-; :*C:Ihd::I'd
-; :*C:ihd::i'd
-:*C:Ive::I've
-:*C:ive::I've
-:*C:Ill::I'll
-; :*C:Iwd::I'd
-; :*C:iwd::i'd
-:*C:Ithd::It'd
-:*C:Itd::It'd
-:*C:ithd::it'd
-:*C:Its::It's
-:*C:its::it's
-:*C:Itll::It'll
-:*C:itll::it'll
-:*C:Shed::She'd
-:*C:shed::she'd
 :*C:Shes::She's
 :*C:shes::she's
 :*C:Thatd::That'd
@@ -188,26 +136,16 @@
 :*C:thats::that's
 :*C:Thatll::That'll
 :*C:thatll::that'll
-:*C:Wed::We'd
-:*C:wed::we'd
-:*C:Weve::We've
-:*C:weve::we've
-:*C:Whatd::What'd
-:*C:whatd::what'd
 :*C:Whats::What's
 :*C:whats::what's
 :*C:Whatll::What'll
 :*C:whatll::what'll
-:*C:Whod::Who'd
-:*C:whod::who'd
 :*C:Whos::Who's
 :*C:whos::who's
 :*C:Wholl::Who'll
 :*C:wholl::who'll
 :*C:Youre::You're
 :*C:youre::you're
-:*C:Youd::You'd
-:*C:youd::you'd
 :*C:Youve::You've
 :*C:youve::you've
 :*C:Youll::You'll
@@ -320,5 +258,4 @@
 :*?:\Zh::Ž
 :*?:\'C::Ć
 :*?:\;C::Ć
-:*?:\Ci::Ć
 :*?:\Dj::Đ

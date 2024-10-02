@@ -8,4 +8,9 @@
 ;?========================================================================
 
 My_Commands := Map(
+["og","imi"],    "imi.pmf.kg.ac.rs/oglasna-tabla", 
+"studp",    "https://studportal.pmf.kg.ac.rs/student", 
+"imioer",    "https://github.com/studnetwork/PMFKG",
+["v","config","this"],        () => Open.VSC(A_WorkingDir),
+
 )
