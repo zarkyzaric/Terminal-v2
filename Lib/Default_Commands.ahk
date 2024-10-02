@@ -87,7 +87,7 @@ Default_Commands := Map(
         "3",                     () => Send("#3"),
         "4",                     () => Send("#4"),
         "5",                     () => Send("#5"),
-    
+        "ter",                   "https://github.com/zarkyzaric/Terminal-v2",
         ;! myb Settings(#i) automation commands 
 
         "similar",               "https://www.chosic.com/playlist-generator/",
