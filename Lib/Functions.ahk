@@ -3,6 +3,19 @@
 #Include %A_ScriptDir%\Lib\FindText.ahk
 
 
+Python(Args, Mode := "BG"){
+    spacePos := InStr(Args," ")
+    if !(spacePos)
+        return
+    else {
+        myScriptPath := SubStr(Args, 1, spacePos - 1)
+        Arg := SubStr(Args, spacePos + 1)
+    }
+    Run('pythonw.exe "' myScriptPath '" "' Arg '"')
+; Run('pythonw.exe "C:\Users\LEPALALA\Documents\Python\Apps\PyClock\clock.py" "30"')
+}
+
+
 ;                  FUNCTIONS:
 
 ; Compares if string matches with one of the array's items
@@ -68,16 +81,15 @@ Msg(Text := "Empty MsgBox",PositionAndSize := "Autosize xcenter y" (A_ScreenHeig
     SetTimer () => myGui.Destroy(), -(T * 1000)
 }
 ; Passes @param as Command Line parameter
-CMD(Command := "", DefaultDir := False) {
-    if DefaultDir
+CMD(Command := "", UseRootDir := False) {
+    Dir := A_User
+    if UseRootDir
         Dir := "C:\Windows\system32"
-    ; Command := ""
-    ; for com in Commands {
-    ;     Command := Command . com " & "
-    ; }
-    ; Command := SubStr(Command,1,StrLen(Command) - 2)
-    ; MsgBox(Command)
-    Run(A_ComSpec ' /k ' Command, Dir)
+    if Command == ""
+        Run(A_ComSpec, Dir)
+    else
+        Run(A_ComSpec ' /k ' Command, Dir)
+
 }
 FileGen(CODE:= "", fullFileName := A_ScriptDir "\Lib\Files\" "New.txt"){
     ;! myb naming it file is going to make a problem, we'll see
@@ -94,6 +106,9 @@ FileGen(CODE:= "", fullFileName := A_ScriptDir "\Lib\Files\" "New.txt"){
 }   
 ; Clears content of a file (file becomes empty)
 ClearFile(fileName) => FileAppend("",fileName)
+
+
+
 
 ;  TIME BASED ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 ; Same as Sleep, just in seconds, 
@@ -139,7 +154,7 @@ GoThrough(Commands,command,input := ""){
 
 BrowserTabFinder(title) {
     SetTitleMatchMode 2
-    browsers := ["brave.exe", "firefox.exe", "chrome.exe", "msedge.exe", "opera.exe",  "iexplore.exe", "safari.exe"]
+    browsers := ["firefox.exe", "brave.exe", "chrome.exe", "msedge.exe", "opera.exe",  "iexplore.exe", "safari.exe"]
     for _, browser in browsers {
         if WinExist("ahk_exe " . browser) {
             WinActivate
@@ -167,9 +182,7 @@ BrowserTabFinder(title) {
         }
     }
     ToolTip "No supported browser found or target tab not found"
-    ; Send "^1"
-    ; Sleep 1000
-    ToolTip "Trying again"
+
     SetTimer () => ToolTip(), -5000
     return false
 }
@@ -178,9 +191,9 @@ click_chatgpt_inputarea(title) {
         WinGetPos ,,&W, &H, "A"
         W := W / 2
         H := H - 75
-        MouseMove W, H
-        Sleep 500
-        Click
+        ControlClick "X" W " Y" H, "A"
+            ; Sleep 500
+            ; Click
         Sleep 500
     }
 }
@@ -371,22 +384,62 @@ class Open {
     }
 }
 
+RunActivate(Path,TabName:= "") { ; TabName is string that has to be in Tab's name, 
+ If !BrowserTabFinder(TabName)
+    Run Path
+}
+
 class Search {
-    
+    static Social_Media(input) {
+        input := StrReplace(StrReplace(StrReplace(StrReplace(StrReplace(input, " ", "%20"), "`n", "%0A"), "`r", "%0D"), "%", "%25"),"+","%2B")
+        Search.Facebook(input)
+        Search.Reddit(input)
+        Search.X(input)
+        Search.YouTube(input)
+        Search.Pinterest(input)
+        ; Search.Instagram(input)
+        ; Search.Tiktok (input)
+
+        }
     static Smart(input) {
         OnError(Other)
         ItHas(strings*)=>IsIn(input,strings*)
-        if ItHas(" ") || !ItHas(".")
-            Search.Browser(input)
-        else if ItHas(".io","C:\","http",".com")
+        if ItHas("c:\","C:\",":\","http",".exe")
             Run(input)
+        else
+            Run("https://" input)
         Other(exception,mode){
             Run("https://" input)
+            MsgBox("Option A: `n`tAn error might occur due to an incorrect path. Please verify the full path.`nOption B:`n`tMaybe it's http and not https.")
             ; return true
         }
     }
+    static ChatGPT(Search_text,prompt:="") {
+        if prompt == ""
+            A_Clipboard := Search_text . "`s"
+        else
+            A_Clipboard := prompt . ' > ' . Search_text . "`s"
+        if !BrowserTabFinder('ChatGPT') {
+            Run ChatGPT
+            Sleep 3000
+            if BrowserTabFinder('ChatGPT') {
+                WinWaitActive 'ChatGPT'
+                Sleep 200
+                WinActivate 'ChatGPT'
+                Sleep 200
+            }  
+        }
+        click_chatgpt_inputarea('ChatGPT')
+        WinActivate 'ChatGPT'
+        Send '^v' . ".{Backspace}"
+        ; Send '^v' 
+        ; Sleep 100
+        ; Send ".{Backspace}"
+        Sleep 100
+        Send '{Enter}'
+    
+    }
     static YT(input) => Run("https://www.youtube.com/results?search_query=" . StrReplace(input, A_Space, "+"))
-    static Browser(input) => Run("https://duckduckgo.com/?t=ffab&q=" . StrReplace(input, A_Space, "+") . "&atb=v403-1&ia=web")
     static Meaning(input) => Search.Browser("define " input)
     static Clipboard() => Search.Browser(A_Clipboard)
 
@@ -415,58 +468,30 @@ class Search {
         return
     }
     static PasteBin(input) => Run("https://pastebin.com/" input)
-    static GPT(input) {
-    Run("https://chatgpt.com")
-    ; WinActivate("ahk_exe " Default_Browser)
-    Loop 10000 {
-        t1:=A_TickCount, Text:=X:=Y:=""
-        Text:="|<gptpin>**50$20.0Dz07Us3U70kkkMz46Qt1a6ENUXyLgbbD9tnmSQwbbD9tnmSQwbbD9tnmSQwbbD9tXaC0tnkSQTz7XzXMTln1UsQ0Q3sy8"
-        ok:=FindText(&X, &Y, 0,0,0,0,0,0, Text)
-        if !ok.length
-            continue
-        else
-            {
-                FindText().Click(X+100, Y, "L")
-                break
-            }
-        }
-    ; Send("{LButton}")
-    Send(input)
-    Send("{Enter}")
 
-    }
-static ChatGPT(Search_text,prompt:="") {
-    if prompt == ""
-        A_Clipboard := Search_text . "`s"
-    else
-        A_Clipboard := prompt . ' > ' . Search_text . "`s"
-    if !BrowserTabFinder('ChatGPT') {
-        Run ChatGPT
-        Sleep 3000
-        if BrowserTabFinder('ChatGPT') {
-            WinWaitActive 'ChatGPT'
-            Sleep 200
-            WinActivate 'ChatGPT'
-            Sleep 200
-        }  
-    }
-    click_chatgpt_inputarea('ChatGPT')
-    WinActivate 'ChatGPT'
-    Send '^v' . ".{Backspace}"
-    ; Send '^v' 
-    ; Sleep 100
-    ; Send ".{Backspace}"
-    Sleep 100
-    Send '{Enter}'
-
-    }
-    static GitHub(input) => Run("https://github.com/search?q=" StrReplace(input, A_Space, "+") "&type=repositories")
-    static Pinterest(input) => Run("https://www.pinterest.com/search/pins/?q=" StrReplace(input, A_Space, "%20") "&rs=typed")
     static Emoji(input) => Run("https://emojipedia.org/search?q=" StrReplace(input, A_Space, "+"))
     static Translate(input) => Run("https://translate.google.com/?sl=en&tl=sr&text=" input "&op=translate")
-    static Wikipedia(input) => Run("https://en.wikipedia.org/wiki/Special:Search?search=" StrReplace(input,A_Space, "+"))
     static Maps(input) => Run("https://www.google.com/maps?q=" StrReplace(input,A_Space,"+"))
-    static StackOverflow(input) => Run("https://stackoverflow.com/search?q=" StrReplace(input,A_Space,"+"))
+        static Map(input) => Search.Maps(input)
+
+    static Browser(input) => Run("https://duckduckgo.com/?t=ffab&q=" . StrReplace(input, A_Space, "+") . "&atb=v403-1&ia=web")
+        static DuckDuckGo(input) => Run("https://duckduckgo.com/?q=" StrReplace(input, A_Space, "+"))
+    static Facebook(input) => Run("https://www.facebook.com/search/top/?q=" StrReplace(input, A_Space, "+"))
+    static X(input) => Run("https://x.com/search?q=" StrReplace(input, A_Space, "+") "&src=typed_query&f=top")
+    static Reddit(input) => Run("https://www.reddit.com/search/?q=" StrReplace(input, A_Space, "+"))
+    static YouTube(input) => Run("https://www.youtube.com/results?search_query=" StrReplace(input, A_Space, "+"))
+    static Google(input) => Run("https://www.google.com/search?q=" StrReplace(input, A_Space, "+"))
+    static LinkedIn(input) => Run("https://www.linkedin.com/search/results/all/?keywords=" StrReplace(input, A_Space, "%20"))
+    static Instagram(input) => Run("https://www.instagram.com/explore/tags/" StrReplace(input, A_Space, ""))
+    static Pinterest(input) => Run("https://www.pinterest.com/search/pins/?q=" StrReplace(input, A_Space, "%20") "&rs=typed")
+    ; static Bing(input) => Run("https://www.bing.com/search?q=" StrReplace(input, A_Space, "+"))
+    static Amazon(input) => Run("https://www.amazon.com/s?k=" StrReplace(input, A_Space, "+"))
+    static StackOverflow(input) => Run("https://stackoverflow.com/search?q=" StrReplace(input, A_Space, "+"))
+    static GitHub(input) => Run("https://github.com/search?q=" StrReplace(input, A_Space, "+") "&type=repositories")
+    ; static Quora(input) => Run("https://www.quora.com/search?q=" StrReplace(input, A_Space, "+"))
+    static Spotify(input) => Run("https://open.spotify.com/search/" StrReplace(input, A_Space, "%20"))
+    static Wikipedia(input) => Run("https://en.wikipedia.org/wiki/Special:Search?search=" StrReplace(input, A_Space, "+"))
+    static TikTok(input) => Run("https://www.tiktok.com/search?q=" StrReplace(input, A_Space, "+"))
 }
 
 

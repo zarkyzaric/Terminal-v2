@@ -8,6 +8,7 @@ Hotstrings := A_ScriptDir "\Hotstrings"
 Startup := A_ScriptDir "Startup"
 Terminal := A_ScriptDir "\Terminal.ahk"
 Lib := A_ScriptDir "\Lib"
+Tools := Lib "\Tools"
 Executables := Lib "\Executables"
 Automation := Lib "\Automation"
 Singletons := Lib "\Singletons"
@@ -102,12 +103,25 @@ class KURS {
     static RASP_KLK := "https://imi.pmf.kg.ac.rs/pub/2cb8552c12d0b06588bf738c975988a0_03272024_010554/inf_raspored_kolokvijuma_2023-24_letnji_v2.pdf"
     static RASP_ISP := "https://imi.pmf.kg.ac.rs/pub/af3b4da1bb95aacba0a68ae081aad307_01292024_111643/inf_raspored_ispita_2023-24_jun-sep.pdf"
     static SKRIPTE := KURS.ID "96"
-    static PIP3 := KURS.ID "467"
+    static RASPOREDI := KURS.URL "/rasporedi"
+
+    static MAT1 := KURS.ID "502"
+    static TOI := KURS.ID "13"
+    static OP := KURS.ID "5"
+    static RS := KURS.ID "35"
+    static PIP1 := KURS.ID "466"
+    
     static SPA1 := KURS.ID "12"
     static MAT2 := KURS.ID "490"
     static ARH := KURS.ID "395"
-    static RS := KURS.ID "35"
     static SA := KURS.ID "396"
+    static PIP3 := KURS.ID "467"
+    
+    static OOP := KURS.ID "33"
+    static OS := KURS.ID "34"
+        static OS1 := KURS.OS
+    static VAP := KURS.ID "215"
+
 }
 
  This_ProjectDir := 'C:\Users\LEPALALA\Documents\GitHub\Terminal-v2'

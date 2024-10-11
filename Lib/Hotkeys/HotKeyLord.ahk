@@ -2,9 +2,10 @@
 #SingleInstance Force
 #Include %A_ScriptDir%\Lib\Functions.ahk
 #Include %A_ScriptDir%\Lib\Paths.ahk
-#Include My_Commands.ahk
+; #Include My_Commands.ahk
 ; Holding Right Mouse Button while scrolling with Mouse Wheel to switch between windows
 ; RButton + Wheel => Switching trought tabs
+
 RButton & WheelDown::AltTab
 RButton & WheelUp::ShiftAltTab
     RButton::RButton
@@ -28,7 +29,7 @@ CapsLock & m::Run Google.Gmail
 ; CapsLock & o::
 ; CapsLock & p::
 ; CapsLock & q::
-; CapsLock & r::
+CapsLock & r::R 
 ; CapsLock & s::        
 ; CapsLock & t::
 ; CapsLock & u::

@@ -128,7 +128,7 @@ SetTimer () => ExitApp(), -(DurationOfAppearance * 1000)
 ; ExitApp()
 ;?_______________________________________________________________________________________________
 Fuzzy_Navigator(Input) {
-    global Default_Commands,My_Commands
+    global Default_Commands,My_Commands,IMI_Commands
     ; Content := FileRead("History.txt")
     if Input=="" 
         return
@@ -141,6 +141,8 @@ Fuzzy_Navigator(Input) {
     if GoTh(Default_Commands)
         return
     if GoTh(My_Commands)
+        return
+    if GoTh(IMI_Commands)
         return
     spacePos := InStr(Input," ")
     if !(spacePos)
@@ -156,8 +158,7 @@ Fuzzy_Navigator(Input) {
         ;TODO "default",  () => SetDefault(input),
         "raw",      () => Raw.Run(input), ; r @raw_ahk_code
         "r",        () => Raw.Run(input,'RUN'),
-        
-        "s",        () => Search.Smart(input), ; s @search_text
+        "s",        () => Search.Browser(input), ; s @search_text
         ["y","z"],  () => Search.YT(input), ; y @search_text
         ["gh","git"],() => Search.GitHub(input), ; git @search_text
         "github",   ()=> Run("www.github.com/" input),
@@ -170,7 +171,7 @@ Fuzzy_Navigator(Input) {
         ["sof","so"], () => Search.StackOverflow(input),
         ["m","map","maps"],     () => Search.Maps(input), ; maps @search_text
         ["pastebin","pb","bin"], () => Search.PasteBin(input), ; pb @unique_code
-        
+        ["noise","bgn","bgm"], () => Python(Tools "\PyClock\clock.py " input), ; bgn 45m ; bgn 1h ; bgn 10 (defaults to seconds); bgn 1m 30s
         ["t","trans"], () => Search.Translate(input), ; t @translate_text
         "conv",     () => Photo.Convert(input), ; conv @from_format-to_format ; Example: conv webp-png 
         "toggle",   () => Toggle(input),

@@ -37,7 +37,7 @@ Examples: ;!
 ; Ctrl + Alt + T or Ctrl + \ or RCtrl => Runs the Terminal
 ; ^vkE2:: 
 ; RControl::
-^!t::
+^!t::   
 ^!q::Run(Terminal)
 ; ;-----------------------------------------------------------------------------------------
 ; ; Ctrl + Backspace => Deletes last word
@@ -52,17 +52,18 @@ Examples: ;!
 ;-----------------------------------------------------------------------------------------
 
 ; ^!h::Run(A_ScriptDir "\Lib\Append.ahk"),Send("^!h")
-^!+j::
-{
-    Send("^l")
-    input := Get.SelectedText()
-    CMD("cd " A_ScriptDir "\Lib\Automation & python yt_bg.py `"" input "`"" " & exit")
+; ^!+j::
+; {
+;     Send("^l")
+;     input := Get.SelectedText()
+;     CMD("cd " A_ScriptDir "\Lib\Automation & python yt_bg.py `"" input "`"" " & exit")
 
-}
+; }
 
-^!p::Run (Lib "\Tools\GetPath.ahk")
+; ^!p::Run (Lib "\Tools\GetPath.ahk")
+
 
 
 
 ; --------------------------------------------------------------------------------
-Run(A_ScriptDir "\Lib\Append.ahk")
+Run(A_ScriptDir "\Lib\Command_Maker.ahk")
