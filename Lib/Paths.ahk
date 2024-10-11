@@ -108,7 +108,7 @@ class KURS {
     static MAT1 := KURS.ID "502"
     static TOI := KURS.ID "13"
     static OP := KURS.ID "5"
-    static RS := KURS.ID "35"
+    static RS := KURS.ID "303"
     static PIP1 := KURS.ID "466"
     
     static SPA1 := KURS.ID "12"
@@ -118,9 +118,11 @@ class KURS {
     static PIP3 := KURS.ID "467"
     
     static OOP := KURS.ID "33"
-    static OS := KURS.ID "34"
-        static OS1 := KURS.OS
+    static OS1 := KURS.ID "34"
     static VAP := KURS.ID "215"
+    ; static AE :=
+    static RM := KURS.ID "35"
+
 
 }
 
