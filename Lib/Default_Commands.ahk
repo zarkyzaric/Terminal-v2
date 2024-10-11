@@ -110,4 +110,5 @@ Default_Commands := Map(
         ["oop"],            KURS.OOP,
         ["os","os1"],       KURS.OS1,
         "vap",              KURS.VAP,
+        "rm",              KURS.RM,
     )
