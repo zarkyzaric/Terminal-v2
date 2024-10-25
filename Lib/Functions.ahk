@@ -190,7 +190,7 @@ click_chatgpt_inputarea(title) {
     if WinExist(title) {
         WinGetPos ,,&W, &H, "A"
         W := W / 2
-        H := H - 75
+        H := H / 2
         ControlClick "X" W " Y" H, "A"
             ; Sleep 500
             ; Click
