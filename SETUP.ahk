@@ -45,12 +45,12 @@ FileCreateShortcut(A_ScriptDir "\Startup.ahk", A_Startup "\Startup.lnk")
 Q := MsgBox.Bind(,"Setup","0x1000 YN")
 Result := Q("Do you want to setup advanced hotkeys?")
 If Result == "Yes" {
+if Q("Do you want to setup HotKeyLord Script?") == "Yes"
+    FileCreateShortcut(Lib "\HotKeyLord.ahk", A_Startup "\Startup.lnk")
 if Q("Do you want to set Alt + G as a hotkey for searching up selected text on web?") == "Yes"
     setup_SearchSelectedText()
 if Q("Do you want to set Ctrl + Alt + Y (or Z) as a hotkey for a popup searchbar for Youtube?") == "Yes"
     setup_SearchYoutubePopup()
-if Q("Do you want to setup HotKeyLord Script?") == "Yes"
-    FileCreateShortcut(Lib "\HotKeyLord.ahk", A_Startup "\Startup.lnk")
 }
 
 
