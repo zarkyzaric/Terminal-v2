@@ -13,8 +13,7 @@ setup_SearchSelectedText() {
         
         "
         
-    ),A_ScriptDir "\Hotkeys.ahk"
-    Run("Hotkeys.ahk")
+    ),Hotkeys "\Hotkeys.ahk"
 }
     
 setup_SearchYoutubePopup() {
@@ -70,6 +69,5 @@ setup_SearchYoutubePopup() {
         
         "
         
-),A_ScriptDir "\Hotkeys.ahk"
-Run("Hotkeys.ahk")
+),Hotkeys "\Hotkeys.ahk"
 }

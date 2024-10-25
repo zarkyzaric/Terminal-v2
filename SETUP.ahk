@@ -27,16 +27,20 @@ FileAppend
     "`n Default_Browser := '" Default_Browser "'"
 ),Lib "\Paths.ahk"
 
-Run("Hotkeys.ahk")
+Run(Hotkeys "\Hotkeys.ahk")
+FileAppend
+(
+    "`n 
+#Requires AutoHotkey v2.0+
+#Include %A_ScriptDir%\Lib\All.ahk
+    "
+),Hotkeys "\Hotkeys.ahk"
+Run(Hotkeys "\Hotkeys.ahk")
 Run(Setup_Requirements "\install_requirements.py")
 ; RunWait("Hotkeys.ahk")
 Sleep(1000)
 FileCreateShortcut(A_ScriptDir "\Hotkeys.ahk", A_Startup "\Hotkeys.lnk")
 FileCreateShortcut(A_ScriptDir "\Startup.ahk", A_Startup "\Startup.lnk")
-
-; Sleep(1000)
-; FileCreateShortcut(A_ScriptDir "\Hotkeys.ahk", A_Startup "\Hotkeys.lnk")
-; Result_HotkeyLord := MsgBox("Do ?","Setup","0x1000 YN")
 
 Q := MsgBox.Bind(,"Setup","0x1000 YN")
 Result := Q("Do you want to setup advanced hotkeys?")

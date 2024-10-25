@@ -3,11 +3,12 @@
 Help := "https://www.autohotkey.com/docs/v2/FAQ.htm"
 
 ;? _____________________SCRIPT'S DIRS__________________________________________________________________________________
-Hotkeys := A_ScriptDir "\Hotkeys"
-Hotstrings := A_ScriptDir "\Hotstrings"
-Startup := A_ScriptDir "Startup"
 Terminal := A_ScriptDir "\Terminal.ahk"
 Lib := A_ScriptDir "\Lib"
+
+Hotkeys := Lib "\Hotkeys"
+Hotstrings := Lib "\Hotstrings"
+Startup := Lib "\Startup"
 Tools := Lib "\Tools"
 Executables := Lib "\Executables"
 Automation := Lib "\Automation"
@@ -21,7 +22,6 @@ Class Instagram {
 }
 
 WhatsApp := "web.whatsapp.com"
-
 
 
 class Google {
@@ -62,10 +62,8 @@ class C {
 ChatGPT := "https://chatgpt.com"
 ; Main Directories
 
-
 VSC := User.AppData "\Local\Programs\Microsoft VS Code\Code.exe"
 VSCodium := "C:\Program Files\VSCodium\VSCodium.exe"
-
 
 ; Class Default {
     ;     ; static Browser := 
@@ -126,5 +124,21 @@ class KURS {
 
 }
 
+ This_ProjectDir := 'C:\Users\LEPALALA\Documents\GitHub\Terminal-v2'
+ Default_Browser := 'C:\Program Files\Mozilla Firefox\firefox.exe'
+ This_ProjectDir := 'C:\Users\LEPALALA\Documents\GitHub\Terminal-v2'
+ Default_Browser := ''
+ This_ProjectDir := 'C:\Users\LEPALALA\Documents\GitHub\Terminal-v2'
+ Default_Browser := 'C:\Program Files\Mozilla Firefox\firefox.exe'
+ This_ProjectDir := 'C:\Users\LEPALALA\Documents\GitHub\Terminal-v2'
+ Default_Browser := 'C:\Program Files\Mozilla Firefox\firefox.exe'
+ This_ProjectDir := 'C:\Users\LEPALALA\Documents\GitHub\Terminal-v2'
+ Default_Browser := 'C:\Program Files\Mozilla Firefox\firefox.exe'
+ This_ProjectDir := 'C:\Users\LEPALALA\Documents\GitHub\Terminal-v2'
+ Default_Browser := 'C:\Program Files\Mozilla Firefox\firefox.exe'
+ This_ProjectDir := 'C:\Users\LEPALALA\Documents\GitHub\Terminal-v2'
+ Default_Browser := 'C:\Program Files\Mozilla Firefox\firefox.exe'
+ This_ProjectDir := 'C:\Users\LEPALALA\Documents\GitHub\Terminal-v2'
+ Default_Browser := 'C:\Program Files\Mozilla Firefox\firefox.exe'
  This_ProjectDir := 'C:\Users\LEPALALA\Documents\GitHub\Terminal-v2'
  Default_Browser := 'C:\Program Files\Mozilla Firefox\firefox.exe'
