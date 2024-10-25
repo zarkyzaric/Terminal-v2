@@ -49,7 +49,10 @@ if Q("Do you want to set Alt + G as a hotkey for searching up selected text on w
     setup_SearchSelectedText()
 if Q("Do you want to set Ctrl + Alt + Y (or Z) as a hotkey for a popup searchbar for Youtube?") == "Yes"
     setup_SearchYoutubePopup()
+if Q("Do you want to setup HotKeyLord Script?") == "Yes"
+    FileCreateShortcut(Lib "\HotKeyLord.ahk", A_Startup "\Startup.lnk")
 }
+
 
 
 
