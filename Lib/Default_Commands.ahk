@@ -38,13 +38,15 @@ Default_Commands := Map(
         ; "duo",                "https://www.duolingo.com/",
         ; "chess",              "www.chess.com/play",
     ;?=======================================================
-    ;?                 OFTEN APPS                
+    ;?                 BUILD-IN APPS           
     ;?=======================================================
         ["notepad","note"],     "notepad.exe",
         ["calc", "calculator"], "calc.exe", 
         "word",                 "winword.exe",
+        ["pptx","pp","powerpoint"],  "powerpnt.exe",
         ["ex","excel"],         "excel.exe",
         ["python","py"],        "python.exe",
+
     ;?=======================================================
     ;?                 OFTEN FUNCTIONS                
     ;?=======================================================

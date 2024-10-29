@@ -115,7 +115,7 @@ class KURS {
     static SA := KURS.ID "396"
     static PIP3 := KURS.ID "467"
     
-    static OOP := KURS.ID "33"
+    static OOP := KURS.ID "577"
     static OS1 := KURS.ID "34"
     static VAP := KURS.ID "215"
     ; static AE :=
@@ -123,22 +123,3 @@ class KURS {
 
 
 }
-
- This_ProjectDir := 'C:\Users\LEPALALA\Documents\GitHub\Terminal-v2'
- Default_Browser := 'C:\Program Files\Mozilla Firefox\firefox.exe'
- This_ProjectDir := 'C:\Users\LEPALALA\Documents\GitHub\Terminal-v2'
- Default_Browser := ''
- This_ProjectDir := 'C:\Users\LEPALALA\Documents\GitHub\Terminal-v2'
- Default_Browser := 'C:\Program Files\Mozilla Firefox\firefox.exe'
- This_ProjectDir := 'C:\Users\LEPALALA\Documents\GitHub\Terminal-v2'
- Default_Browser := 'C:\Program Files\Mozilla Firefox\firefox.exe'
- This_ProjectDir := 'C:\Users\LEPALALA\Documents\GitHub\Terminal-v2'
- Default_Browser := 'C:\Program Files\Mozilla Firefox\firefox.exe'
- This_ProjectDir := 'C:\Users\LEPALALA\Documents\GitHub\Terminal-v2'
- Default_Browser := 'C:\Program Files\Mozilla Firefox\firefox.exe'
- This_ProjectDir := 'C:\Users\LEPALALA\Documents\GitHub\Terminal-v2'
- Default_Browser := 'C:\Program Files\Mozilla Firefox\firefox.exe'
- This_ProjectDir := 'C:\Users\LEPALALA\Documents\GitHub\Terminal-v2'
- Default_Browser := 'C:\Program Files\Mozilla Firefox\firefox.exe'
- This_ProjectDir := 'C:\Users\LEPALALA\Documents\GitHub\Terminal-v2'
- Default_Browser := 'C:\Program Files\Mozilla Firefox\firefox.exe'

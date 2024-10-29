@@ -3,4 +3,4 @@
 #Include %A_ScriptDir%\Lib\Functions.ahk
 #Include %A_ScriptDir%\Lib\Paths.ahk
 #Include My_Commands.ahk
-run "notepad.exe"
+msgbox("how to focus on excel bar via hotkey")
