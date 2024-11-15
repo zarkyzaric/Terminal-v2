@@ -69,11 +69,6 @@ LeaveBrac(s) {
 ; :*b0:[:: {
 ;     LeaveBrac("]")
 ; }
-; ; :*?B0:{::{}}{Left}
-
-; :*b0:{:: {
-;     LeaveBrac("{U+007D}")
-; }
 ; :*b0:":: {
 ;     LeaveBrac('"')
 ; }
@@ -89,8 +84,8 @@ LeaveBrac(s) {
 :*:@mymail::{
     Send("example@email.com")
 }
-:*b0:@gmail::{
-    Send(".com")
+:*b0:@gmai::{
+    Send("l.com")
 }
 ;-----------------------------------------------------------------------------------------
 

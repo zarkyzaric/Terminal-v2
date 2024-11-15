@@ -98,9 +98,10 @@ class KURS {
     static URL := "https://imi.pmf.kg.ac.rs"
     static OGLASNA := KURS.URL "/oglasna-tabla"
     static ID := KURS.URL "/moodle/course/view.php?id="
-    static RASP_KLK := "https://imi.pmf.kg.ac.rs/pub/2cb8552c12d0b06588bf738c975988a0_03272024_010554/inf_raspored_kolokvijuma_2023-24_letnji_v2.pdf"
-    static RASP_ISP := "https://imi.pmf.kg.ac.rs/pub/af3b4da1bb95aacba0a68ae081aad307_01292024_111643/inf_raspored_ispita_2023-24_jun-sep.pdf"
-    static SKRIPTE := KURS.ID "96"
+    static GitLab := "https://gitlab.pmf.kg.ac.rs/"
+    static RASP_KLK := "https://imi.pmf.kg.ac.rs/pub/0f1b20235b043b821a5f729ba6b0752f_10302024_085520/raspored%20zimski%20semestar%20-%20informatika.pdf"
+    static RASP_ISP := ""
+    static SKRIPTE := KURS.ID "86"
     static RASPOREDI := KURS.URL "/rasporedi"
 
     static MAT1 := KURS.ID "502"
@@ -121,5 +122,10 @@ class KURS {
     ; static AE :=
     static RM := KURS.ID "35"
 
+    static KWT := KURS.ID "137"
 
+    
+}
+class Games {
+    static CodeCombat := 'https://codecombat.com/play'
 }

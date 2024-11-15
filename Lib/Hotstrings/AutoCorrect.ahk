@@ -106,7 +106,7 @@ ComStr := hh.AddEdit('vComStr xs y' . hFactor + 200 . ' w' . wFactor + 315)
 (ButOpen := hh.AddButton('+notab x+5 y' . hFactor + 234, '&Open')).OnEvent("Click", hhButtonOpen)
 (ButCancel := hh.AddButton('+notab x+5 y' . hFactor + 234, '&Cancel')).OnEvent("Click", hhButtonCancel)
 
-;@2
+
 #h::   ; HotString Helper activation hotkey-combo (not string) is Win+h. Change if desired.
 { MyDefaultOpts := ""
   DefaultHotStr := ""

@@ -154,7 +154,7 @@ GoThrough(Commands,command,input := ""){
 
 BrowserTabFinder(title) {
     SetTitleMatchMode 2
-    browsers := ["firefox.exe", "brave.exe", "chrome.exe", "msedge.exe", "opera.exe",  "iexplore.exe", "safari.exe"]
+    browsers := ["firefox.exe", "brave.exe", "chrome.exe", "msedge.exe", "opera.exe",  "iexplore.exe"]
     for _, browser in browsers {
         if WinExist("ahk_exe " . browser) {
             WinActivate
@@ -170,7 +170,7 @@ BrowserTabFinder(title) {
                         WinActivate
                         return true
                     }
-                    if (currentTitle == originalTitle || tabCount > 50) {
+                    if (currentTitle == originalTitle || tabCount > 20) {
                         break
                     }
                 } else {
@@ -384,6 +384,18 @@ class Open {
     }
 }
 
+/*
+* Same as run but second parameter is time for delaying the run, other parameters are just moved one place to the right
+*
+*
+*
+*/
+RunT(Target,T := 1, WorkingDir?, Options?, &OutputVarPID?)
+{
+    Sleep(T*1000),Run(Target, WorkingDir?, Options?, &OutputVarPID?)
+    return OutputVarPID
+}
+
 RunActivate(Path,TabName:= "") { ; TabName is string that has to be in Tab's name, 
  If !BrowserTabFinder(TabName)
     Run Path
@@ -401,19 +413,46 @@ class Search {
         ; Search.Tiktok (input)
 
         }
-    static Smart(input) {
-        OnError(Other)
-        ItHas(strings*)=>IsIn(input,strings*)
-        if ItHas("c:\","C:\",":\","http",".exe")
-            Run(input)
-        else
-            Run("https://" input)
-        Other(exception,mode){
-            Run("https://" input)
-            MsgBox("Option A: `n`tAn error might occur due to an incorrect path. Please verify the full path.`nOption B:`n`tMaybe it's http and not https.")
-            ; return true
+
+        Smart(input)
+        {
+            try
+            {
+                ; Trim whitespace from the input
+                ; input := StrTrim(input)
+        
+                ; Check if the input contains a dot (.) or a slash (/)
+                if input == "" {
+                    ; Msg("empty")
+                    return
+                }
+                ; Treats as search query if it contains spaces
+                else if input ~="\s" {
+                    ; msgbox("has space")
+                    Search.Browser(input)
+                }
+                else if input ~= "\\"  {
+                    Run(input)
+                }
+                ; If we have fallen into stage where it's either in URL or file.ext from with making sure ".text" and "text." is treated as search query 
+                else if input ~= "/|\." and not (input ~= "^\." or input ~= "\.$")
+                {
+                    ; msgbox("has . or ")
+                    ; If the input ends with common executable extensions, treat it as a local application
+                    if input ~= "\.exe$|\.bat$|\.cmd$|\.py$|\.sh$|\.rb$|\.js$|\.jar$|\.vbs$|\.ps1$|\.com$|\.msi$|\.apk$|\.app$|\.gadget$|\.hta$|\.cgi$|\.pl$|\.php$|\.wsf$|\.ksh$|\.cpl$|\.msc$|\.scpt$|\.reg$|\.inf$|\.dll$|\.sys$|\.scr$|\.xpi$|\.vb$|\.vbe$|\.iso$|\.lnk$|\.msp$|\.drv$|\.ocx$|\.psd1$|\.psm1$|\.bat$|\.bas$|\.hta$|\.wsh$|\.sct$|\.appref-ms$|\.osx$|\.command$|\.workflow$|\.run$|\.ebuild$|\.eb$|\.ws$|\.wsc$|\.msc$|\.wsf$|\.cpl$|\.csh$|\.bash$|\.fish$|\.zsh$|\.vbx$|\.htb$|\.msh$|\.scpt$|\.bashrc$|\.bash_profile$|\.profile$|\.bash_logout$"
+                        Run(input) ; Run the local executable
+                    else ; Otherwise, assume it's a URL and open it in the browser
+                        Run("https://" input)
+                }
+                else ; If the input is empty, open the browser with a default search page (fallback)
+                    Search.Browser(input)
+            
+            } catch Error {
+                ; In case of any error, fallback to a Google search with the input
+                Search.Browser(input)
+            }
         }
-    }
+        
     static ChatGPT(Search_text,prompt:="") {
         if prompt == ""
             A_Clipboard := Search_text . "`s"

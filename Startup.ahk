@@ -4,13 +4,14 @@
 #Include %A_ScriptDir%\Lib\Paths.ahk
 
 
-Sleep(10000)
+Sleep(100)
 
-Run(Startup "\Daily.ahk"),Sleep(10000)
-Run(Hotkeys "\Hotkeys.ahk"),Sleep(10000)
-Run(Hotkeys "\HotKeyLord.ahk"),Sleep(10000)
-
+Run(Startup "\Daily.ahk"),Sleep(500)
+Run(Hotkeys "\Hotkeys.ahk"),Sleep(500)
+Run(Hotkeys "\HotKeyLord.ahk"),Sleep(500)
+Run(Automation "\daily.py"),Sleep(500)
 Run(Hotstrings "\Custom_AutoCorrect.ahk"),Sleep(1)
+
 ; Run(Automation "\filename_cleaner.py"),Sleep(3000)
 
 ; Run(A_ScriptDir "\Lib\Tools\GetPath.ahk")

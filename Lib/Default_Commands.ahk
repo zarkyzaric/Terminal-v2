@@ -90,27 +90,36 @@ Default_Commands := Map(
         ;! myb Settings(#i) automation commands 
         ; "similar",               "https://www.chosic.com/playlist-generator/",
 
-        
+        "combat",       Games.CodeCombat,
     )
 
     IMI_Commands := Map(
+        "rasp",           KURS.RASPOREDI,
         ["oglasna","og"],   KURS.OGLASNA,
         "klk",              KURS.RASP_KLK,
         "isp",              KURS.RASP_ISP,
         "skr",              KURS.SKRIPTE,
+        "gitlab",           KURS.GitLab,
         
         ;? I godina________________________________________________________________________________
+        "op",               KURS.OP,
         "rs",               KURS.RS,
+        "toi",              KURS.TOI,
+        ["mat","mat1"],     KURS.MAT1,
         ["pip","pip1"],     KURS.PIP1,
+        
         ["sa","soal"],      KURS.SA,
         ["spa","spa1"],     KURS.SPA1,
         "pip3",             KURS.PIP3,
         "mat2",             KURS.MAT2,
         "arh",              KURS.ARH,
         
-        ;? Predmeti
+        ;? II godina________________________________________________________________________________
         ["oop"],            KURS.OOP,
         ["os","os1"],       KURS.OS1,
         "vap",              KURS.VAP,
-        "rm",              KURS.RM,
+        "rm",               KURS.RM,
+
+        ["kwt","webteh"],   KURS.KWT,
+
     )
